@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.playwright-cli/
+output/playwright/
+.DS_Store
+.env
+.env.*
+!.env.example
+skills/ten-minute-frontier-news/scripts/rss_cache/
+skills/ten-minute-frontier-news/scripts/seen_guids.json

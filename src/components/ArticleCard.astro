@@ -1,0 +1,51 @@
+---
+import type { NewsItem } from "../lib/types";
+import { formatTime } from "../lib/digests";
+import VoteControls from "./VoteControls.astro";
+
+interface Props {
+  item: NewsItem;
+  variant?: "lead" | "brief" | "more" | "opinion";
+  index?: number;
+}
+
+const { item, variant = "brief", index = 0 } = Astro.props;
+const source = item.sources[0];
+const verification = item.sources.length > 1 ? `${item.sources.length} 个来源` : source.kind === "官方" ? "官方一手" : "单源";
+---
+
+<article class:list={["story", `story--${variant}`]} data-category={item.category} data-kind={item.kind}>
+  <div class="story-rail" aria-hidden="true">
+    <span>{String(index + 1).padStart(2, "0")}</span>
+  </div>
+  <div class="story-body">
+    <div class="story-kicker">
+      <span class:list={["signal", `signal--${item.importance}`]}>{item.importance}</span>
+      <span>{item.category}</span>
+      <span>{item.kind}</span>
+      <span>{verification}</span>
+    </div>
+    <h3>
+      <a href={source.url} target="_blank" rel="noreferrer">{item.title}</a>
+    </h3>
+    <p class="story-summary">{item.summary}</p>
+    <p class="perspective"><span aria-hidden="true">◉</span><strong>视野</strong> {item.perspective}</p>
+    <div class="story-meta">
+      <span>{formatTime(item.publishedAt)} 发布</span>
+      <span class="source-list">
+        {item.sources.map((entry, sourceIndex) => (
+          <>
+            {sourceIndex > 0 && <span aria-hidden="true"> / </span>}
+            <a href={entry.url} target="_blank" rel="noreferrer">
+              {entry.name}{entry.paywalled ? " · 付费" : ""}
+            </a>
+          </>
+        ))}
+      </span>
+    </div>
+    {item.correction && (
+      <aside class="correction"><strong>更正</strong> {item.correction.note}</aside>
+    )}
+    <VoteControls articleId={item.id} />
+  </div>
+</article>

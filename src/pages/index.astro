@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import DigestView from "../components/DigestView.astro";
+import { latestDigest } from "../lib/digests";
+---
+
+<BaseLayout>
+  <div id="top"></div>
+  <SiteHeader />
+  <DigestView digest={latestDigest} showStaleBanner />
+  <footer class="site-footer">
+    <div class="shell">
+      <p><strong>十分钟前沿</strong> · 每天 8:30 前更新</p>
+      <p>公开阅读，来源可追溯。你的浏览不会被记录。</p>
+    </div>
+  </footer>
+</BaseLayout>

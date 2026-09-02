@@ -1,0 +1,195 @@
+{
+  "date": "2026-09-03",
+  "generatedAt": "2026-09-03T07:45:00+08:00",
+  "windowStart": "2026-08-31T22:30:00+08:00",
+  "windowEnd": "2026-09-03T07:30:00+08:00",
+  "thesis": "前沿 AI 的主线正在分成两条：能力继续跃迁到高风险专业任务，落地则越来越依赖可信数据、权限边界与可复用工作流。",
+  "status": "published",
+  "items": [
+    {
+      "id": "2026-09-03-openai-astra-critical-cyber-capability",
+      "title": "OpenAI 首次将 Astra 评为“关键级”网络能力模型",
+      "summary": "OpenAI 表示，Astra 已达到其 Preparedness Framework 中的 Critical 网络安全能力门槛：在适当工具与权限下，模型可在缺少逐步人工指导时发现未知漏洞，并对多个高防护系统开发利用方式。公司称已延后部分开发和发布以加强训练环境隔离、监控、拒答与滥用防护；最先进的网络能力不会默认开放，而将先向受控测试者提供。相关系统卡仍要等正式发布时披露。",
+      "perspective": "前沿模型的竞争开始同时考验能力、访问控制和事故响应；安全措施正在成为产品发布节奏的一部分。",
+      "importance": "重大",
+      "category": "AI",
+      "kind": "事实",
+      "publishedAt": "2026-09-01T09:00:00-07:00",
+      "collectedAt": "2026-09-03T06:50:00+08:00",
+      "tags": ["OpenAI", "Astra", "网络安全", "模型治理"],
+      "sources": [
+        {
+          "name": "OpenAI",
+          "url": "https://openai.com/index/path-to-astra/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 96,
+        "relevance": 98,
+        "novelty": 96,
+        "reliability": 90,
+        "convergence": 72,
+        "feedback": 50,
+        "total": 91.8
+      }
+    },
+    {
+      "id": "2026-09-03-china-ai-content-cleanup",
+      "title": "中央网信办通报 AI 应用乱象专项整治进展",
+      "summary": "中央网信办通报“清朗·整治AI应用乱象”第二阶段进展：累计清理违法违规信息 561 万余条、查处账号 4.9 万余个，并处置违规网站和应用 2400 余个。行动聚焦 AI 虚假信息、仿冒他人、未成年人权益、低俗暴力内容及 AI 托管网络水军；多家内容平台、模型产品和应用商店被要求强化识别、标识、审核与开发者准入。官方表示将继续关注生成合成内容的新风险。",
+      "perspective": "中国 AI 合规正在从原则要求进入平台审核、模型输出和应用分发的联合执行阶段，产品团队的治理成本会更具体。",
+      "importance": "重大",
+      "category": "宏观国际",
+      "kind": "事实",
+      "publishedAt": "2026-09-02T10:30:00+08:00",
+      "collectedAt": "2026-09-03T06:58:00+08:00",
+      "tags": ["中央网信办", "AI治理", "内容安全", "生成内容标识"],
+      "sources": [
+        {
+          "name": "中央网络安全和信息化委员会办公室",
+          "url": "https://www.cac.gov.cn/2026-09/02/c_1790099041364574.htm",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 91,
+        "relevance": 94,
+        "novelty": 84,
+        "reliability": 96,
+        "convergence": 76,
+        "feedback": 50,
+        "total": 88.8
+      }
+    },
+    {
+      "id": "2026-09-03-openai-healthcare-data-connectors",
+      "title": "ChatGPT for Healthcare 接入 Epic 与九类公共医疗数据",
+      "summary": "OpenAI 为 ChatGPT for Healthcare 推出 Epic 电子健康记录集成和 Healthcare Public Data 插件。机构可在既有授权范围内汇总病历变化、检查结果与用药信息，并查询 PubMed、ClinicalTrials.gov、DailyMed、CMS Coverage 等九个官方数据源；Epic 接入为只读，且需管理员配置、个人登录和原有病历权限。OpenAI 披露的安全率来自公司自己的医生评测，尚不能替代独立验证。",
+      "perspective": "医疗 AI 的壁垒正从通用问答转向受控数据接入、权限继承和可追溯证据，平台竞争更接近企业基础设施。",
+      "importance": "重大",
+      "category": "商业",
+      "kind": "事实",
+      "publishedAt": "2026-09-01T09:00:00-07:00",
+      "collectedAt": "2026-09-03T07:05:00+08:00",
+      "tags": ["医疗AI", "Epic", "数据连接", "企业软件"],
+      "sources": [
+        {
+          "name": "OpenAI",
+          "url": "https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources/",
+          "kind": "官方"
+        },
+        {
+          "name": "OpenAI Release Notes",
+          "url": "https://openai.com/zh-Hant/products/release-notes/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 88,
+        "relevance": 94,
+        "novelty": 89,
+        "reliability": 88,
+        "convergence": 82,
+        "feedback": 50,
+        "total": 87.4
+      }
+    },
+    {
+      "id": "2026-09-03-openai-ai-native-workflows",
+      "title": "OpenAI 案例显示企业 AI 从助手转向可复用工作流",
+      "summary": "OpenAI 以三家初创企业为例，展示智能体用于入职、账户维护和开发者集成：固化流程，连接持续更新的上下文与工具，并在对外承诺前保留测试和人工审核。成效来自厂商案例，并非独立评估。",
+      "perspective": "企业 AI 的价值衡量正在从“用了多少”转向周期、质量、成本和风险等可验证结果。",
+      "importance": "值得关注",
+      "category": "商业",
+      "kind": "事实",
+      "publishedAt": "2026-09-01T09:00:00-07:00",
+      "collectedAt": "2026-09-03T07:12:00+08:00",
+      "tags": ["企业AI", "智能体", "工作流", "Codex"],
+      "sources": [
+        {
+          "name": "OpenAI",
+          "url": "https://openai.com/index/ai-native-company-workflows/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 76,
+        "relevance": 90,
+        "novelty": 72,
+        "reliability": 78,
+        "convergence": 60,
+        "feedback": 50,
+        "total": 76.9
+      }
+    },
+    {
+      "id": "2026-09-03-g20-emerging-tech-principles",
+      "title": "G20 创新部长会议讨论 AI 政策与劳动者技能",
+      "summary": "科技部通报，G20 创新部长会议在 AI 与新兴技术创新原则、提升劳动者 AI 技能等方面形成共识；通报未披露可执行条款。",
+      "perspective": "速览：国际协调仍以原则与能力建设为主，真正影响企业的约束要看各经济体后续落地。",
+      "importance": "速览",
+      "category": "宏观国际",
+      "kind": "事实",
+      "publishedAt": "2026-09-02T14:19:00+08:00",
+      "collectedAt": "2026-09-03T07:18:00+08:00",
+      "tags": ["G20", "科技政策", "AI技能", "国际合作"],
+      "sources": [
+        {
+          "name": "中华人民共和国科学技术部",
+          "url": "https://www.most.gov.cn/kjbgz/202609/t20260902_197243.html",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 64,
+        "relevance": 72,
+        "novelty": 55,
+        "reliability": 94,
+        "convergence": 48,
+        "feedback": 50,
+        "total": 67.5
+      }
+    },
+    {
+      "id": "2026-09-03-microsoft-ai-yield-imperative",
+      "title": "微软基础设施负责人：AI 应从扩算力转向提高“智能产出率”",
+      "summary": "微软 Azure 基础设施负责人 Rani Borkar 主张，行业应像芯片制造衡量良率一样，关注资本、电力与芯片最终产生多少可用智能，并把效率视为扩大 AI 可及性的前提。",
+      "perspective": "观点：这为算力投资提供了更严格的问题——不是建了多少，而是每单位能源和资本产生了什么结果。",
+      "importance": "值得关注",
+      "category": "科技",
+      "kind": "观点",
+      "publishedAt": "2026-09-01T09:00:00-07:00",
+      "collectedAt": "2026-09-03T07:24:00+08:00",
+      "tags": ["微软", "AI基础设施", "能源效率", "算力"],
+      "sources": [
+        {
+          "name": "Microsoft Official Blog",
+          "url": "https://blogs.microsoft.com/blog/2026/09/01/the-yield-imperative-turning-ai-infrastructure-into-useful-intelligence/",
+          "kind": "观点"
+        }
+      ],
+      "score": {
+        "impact": 72,
+        "relevance": 86,
+        "novelty": 78,
+        "reliability": 76,
+        "convergence": 58,
+        "feedback": 50,
+        "total": 74.7
+      }
+    }
+  ],
+  "quality": {
+    "sourcesChecked": 31,
+    "sourcesHealthy": 27,
+    "rawSignals": 58,
+    "afterDeduplication": 34,
+    "linksVerified": 7,
+    "notes": [
+      "本期覆盖上一期成功发布后的新增信息；没有为凑数量降低门槛。",
+      "厂商披露的数据均标明信息来源属性，不将自报评测等同于独立验证。",
+      "广泛政治信息仅在存在产业影响时收录，并按重要性降级展示。"
+    ]
+  }
+}

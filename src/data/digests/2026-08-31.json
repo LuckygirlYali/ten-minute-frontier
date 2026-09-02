@@ -1,0 +1,195 @@
+{
+  "date": "2026-08-31",
+  "generatedAt": "2026-08-31T22:30:00+08:00",
+  "windowStart": "2026-08-30T08:30:00+08:00",
+  "windowEnd": "2026-08-31T22:30:00+08:00",
+  "thesis": "AI 的竞争重心正在从单点模型能力，转向算力生态、可信评测和政府采购等更难复制的制度与基础设施层。",
+  "status": "published",
+  "items": [
+    {
+      "id": "2026-08-31-nvidia-mediatek-ai-platforms",
+      "title": "英伟达与联发科扩大合作，定制 AI 芯片接入 NVLink 生态",
+      "summary": "英伟达与联发科宣布扩大长期合作，覆盖云端 AI 基础设施、本地计算与汽车。联发科将采用 NVLink Fusion，为云服务商和模型开发者提供定制 XPU 接入英伟达机架级系统的路径；英伟达同时宣布向联发科投资 35 亿美元。",
+      "perspective": "这不只是一次投资，而是英伟达把互连和软件生态变成定制芯片时代的控制点。",
+      "importance": "重大",
+      "category": "科技",
+      "kind": "事实",
+      "publishedAt": "2026-08-31T21:58:00+08:00",
+      "collectedAt": "2026-08-31T22:08:00+08:00",
+      "tags": ["英伟达", "联发科", "AI芯片", "NVLink"],
+      "sources": [
+        {
+          "name": "NVIDIA Newsroom",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+          "kind": "官方"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.marketscreener.com/news/nvidia-to-invest-3-5-billion-in-chipmaker-mediatek-expand-partnership-ce7858dcd08af326",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 92,
+        "relevance": 95,
+        "novelty": 88,
+        "reliability": 96,
+        "convergence": 90,
+        "feedback": 50,
+        "total": 90.3
+      }
+    },
+    {
+      "id": "2026-08-31-fsb-frontier-ai-cyber-risk",
+      "title": "FSB 将前沿 AI 网络风险列为金融体系最迫切的担忧",
+      "summary": "金融稳定理事会主席 Andrew Bailey 在提交 G20 的信中警告，前沿模型更强的自主性、问题解决能力与攻击能力，可能改变网络攻击的速度、规模和成本，并经由市场信心传导为系统性风险。信中同时提示主权债务、私人信贷和高估值资产的脆弱性。",
+      "perspective": "AI 安全正在从模型治理议题进入金融稳定框架，银行和金融科技公司的安全预算与模型上线流程可能被重新定义。",
+      "importance": "重大",
+      "category": "宏观国际",
+      "kind": "事实",
+      "publishedAt": "2026-08-31T08:00:00+01:00",
+      "collectedAt": "2026-08-31T20:35:00+08:00",
+      "tags": ["G20", "金融稳定", "网络安全", "前沿模型"],
+      "sources": [
+        {
+          "name": "Financial Stability Board",
+          "url": "https://www.fsb.org/2026/08/fsb-chairs-letter-to-g20-finance-ministers-and-central-bank-governors-august-2026/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 90,
+        "relevance": 88,
+        "novelty": 86,
+        "reliability": 100,
+        "convergence": 72,
+        "feedback": 50,
+        "total": 88.1
+      }
+    },
+    {
+      "id": "2026-08-31-uk-sovereign-ai-procurement",
+      "title": "英国启动 1 亿英镑主权 AI 采购竞赛",
+      "summary": "英国政府宣布启动总额 1 亿英镑的 Sovereign AI 研发采购计划，首批竞赛聚焦医疗等待时间、网络安全与公共服务。它采用政府采购拉动本土 AI 初创企业交付的方式，而不只是提供研究补贴。",
+      "perspective": "政府正在从监管者和资助者变成首批大客户；能否形成可复制采购与真实部署，将比基金规模更值得观察。",
+      "importance": "重大",
+      "category": "商业",
+      "kind": "事实",
+      "publishedAt": "2026-08-31T09:00:00+01:00",
+      "collectedAt": "2026-08-31T20:42:00+08:00",
+      "tags": ["英国", "政府采购", "AI初创", "公共服务"],
+      "sources": [
+        {
+          "name": "UK Government",
+          "url": "https://www.gov.uk/government/news/100-million-competition-to-back-british-ai-companies-to-fix-public-services",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 84,
+        "relevance": 92,
+        "novelty": 87,
+        "reliability": 100,
+        "convergence": 65,
+        "feedback": 50,
+        "total": 85.6
+      }
+    },
+    {
+      "id": "2026-08-31-china-ai-robotics-ipo-boom",
+      "title": "AI 与机器人企业推动中国科技 IPO 升温",
+      "summary": "中国科技企业上市活动持续升温，资金更偏向香港和上海。报道指出，存储芯片企业长鑫存储 7 月在科创板募资逾 86 亿美元，人形机器人企业宇树科技 8 月上市后首日大涨，反映资本市场正在快速重估硬科技资产。",
+      "perspective": "上市窗口打开能补充 AI 产业的长期资本，但首日涨幅与真实经营质量之间仍需保持距离。",
+      "importance": "值得关注",
+      "category": "商业",
+      "kind": "事实",
+      "publishedAt": "2026-08-31T12:11:00+08:00",
+      "collectedAt": "2026-08-31T20:50:00+08:00",
+      "tags": ["IPO", "中国科技", "机器人", "半导体"],
+      "sources": [
+        {
+          "name": "Associated Press",
+          "url": "https://apnews.com/article/7246cca5174e9b9f4cb305adda287395",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 78,
+        "relevance": 88,
+        "novelty": 76,
+        "reliability": 88,
+        "convergence": 68,
+        "feedback": 50,
+        "total": 79.8
+      }
+    },
+    {
+      "id": "2026-08-31-deepmind-double-blind-evaluation",
+      "title": "DeepMind 试点前沿模型双盲评测，减少基准污染",
+      "summary": "Google DeepMind 提出以密码学隔离环境进行专有前沿模型的双盲评测，让模型开发方无法提前看到外部测试题，也避免评测内容随后进入训练流程。",
+      "perspective": "当公开榜单越来越容易被针对性优化，评测流程本身正在成为模型可信度的基础设施。",
+      "importance": "值得关注",
+      "category": "AI",
+      "kind": "事实",
+      "publishedAt": "2026-08-27T09:00:00-07:00",
+      "collectedAt": "2026-08-31T20:58:00+08:00",
+      "tags": ["模型评测", "基准污染", "DeepMind", "AI安全"],
+      "sources": [
+        {
+          "name": "Google DeepMind",
+          "url": "https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 70,
+        "relevance": 86,
+        "novelty": 91,
+        "reliability": 98,
+        "convergence": 55,
+        "feedback": 50,
+        "total": 77.7
+      }
+    },
+    {
+      "id": "2026-08-31-hormuz-oil-market-impact",
+      "title": "霍尔木兹海峡冲突再起，油价上涨并压低风险资产",
+      "summary": "美国对伊朗目标发动新一轮打击后，国际油价上涨、美股下跌。霍尔木兹海峡承载全球约五分之一的石油运输，因此有限军事行动也会迅速传导到能源、物流和通胀预期。",
+      "perspective": "广泛政治新闻速览：其价值不在战况细节，而在能源成本和资本市场风险偏好的即时变化。",
+      "importance": "速览",
+      "category": "宏观国际",
+      "kind": "事实",
+      "publishedAt": "2026-08-31T14:32:00+08:00",
+      "collectedAt": "2026-08-31T21:05:00+08:00",
+      "tags": ["霍尔木兹海峡", "油价", "供应链", "国际局势"],
+      "sources": [
+        {
+          "name": "Associated Press",
+          "url": "https://apnews.com/article/00f872327d65e5330598054a234dc25a",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 82,
+        "relevance": 55,
+        "novelty": 67,
+        "reliability": 88,
+        "convergence": 72,
+        "feedback": 50,
+        "total": 71.1
+      }
+    }
+  ],
+  "quality": {
+    "sourcesChecked": 28,
+    "sourcesHealthy": 24,
+    "rawSignals": 67,
+    "afterDeduplication": 41,
+    "linksVerified": 8,
+    "notes": [
+      "这是网站初始化示例，采集窗口长于日常运行窗口。",
+      "单源条目已保留来源等级；没有用搜索片段单独生成事实。",
+      "观点与事实分开呈现，评分明细用于排序而非替代编辑判断。"
+    ]
+  }
+}

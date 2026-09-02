@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import { digests, formatChineseDate, readingMinutes } from "../../lib/digests";
+import { withBase } from "../../lib/site";
+
+const grouped = digests.reduce<Record<string, typeof digests>>((months, digest) => {
+  const month = digest.date.slice(0, 7);
+  (months[month] ??= []).push(digest);
+  return months;
+}, {});
+---
+
+<BaseLayout title="往期日报" description="按日期浏览十分钟前沿历史日报">
+  <SiteHeader />
+  <main class="shell archive-page">
+    <header class="archive-hero">
+      <p class="eyebrow">THE ARCHIVE</p>
+      <h1>往期日报</h1>
+      <p>日复一日保存那些真正改变行业方向的信号。</p>
+    </header>
+    {Object.entries(grouped).map(([month, monthDigests]) => (
+      <section class="archive-month">
+        <h2>{month.replace("-", " 年 ")} 月</h2>
+        <div class="archive-list">
+          {monthDigests.map((digest) => (
+            <a href={withBase(`/archive/${digest.date}/`)}>
+              <time datetime={digest.date}>{formatChineseDate(digest.date)}</time>
+              <strong>{digest.thesis}</strong>
+              <span>{digest.items.length} 条 · 约 {readingMinutes(digest.items)} 分钟</span>
+              <i aria-hidden="true">→</i>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </main>
+</BaseLayout>

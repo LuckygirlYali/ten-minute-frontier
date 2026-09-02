@@ -1,0 +1,24 @@
+---
+import { site, withBase } from "../lib/site";
+---
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href={withBase("/")} aria-label={`${site.name}首页`}>
+      <span class="brand-mark" aria-hidden="true">十</span>
+      <span>
+        <strong>{site.name}</strong>
+        <small>THE TEN-MINUTE FRONTIER</small>
+      </span>
+    </a>
+    <nav class="main-nav" aria-label="主导航">
+      <a href={withBase("/")}>今日</a>
+      <a href={withBase("/archive/")}>往期</a>
+      <a href="#quality">方法</a>
+    </nav>
+    <button class="auth-button" type="button" data-auth-button>
+      <span class="auth-dot" aria-hidden="true"></span>
+      <span data-auth-label>登录投票</span>
+    </button>
+  </div>
+</header>

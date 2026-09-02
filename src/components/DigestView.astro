@@ -1,0 +1,109 @@
+---
+import type { DailyDigest } from "../lib/types";
+import { formatChineseDate, formatTime, readingMinutes } from "../lib/digests";
+import ArticleCard from "./ArticleCard.astro";
+import CategoryFilter from "./CategoryFilter.astro";
+import QualityPanel from "./QualityPanel.astro";
+import { withBase } from "../lib/site";
+
+interface Props {
+  digest: DailyDigest;
+  showStaleBanner?: boolean;
+}
+
+const { digest, showStaleBanner = false } = Astro.props;
+const mustReads = digest.items.filter((item) => item.importance === "重大").slice(0, 5);
+const quickReads = digest.items.filter((item) => item.importance === "值得关注").slice(0, 15);
+const moreReads = digest.items.filter((item) => item.importance === "速览");
+const opinions = digest.items.filter((item) => item.kind === "观点");
+const factMustReads = mustReads.filter((item) => item.kind === "事实");
+const factQuickReads = quickReads.filter((item) => item.kind === "事实");
+const factMoreReads = moreReads.filter((item) => item.kind === "事实");
+---
+
+{showStaleBanner && (
+  <aside class="stale-banner" data-latest-date={digest.date} hidden>
+    今日简报尚未完成，当前显示最近一次成功发布的内容。
+  </aside>
+)}
+
+<main>
+  <section class="masthead shell">
+    <div class="masthead-date">
+      <p class="eyebrow">DAILY SIGNAL BRIEF · {digest.date.replaceAll("-", ".")}</p>
+      <p>{formatChineseDate(digest.date)}</p>
+    </div>
+    <div class="masthead-title">
+      <p class="edition">AI · TECHNOLOGY · BUSINESS · WORLD</p>
+      <h1>真正重要的变化，<br /><em>十分钟读完。</em></h1>
+      <p class="deck">{digest.thesis}</p>
+    </div>
+    <div class="reading-note">
+      <span>预计阅读</span>
+      <strong>{readingMinutes(digest.items)}<small>分钟</small></strong>
+      <span>{digest.items.length} 条更新</span>
+    </div>
+  </section>
+
+  <div class="section-nav-wrap">
+    <div class="shell section-nav">
+      <CategoryFilter />
+      <span>更新于 {formatTime(digest.generatedAt)}</span>
+    </div>
+  </div>
+
+  <section class="shell editorial-section" aria-labelledby="must-read-title" data-filter-section>
+    <div class="section-heading">
+      <div><span class="section-number">01</span><h2 id="must-read-title">今日必读</h2></div>
+      <p>改变行业边界的高信号事件</p>
+    </div>
+    <div class="lead-grid" data-story-list>
+      {factMustReads.map((item, index) => <ArticleCard item={item} variant="lead" index={index} />)}
+    </div>
+  </section>
+
+  {factQuickReads.length > 0 && (
+    <section class="shell editorial-section" aria-labelledby="quick-read-title" data-filter-section>
+      <div class="section-heading">
+        <div><span class="section-number">02</span><h2 id="quick-read-title">快速了解</h2></div>
+        <p>值得跟踪，但不值得占满你的早晨</p>
+      </div>
+      <div class="brief-list" data-story-list>
+        {factQuickReads.map((item, index) => <ArticleCard item={item} variant="brief" index={index} />)}
+      </div>
+    </section>
+  )}
+
+  {opinions.length > 0 && (
+    <section class="shell editorial-section" aria-labelledby="opinion-title" data-filter-section>
+      <div class="section-heading">
+        <div><span class="section-number">03</span><h2 id="opinion-title">观点与判断</h2></div>
+        <p>观点不伪装成事实</p>
+      </div>
+      <div class="brief-list" data-story-list>
+        {opinions.map((item, index) => <ArticleCard item={item} variant="opinion" index={index} />)}
+      </div>
+    </section>
+  )}
+
+  {factMoreReads.length > 0 && (
+    <section class="shell editorial-section more-section" aria-labelledby="more-title" data-filter-section>
+      <details>
+        <summary class="section-heading">
+          <div><span class="section-number">04</span><h2 id="more-title">更多动态</h2></div>
+          <p>{factMoreReads.length} 条速览 <span aria-hidden="true">＋</span></p>
+        </summary>
+        <div class="brief-list" data-story-list>
+          {factMoreReads.map((item, index) => <ArticleCard item={item} variant="more" index={index} />)}
+        </div>
+      </details>
+    </section>
+  )}
+
+  <div class="shell"><QualityPanel digest={digest} /></div>
+
+  <nav class="shell end-nav" aria-label="日报尾部导航">
+    <a href={withBase("/archive/")}>浏览全部往期 <span aria-hidden="true">→</span></a>
+    <a href="#top">回到顶部 <span aria-hidden="true">↑</span></a>
+  </nav>
+</main>

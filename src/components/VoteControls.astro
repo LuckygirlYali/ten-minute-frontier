@@ -1,0 +1,36 @@
+---
+interface Props {
+  articleId: string;
+}
+
+const { articleId } = Astro.props;
+---
+
+<div class="vote-controls" data-vote-widget data-article-id={articleId}>
+  <button type="button" class="vote-button" data-vote="1" aria-label="点赞这条内容">
+    <span aria-hidden="true">↑</span>
+    <span>有用</span>
+    <span class="vote-count" data-up-count>0</span>
+  </button>
+  <button type="button" class="vote-button" data-vote="-1" aria-label="不喜欢这条内容">
+    <span aria-hidden="true">↓</span>
+    <span>不喜欢</span>
+    <span class="vote-count" data-down-count>0</span>
+  </button>
+  <div class="reason-picker" data-reason-picker hidden>
+    <label>
+      原因（可选）
+      <select data-reason>
+        <option value="">不选择</option>
+        <option value="irrelevant">不相关</option>
+        <option value="known">已知道</option>
+        <option value="duplicate">重复</option>
+        <option value="summary_quality">摘要质量差</option>
+        <option value="source_quality">来源不佳</option>
+      </select>
+    </label>
+    <button type="button" data-confirm-down>确认</button>
+    <button type="button" data-cancel-down>取消</button>
+  </div>
+  <span class="vote-status" data-vote-status aria-live="polite"></span>
+</div>

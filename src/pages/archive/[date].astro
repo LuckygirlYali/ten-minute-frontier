@@ -1,0 +1,18 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import DigestView from "../../components/DigestView.astro";
+import { digests, formatChineseDate } from "../../lib/digests";
+
+export const getStaticPaths = (() =>
+  digests.map((digest) => ({ params: { date: digest.date }, props: { digest } }))) satisfies GetStaticPaths;
+
+const { digest } = Astro.props;
+---
+
+<BaseLayout title={formatChineseDate(digest.date)} description={digest.thesis}>
+  <div id="top"></div>
+  <SiteHeader />
+  <DigestView digest={digest} />
+</BaseLayout>

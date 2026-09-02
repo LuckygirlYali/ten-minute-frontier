@@ -1,0 +1,28 @@
+---
+import type { DailyDigest } from "../lib/types";
+
+interface Props {
+  digest: DailyDigest;
+}
+
+const { digest } = Astro.props;
+const health = Math.round((digest.quality.sourcesHealthy / digest.quality.sourcesChecked) * 100);
+---
+
+<section class="quality-panel" id="quality">
+  <div>
+    <p class="eyebrow">TRANSPARENCY NOTE</p>
+    <h2>这份日报如何被筛出来</h2>
+    <p>RSS 与网页搜索共同发现候选；官方源优先，重大信息尽量交叉核验。无法确认原始链接的条目不会发布。</p>
+  </div>
+  <dl class="quality-metrics">
+    <div><dt>信源健康</dt><dd>{health}%</dd></div>
+    <div><dt>原始信号</dt><dd>{digest.quality.rawSignals}</dd></div>
+    <div><dt>去重后</dt><dd>{digest.quality.afterDeduplication}</dd></div>
+    <div><dt>链接核验</dt><dd>{digest.quality.linksVerified}</dd></div>
+  </dl>
+  <details>
+    <summary>查看本期质量说明</summary>
+    <ul>{digest.quality.notes.map((note) => <li>{note}</li>)}</ul>
+  </details>
+</section>
