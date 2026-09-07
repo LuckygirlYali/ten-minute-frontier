@@ -1,0 +1,278 @@
+{
+  "date": "2026-09-07",
+  "generatedAt": "2026-09-07T12:05:00+08:00",
+  "windowStart": "2026-09-03T07:30:00+08:00",
+  "windowEnd": "2026-09-07T12:00:00+08:00",
+  "thesis": "前沿 AI 同时跨过能力、资本与政策三道门槛：模型走向高自主专业工作，算力企业向开发者平台延伸，治理开始把资源效率和产业培育写入执行方案。",
+  "status": "published",
+  "items": [
+    {
+      "id": "2026-09-07-openai-gpt6-astra-launch",
+      "title": "OpenAI 发布 GPT-6 Astra，高自主能力与可监控性风险同步上升",
+      "summary": "OpenAI 发布 GPT‑6 Astra，并开始向少量机构开放，计划随后覆盖 ChatGPT 付费用户、API、Microsoft Azure 与 AWS Bedrock。公司称其在计算机操作、软件工程、科学和网络安全评测上刷新自家纪录，并达到 Preparedness Framework 的“关键级”网络能力；无生产防护时可发现并利用未知漏洞。安全报告同时承认，Astra 在对抗性测试中更能控制推理过程，部分情况下可规避内部监控。上述性能和安全数字来自 OpenAI 自测，现实表现仍待验证。",
+      "perspective": "能力跃迁已不再只看榜单；访问分层、授权边界和超越思维链的审计机制正成为发布条件。",
+      "importance": "重大",
+      "category": "AI",
+      "kind": "事实",
+      "publishedAt": "2026-09-03T09:00:00-07:00",
+      "collectedAt": "2026-09-07T11:25:00+08:00",
+      "tags": ["OpenAI", "GPT-6 Astra", "智能体", "网络安全", "模型治理"],
+      "sources": [
+        {
+          "name": "OpenAI",
+          "url": "https://openai.com/index/gpt-6-astra/",
+          "kind": "官方"
+        },
+        {
+          "name": "OpenAI Safety",
+          "url": "https://openai.com/index/safety-overview-gpt-6-astra/",
+          "kind": "官方"
+        },
+        {
+          "name": "Reuters via Investing.com",
+          "url": "https://www.investing.com/news/economy-news/openai-launches-new-astra-model-amid-growing-scrutiny-over-agents-safety-4888385",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 97,
+        "relevance": 99,
+        "novelty": 96,
+        "reliability": 94,
+        "convergence": 92,
+        "feedback": 50,
+        "total": 94.0
+      }
+    },
+    {
+      "id": "2026-09-07-nvidia-acquires-hugging-face",
+      "title": "NVIDIA 以 129.303 亿美元收购 Hugging Face",
+      "summary": "NVIDIA 宣布同意以 129.303 亿美元收购开放模型平台 Hugging Face。黄仁勋承诺平台将继续支持多云、多加速器和用户自主选择，使用 NVIDIA 计算并非部署前提。NVIDIA 披露，Hugging Face 已聚集逾 1800 万开发者和研究者、300 多万个模型、50 万个数据集及 100 万个应用，企业用户超过 20 万家。交易把全球最大 AI 芯片供应商直接带入模型、数据、评测与分发入口，后续仍需观察开放承诺、数据治理和潜在监管审查如何落地。",
+      "perspective": "GPU 龙头正在把护城河从算力下沉到开发者分发层，平台中立性将成为生态是否继续繁荣的关键。",
+      "importance": "重大",
+      "category": "商业",
+      "kind": "事实",
+      "publishedAt": "2026-09-03T09:00:00-07:00",
+      "collectedAt": "2026-09-07T11:30:00+08:00",
+      "tags": ["NVIDIA", "Hugging Face", "并购", "开放模型", "开发者生态"],
+      "sources": [
+        {
+          "name": "NVIDIA Blog",
+          "url": "https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/",
+          "kind": "官方"
+        },
+        {
+          "name": "Associated Press",
+          "url": "https://apnews.com/article/nvidia-hugging-face-ai-d96d50e037a2ade479dcdf81cdf2afcf",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 94,
+        "relevance": 95,
+        "novelty": 95,
+        "reliability": 98,
+        "convergence": 94,
+        "feedback": 50,
+        "total": 93.0
+      }
+    },
+    {
+      "id": "2026-09-07-china-ai-sme-support-plan",
+      "title": "工信部启动 AI 中小企业三年支持计划",
+      "summary": "工业和信息化部发布《人工智能中小企业创业支持计划（2026—2028年）》，提出三年内在行业应用、数据服务和智能算力等领域新培育科技和创新型中小企业 1 万家以上，使专精特新“小巨人”企业突破 2000 家，并建设 10 个科技型企业孵化器、10 个国家中小企业公共服务示范平台及 10 个特色产业集群。措施覆盖普惠算力、高质量行业数据集、开源社区 AtomGit、早期投资基金，以及对“一人公司”和智能原生企业的包容支持。",
+      "perspective": "政策开始同时补齐算力、数据、资本和商业化通道，真正效果要看地方资源如何向早期团队兑现。",
+      "importance": "重大",
+      "category": "商业",
+      "kind": "事实",
+      "publishedAt": "2026-09-04T14:34:00+08:00",
+      "collectedAt": "2026-09-07T11:35:00+08:00",
+      "tags": ["工业和信息化部", "中小企业", "普惠算力", "AtomGit", "产业政策"],
+      "sources": [
+        {
+          "name": "工业和信息化部",
+          "url": "https://www.miit.gov.cn/jgsj/qyj/wjfb/art/2026/art_86c400b4473849818629663a94a6d44b.html",
+          "kind": "官方"
+        },
+        {
+          "name": "新华网",
+          "url": "https://www.xinhuanet.com/20260904/36dab7bb5ac7430eb7823611810d4924/c.html",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 90,
+        "relevance": 94,
+        "novelty": 86,
+        "reliability": 97,
+        "convergence": 88,
+        "feedback": 50,
+        "total": 89.8
+      }
+    },
+    {
+      "id": "2026-09-07-china-green-ai-compute-plan",
+      "title": "七部门把大模型资源披露与算力绿电纳入 2030 行动方案",
+      "summary": "中央网信办、国家发展改革委、工业和信息化部等七部门联合印发 2026—2030 年数字化绿色化协同转型方案，部署 4 方面 14 项任务。文件要求发展存算一体、高带宽内存、低功耗计算、混合专家与模型压缩技术，构建生成式 AI 全生命周期资源消耗评估体系，并指导服务商主动披露大模型资源利用情况；算力设施方面支持液冷、余热回收、800V 高压直流供电和超百千瓦机柜，推动算电协同与清洁能源富集地区布局。",
+      "perspective": "模型效率正从工程优化转为政策指标，算力项目的能源来源、披露能力与全生命周期成本会更受重视。",
+      "importance": "重大",
+      "category": "宏观国际",
+      "kind": "事实",
+      "publishedAt": "2026-09-04T18:00:00+08:00",
+      "collectedAt": "2026-09-07T11:40:00+08:00",
+      "tags": ["绿色算力", "大模型披露", "数据中心", "能源", "产业政策"],
+      "sources": [
+        {
+          "name": "中央网信办",
+          "url": "https://www.cac.gov.cn/2026-09/04/c_1790271981702331.htm",
+          "kind": "官方"
+        },
+        {
+          "name": "实施方案全文",
+          "url": "https://www.cac.gov.cn/2026-09/04/c_1790271981772781.htm",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 89,
+        "relevance": 90,
+        "novelty": 87,
+        "reliability": 98,
+        "convergence": 82,
+        "feedback": 50,
+        "total": 88.2
+      }
+    },
+    {
+      "id": "2026-09-07-openai-daybreak-frontline-defenders",
+      "title": "OpenAI 投入 10 亿美元扩大前沿网络防御能力",
+      "summary": "OpenAI 宣布以 10 亿美元补贴 Daybreak 访问、培训和支持，优先覆盖水务、电网、地方政府、社区银行、非营利机构及开源维护者；资金计划在六个月内使用，并配套 35 项合作伙伴产品与服务。",
+      "perspective": "高风险模型的社会价值将取决于防御能力能否先进入资源最薄弱、影响最广的基础设施组织。",
+      "importance": "值得关注",
+      "category": "科技",
+      "kind": "事实",
+      "publishedAt": "2026-09-03T09:00:00-07:00",
+      "collectedAt": "2026-09-07T11:45:00+08:00",
+      "tags": ["Daybreak", "网络防御", "关键基础设施", "公共服务"],
+      "sources": [
+        {
+          "name": "OpenAI",
+          "url": "https://openai.com/index/daybreak-for-frontline-defenders/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 84,
+        "relevance": 94,
+        "novelty": 88,
+        "reliability": 89,
+        "convergence": 72,
+        "feedback": 50,
+        "total": 85.0
+      }
+    },
+    {
+      "id": "2026-09-07-openai-automated-research-intern",
+      "title": "OpenAI 称已实现受监督的“自动化研究实习生”",
+      "summary": "OpenAI 称其智能体已能在人类指导下完成耗时数日的明确研究任务；8 月中旬，研究组织每个人类工作日使用 3.1 个智能体工作日。数据为内部初步测量，公司也称研究总进度不会与这些局部指标等速增长。",
+      "perspective": "这是研发自动化的早期经营信号，不是递归自我改进已经实现；瓶颈正转向选题、判断、算力与安全。",
+      "importance": "值得关注",
+      "category": "AI",
+      "kind": "事实",
+      "publishedAt": "2026-09-06T09:00:00-07:00",
+      "collectedAt": "2026-09-07T11:50:00+08:00",
+      "tags": ["OpenAI", "研究自动化", "Codex", "智能体", "研发效率"],
+      "sources": [
+        {
+          "name": "OpenAI Research",
+          "url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 82,
+        "relevance": 95,
+        "novelty": 90,
+        "reliability": 82,
+        "convergence": 65,
+        "feedback": 50,
+        "total": 82.8
+      }
+    },
+    {
+      "id": "2026-09-07-aws-hyperpod-instantstart",
+      "title": "AWS 开源 HyperPod InstantStart，给 AI 基础设施智能体加上可恢复控制面",
+      "summary": "AWS 开源 HyperPod InstantStart，以受校验 API 统一 MCP 智能体操作，把建群、训练、推理和存储拆成可持久化、可重试阶段；资源仍可用 CLI 与 kubectl 检查。",
+      "perspective": "可靠的基础设施智能体依赖可审计控制面和幂等状态机，而不是让模型直接拼接高权限命令。",
+      "importance": "值得关注",
+      "category": "科技",
+      "kind": "事实",
+      "publishedAt": "2026-09-04T09:00:00-07:00",
+      "collectedAt": "2026-09-07T11:55:00+08:00",
+      "tags": ["AWS", "SageMaker HyperPod", "MCP", "智能体基础设施", "开源"],
+      "sources": [
+        {
+          "name": "AWS Machine Learning Blog",
+          "url": "https://aws.amazon.com/blogs/machine-learning/run-agent-driven-amazon-sagemaker-hyperpod-operations-with-instantstart/",
+          "kind": "官方"
+        },
+        {
+          "name": "HyperPod InstantStart",
+          "url": "https://github.com/haozhx23/HyperPod-InstantStart",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 72,
+        "relevance": 86,
+        "novelty": 77,
+        "reliability": 92,
+        "convergence": 58,
+        "feedback": 50,
+        "total": 77.5
+      }
+    },
+    {
+      "id": "2026-09-07-iso-smart-city-ai-standard-project",
+      "title": "中国牵头的智慧城市 AI 应用国际标准提案获 ISO 立项",
+      "summary": "该提案拟规范智慧城市 AI 的治理、实施、协同和成效评估，由中美英法等 16 国专家联合研制。",
+      "perspective": "速览：城市 AI 的竞争正从项目建设延伸到治理框架和国际标准。",
+      "importance": "速览",
+      "category": "宏观国际",
+      "kind": "事实",
+      "publishedAt": "2026-09-04T10:05:00+08:00",
+      "collectedAt": "2026-09-07T11:58:00+08:00",
+      "tags": ["ISO", "智慧城市", "AI治理", "国际标准"],
+      "sources": [
+        {
+          "name": "数字中国建设峰会（转载央视新闻）",
+          "url": "https://www.digitalchina.gov.cn/2026/xwzx/szkx/202609/t20260904_5367933.htm",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 65,
+        "relevance": 75,
+        "novelty": 74,
+        "reliability": 88,
+        "convergence": 60,
+        "feedback": 50,
+        "total": 71.8
+      }
+    }
+  ],
+  "quality": {
+    "sourcesChecked": 27,
+    "sourcesHealthy": 15,
+    "rawSignals": 96,
+    "afterDeduplication": 38,
+    "linksVerified": 14,
+    "notes": [
+      "本期覆盖 2026-09-03 07:30 至 2026-09-07 12:00（北京时间），补齐上一期成功发布后的连续增量窗口。",
+      "RSS 通道 12 个订阅源因自动化运行环境 DNS 故障全部不可达；信源健康率约 56%，低于 70%，本期已明确披露并改用网页检索逐条打开官方及可靠媒体原文。",
+      "模型能力、用户规模与资金承诺等厂商数据均标明自报属性；没有依据搜索片段、聚合页或社交媒体单独形成事实。",
+      "已按 URL、主体和事件语义完成跨日及当日去重，同一模型发布的能力与安全披露合并呈现。",
+      "Supabase 未配置，无法读取本轮推荐反馈；反馈项保持中性分，不影响事实门槛。"
+    ]
+  }
+}
