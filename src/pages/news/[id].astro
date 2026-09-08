@@ -17,12 +17,13 @@ export const getStaticPaths = (() =>
 const { item, digest } = Astro.props;
 const detail = getDetail(item);
 const sections = [
-  ["完整事实", detail.facts, "fact"],
-  ["必要背景", detail.background, "fact"],
-  ["为什么重要", detail.significance, "meaning"],
-  ["各方反应", detail.reactions, "fact"],
-  ["信息边界与不确定性", detail.uncertainties, "uncertainty"],
-  ["接下来具体看什么", detail.watch, "watch"],
+  ["完整事实", detail.facts, "fact", false],
+  ["必要背景", detail.background, "fact", false],
+  ["为什么重要", detail.significance, "meaning", false],
+  ["更深层分析", detail.analysis, "analysis", true],
+  ["各方反应", detail.reactions, "fact", false],
+  ["信息边界与不确定性", detail.uncertainties, "uncertainty", false],
+  ["接下来具体看什么", detail.watch, "watch", false],
 ] as const;
 ---
 
@@ -47,19 +48,15 @@ const sections = [
       </header>
 
       <div class="briefing-copy">
-        {sections.map(([heading, paragraphs, kind]) => paragraphs?.length && (
+        {sections.map(([heading, paragraphs, kind, isAiAnalysis]) => paragraphs?.length && (
           <section class:list={["briefing-section", `briefing-section--${kind}`]}>
-            <h2>{heading}</h2>
+            <h2>
+              {heading}
+              {isAiAnalysis && <small>以下为 AI 生成的编辑判断</small>}
+            </h2>
             {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
           </section>
         ))}
-
-        {detail.analysis?.length && (
-          <section class="briefing-section briefing-section--analysis">
-            <h2>更深层分析 <small>以下为 AI 生成的编辑判断</small></h2>
-            {detail.analysis.map((paragraph) => <p>{paragraph}</p>)}
-          </section>
-        )}
 
         {!item.detail && (
           <aside class="briefing-boundary">

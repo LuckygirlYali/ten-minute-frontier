@@ -69,6 +69,9 @@ test("详情页提供独立事实、分析与具体观察点", () => {
   assert.match(detailPage, /接下来具体看什么/);
   assert.match(detailPage, /原始来源/);
   assert.match(articleCard, /AI 编辑分析/);
+  assert.match(globalCss, /\.briefing-copy \{ width: min\(720px, 100%\); margin: 58px auto 0; \}/);
+  assert.doesNotMatch(globalCss, /\.briefing-article \{[^}]*display: grid/);
+  assert.doesNotMatch(globalCss, /\.briefing-hero \{[^}]*position: sticky/);
 });
 
 test("当前首页与详情承担不同的信息任务", () => {
