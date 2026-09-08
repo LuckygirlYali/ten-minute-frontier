@@ -1,0 +1,185 @@
+{
+  "date": "2026-09-08",
+  "generatedAt": "2026-09-08T19:20:00+08:00",
+  "windowStart": "2026-09-07T12:00:00+08:00",
+  "windowEnd": "2026-09-08T19:20:00+08:00",
+  "thesis": "AI 竞争的重心正从单一模型能力扩展到资本、算力与规则：欧洲为主权 AI 补充长期资金，中国产业司法与芯片材料贸易规则同步落地，底层计算平台则继续为智能体负载重构。",
+  "status": "published",
+  "items": [
+    {
+      "id": "2026-09-08-mistral-series-d-sovereign-ai",
+      "title": "Mistral 获三星领投 30 亿欧元，估值超过 210 亿欧元",
+      "summary": "Mistral 完成 30 亿欧元 D 轮融资，投后估值超过 210 亿欧元；公司称这是欧洲科技企业迄今规模最大的股权融资。三星电子领投，EQT 管理的 Scaleup Europe Fund 与原股东 PSG Equity 共同领投，BlackRock 管理的基金、卢森堡政府等成为新投资者。Mistral 表示资金将用于前沿研究、训练算力、基础设施和国际商业扩张；公司目前在 20 个国家运营，并为 125 家以上企业提供关键任务 AI 服务。轮次规模、客户数与用途均为公司披露。",
+      "perspective": "欧洲主权 AI 获得了罕见的大额长期资本，下一关是把算力自主转化为模型与企业收入优势。",
+      "importance": "重大",
+      "category": "商业",
+      "kind": "事实",
+      "publishedAt": "2026-09-08T00:00:00+02:00",
+      "collectedAt": "2026-09-08T18:42:00+08:00",
+      "tags": ["Mistral AI", "三星电子", "融资", "主权AI", "开放权重"],
+      "sources": [
+        {
+          "name": "Mistral AI",
+          "url": "https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/",
+          "kind": "官方"
+        },
+        {
+          "name": "Euronews",
+          "url": "https://www.euronews.com/business/2026/09/08/mistral-ai-raises-record-3-billion-in-samsung-led-funding-round",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 92,
+        "relevance": 95,
+        "novelty": 90,
+        "reliability": 94,
+        "convergence": 91,
+        "feedback": 50,
+        "total": 90.8
+      }
+    },
+    {
+      "id": "2026-09-08-china-ai-judicial-rules",
+      "title": "最高法首次系统发布涉 AI 纠纷司法裁判规则",
+      "summary": "最高人民法院发布《关于依法审理涉人工智能纠纷案件的意见》，分 5 部分共 24 条，覆盖生成内容侵权、个人信息训练、产品责任、自动驾驶、开源软件、专利、数据与证据审查。文件明确：在合理范围内处理个人已公开且未明确拒绝的信息，一般不认定侵权；AI 生成内容侵害人格权益后，服务商接到有效通知仍未采取措施的，依法承担责任；免费开源且已披露功能和风险的代码模块，开发者可获适当责任豁免。意见也要求使用 AI 生成诉讼材料者核实内容并说明辅助使用情况。",
+      "perspective": "中国 AI 治理开始进入可直接影响训练数据、产品设计、开源合规和诉讼举证的裁判层。",
+      "importance": "重大",
+      "category": "宏观国际",
+      "kind": "事实",
+      "publishedAt": "2026-09-07T19:22:29+08:00",
+      "collectedAt": "2026-09-08T18:48:00+08:00",
+      "tags": ["最高人民法院", "AI治理", "知识产权", "个人信息", "开源软件"],
+      "sources": [
+        {
+          "name": "最高人民法院",
+          "url": "https://www.court.gov.cn/zixun/xiangqing/511101.html",
+          "kind": "官方"
+        },
+        {
+          "name": "司法部智慧普法平台（新华社）",
+          "url": "https://legalinfo.moj.gov.cn/zhfxfzzx/fzzxyw/202609/t20260908_539391.html",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 93,
+        "relevance": 92,
+        "novelty": 94,
+        "reliability": 98,
+        "convergence": 88,
+        "feedback": 50,
+        "total": 91.2
+      }
+    },
+    {
+      "id": "2026-09-08-intel-asml-high-na-euv",
+      "title": "Intel 与 ASML 推动 High NA EUV 进入大芯片量产路径",
+      "summary": "Intel Foundry 与 ASML 称，High NA EUV 已在 Intel 量产中处理逾 100 万片晶圆，部分 Panther Lake 芯片层已采用该技术；双方还将推动 6×12 英寸大掩模标准，以覆盖大型数据中心芯片。",
+      "perspective": "AI 芯片继续放大版图，光刻竞争已从分辨率延伸到掩模尺寸、拼接和产业标准协同。",
+      "importance": "值得关注",
+      "category": "科技",
+      "kind": "事实",
+      "publishedAt": "2026-09-08T02:03:00-04:00",
+      "collectedAt": "2026-09-08T18:55:00+08:00",
+      "tags": ["Intel Foundry", "ASML", "High NA EUV", "先进制程", "AI芯片"],
+      "sources": [
+        {
+          "name": "Intel Investor Relations",
+          "url": "https://www.intc.com/news-events/press-releases/detail/1781/intel-foundry-and-asml-collaborate-to-accelerate-industry",
+          "kind": "官方"
+        },
+        {
+          "name": "Reuters via WHBL",
+          "url": "https://whbl.com/2026/09/08/asml-to-work-with-major-chipmakers-to-use-latest-tools-for-larger-chips/",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 88,
+        "relevance": 91,
+        "novelty": 86,
+        "reliability": 96,
+        "convergence": 89,
+        "feedback": 50,
+        "total": 88.4
+      }
+    },
+    {
+      "id": "2026-09-08-arm-neoverse-css-n4",
+      "title": "Arm 发布 Neoverse CSS N4，面向智能体基础设施强化 CPU",
+      "summary": "Arm 发布 Neoverse CSS N4：单芯片最高 128 核，支持 LPDDR6 与 PCIe 7；公司称其相较 N3 可提供最高 2 倍性能、1.25 倍能效和 1.75 倍内存带宽。相关指标为厂商自测。",
+      "perspective": "智能体会增加工具调用、数据移动和并发控制，CPU 正重新成为 AI 基础设施扩容的关键约束。",
+      "importance": "值得关注",
+      "category": "科技",
+      "kind": "事实",
+      "publishedAt": "2026-09-08T00:00:00+01:00",
+      "collectedAt": "2026-09-08T19:00:00+08:00",
+      "tags": ["Arm", "Neoverse CSS N4", "智能体", "数据中心", "CPU"],
+      "sources": [
+        {
+          "name": "Arm Newsroom",
+          "url": "https://newsroom.arm.com/news/arm-agi-cpu-neoverse-css-n4-agentic-ai",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 78,
+        "relevance": 89,
+        "novelty": 84,
+        "reliability": 88,
+        "convergence": 74,
+        "feedback": 50,
+        "total": 81.6
+      }
+    },
+    {
+      "id": "2026-09-08-china-japan-dcs-antidumping",
+      "title": "中国对日本芯片材料二氯二氢硅实施临时反倾销措施",
+      "summary": "商务部初裁原产日本的二氯二氢硅存在倾销并造成实质损害，自 9 月 8 日起要求进口商缴纳 80.8% 至 99.2% 保证金。该材料用于逻辑、存储和模拟芯片的薄膜沉积；日本政府已提出抗议。",
+      "perspective": "关键材料贸易摩擦正向芯片制造上游延伸，短期影响取决于进口依赖和替代供应能力。",
+      "importance": "值得关注",
+      "category": "宏观国际",
+      "kind": "事实",
+      "publishedAt": "2026-09-07T16:30:00+08:00",
+      "collectedAt": "2026-09-08T19:08:00+08:00",
+      "tags": ["二氯二氢硅", "反倾销", "商务部", "日本", "半导体供应链"],
+      "sources": [
+        {
+          "name": "商务部国家层面海外综合服务平台",
+          "url": "https://hzf.mofcom.gov.cn/article/xwdt/xwdtqtzx/xwzcdt/202609/7900.html",
+          "kind": "官方"
+        },
+        {
+          "name": "Associated Press",
+          "url": "https://apnews.com/article/ea58c95c47481c5c822a3a544e6b68cc",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 80,
+        "relevance": 82,
+        "novelty": 79,
+        "reliability": 95,
+        "convergence": 90,
+        "feedback": 50,
+        "total": 82.9
+      }
+    }
+  ],
+  "quality": {
+    "sourcesChecked": 43,
+    "sourcesHealthy": 27,
+    "rawSignals": 87,
+    "afterDeduplication": 29,
+    "linksVerified": 9,
+    "notes": [
+      "本期覆盖 2026-09-07 12:00 至 2026-09-08 19:20（北京时间），承接上一期 windowEnd，不重复收录此前事件。",
+      "RSS 通道 12 个订阅源因自动化环境 DNS 解析故障全部不可达；综合信源健康率约 63%，低于 70%，已明确披露并用网页检索逐条打开官方及可靠媒体原文补充核验。",
+      "已逐查主要 AI 实验室、科技公司、政府与监管来源，并用 AI 热榜、GitHub Trending 和 Hacker News 发现线索；聚合页只作候选入口，未独立证明任何事实。",
+      "Mistral 融资、Intel/ASML 量产进展和 Arm 性能数字均标明公司披露或厂商自测属性；重大事实均有官方原文并尽量加入独立媒体交叉验证。",
+      "已按规范化 URL、主体、事件和标题语义完成跨日与当日去重；没有为凑数量纳入单纯热度、推测或缺少具体原文的条目。",
+      "Supabase 未配置，无法读取本轮推荐反馈；反馈项保持中性分，不影响事实质量门槛。"
+    ]
+  }
+}
