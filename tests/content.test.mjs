@@ -65,4 +65,5 @@ test("站内短报道区分事实、判断与不确定性", () => {
   assert.match(briefingPage, /影响谁/);
   assert.match(briefingPage, /还有什么不确定/);
   assert.match(briefingPage, /原始来源/);
+  assert.match(articleCard, /item\.perspective &&/);
 });

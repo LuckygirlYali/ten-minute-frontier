@@ -19,8 +19,8 @@ const briefing = getBriefing(item);
 const sections = [
   ["关键事实", briefing.facts, "fact"],
   ["必要背景", briefing.context, "fact"],
-  ["为什么重要", briefing.impact, "analysis"],
-  ["影响谁", briefing.affected, "analysis"],
+  ["为什么重要", briefing.whyItMatters, "meaning"],
+  ["影响谁", briefing.affected, "meaning"],
   ["还有什么不确定", briefing.uncertainty, "uncertainty"],
 ] as const;
 ---
@@ -54,6 +54,13 @@ const sections = [
             <p>{copy}</p>
           </section>
         ))}
+
+        {item.perspective && (
+          <section class="briefing-section briefing-section--analysis">
+            <h2>视野</h2>
+            <p>{item.perspective}</p>
+          </section>
+        )}
 
         {!item.briefing && (
           <aside class="briefing-boundary">

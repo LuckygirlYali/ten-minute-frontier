@@ -15,8 +15,9 @@
 ## 新闻字段
 
 - `id`：`YYYY-MM-DD-英文短 slug`，全站稳定且唯一。
-- `title`、`summary`、`perspective`。
-- `briefing`：站内短报道对象，含 `conclusion`、`facts`、`context`、`impact`、`affected`、`uncertainty` 六个非空字符串；正文合计 150–300 字，`conclusion` 不超过 60 字。2026-09-09 起的日报必填。
+- `title`、`summary`。
+- `perspective`：可选。只有确有信息增量时填写，不超过 60 字。
+- `briefing`：2026-09-09 起必填的站内短报道对象。`conclusion`、`facts`、`whyItMatters` 必填；`context`、`affected`、`uncertainty` 只在有助理解时填写，禁止空字符串。正文目标长度：重大 200–350 字，值得关注 60–120 字，速览 30–60 字；偏离时人工复核，不得为凑字数补写废话。`conclusion` 不超过 60 字。
 - `importance`：`重大`、`值得关注`、`速览`。
 - `category`：`AI`、`科技`、`商业`、`宏观国际`。
 - `kind`：`事实`、`观点`。

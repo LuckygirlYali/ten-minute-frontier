@@ -31,7 +31,9 @@ const verification = item.sources.length > 1 ? `${item.sources.length} 个来源
       <a href={withBase(briefingPath(item.id))}>{item.title}</a>
     </h3>
     <p class="story-summary">{item.summary}</p>
-    <p class="perspective"><span aria-hidden="true">◉</span><strong>视野</strong> {item.perspective}</p>
+    {item.perspective && (
+      <p class="perspective"><span aria-hidden="true">◉</span><strong>视野</strong> {item.perspective}</p>
+    )}
     <div class="story-meta">
       <span>{formatTime(item.publishedAt)} 发布</span>
       <span class="source-list">

@@ -9,6 +9,5 @@ export function getBriefing(item: NewsItem): Partial<NewsBriefing> {
 
   return {
     facts: item.summary,
-    impact: item.perspective,
   };
 }
