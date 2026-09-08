@@ -112,33 +112,6 @@ for (const widget of widgets) {
   });
 }
 
-const filterRoot = document.querySelector<HTMLElement>("[data-category-filter]");
-if (filterRoot) {
-  const params = new URLSearchParams(window.location.search);
-  const initial = params.get("category") ?? "全部";
-  const applyFilter = (category: string) => {
-    for (const story of document.querySelectorAll<HTMLElement>("[data-category]")) {
-      story.hidden = category !== "全部" && story.dataset.category !== category;
-    }
-    for (const section of document.querySelectorAll<HTMLElement>("[data-filter-section]")) {
-      const stories = [...section.querySelectorAll<HTMLElement>("[data-category]")];
-      section.hidden = stories.length > 0 && stories.every((story) => story.hidden);
-    }
-    for (const button of filterRoot.querySelectorAll<HTMLButtonElement>("[data-filter]")) {
-      button.classList.toggle("is-active", button.dataset.filter === category);
-    }
-    const next = new URL(window.location.href);
-    if (category === "全部") next.searchParams.delete("category");
-    else next.searchParams.set("category", category);
-    window.history.replaceState({}, "", next);
-  };
-  applyFilter(initial);
-  filterRoot.addEventListener("click", (event) => {
-    const button = (event.target as HTMLElement).closest<HTMLButtonElement>("[data-filter]");
-    if (button?.dataset.filter) applyFilter(button.dataset.filter);
-  });
-}
-
 if (supabase) {
   supabase.auth.getSession().then(({ data }) => {
     setAuthState(data.session);

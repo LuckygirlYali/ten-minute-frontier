@@ -3,6 +3,10 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const digest = JSON.parse(await readFile(new URL("../src/data/digests/2026-08-31.json", import.meta.url)));
+const digestView = await readFile(new URL("../src/components/DigestView.astro", import.meta.url), "utf8");
+const siteHeader = await readFile(new URL("../src/components/SiteHeader.astro", import.meta.url), "utf8");
+const qualityPanel = await readFile(new URL("../src/components/QualityPanel.astro", import.meta.url), "utf8");
+const clientScript = await readFile(new URL("../src/scripts/client.ts", import.meta.url), "utf8");
 
 test("首页示例包含三档信息", () => {
   assert.deepEqual(new Set(digest.items.map((item) => item.importance)), new Set(["重大", "值得关注", "速览"]));
@@ -23,4 +27,16 @@ test("所有来源都是具体页面", () => {
       assert.notEqual(url.pathname, "/");
     }
   }
+});
+
+test("日报不提供分类筛选", () => {
+  assert.doesNotMatch(digestView, /CategoryFilter|data-category-filter/);
+  assert.doesNotMatch(clientScript, /data-category-filter|applyFilter/);
+});
+
+test("编选说明位于页末并默认折叠", () => {
+  assert.match(digestView, /end-nav[\s\S]*QualityPanel/);
+  assert.match(qualityPanel, /<details class="quality-note"/);
+  assert.match(qualityPanel, /<summary>编选说明<\/summary>/);
+  assert.doesNotMatch(siteHeader, /href="#quality"/);
 });

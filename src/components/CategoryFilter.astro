@@ -1,8 +1,0 @@
----
-import { categories } from "../lib/types";
----
-
-<div class="category-filter" aria-label="内容分类筛选" data-category-filter>
-  <button type="button" class="is-active" data-filter="全部">全部</button>
-  {categories.map((category) => <button type="button" data-filter={category}>{category}</button>)}
-</div>
