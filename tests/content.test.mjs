@@ -7,6 +7,7 @@ const digestView = await readFile(new URL("../src/components/DigestView.astro", 
 const siteHeader = await readFile(new URL("../src/components/SiteHeader.astro", import.meta.url), "utf8");
 const qualityPanel = await readFile(new URL("../src/components/QualityPanel.astro", import.meta.url), "utf8");
 const clientScript = await readFile(new URL("../src/scripts/client.ts", import.meta.url), "utf8");
+const globalCss = await readFile(new URL("../src/styles/global.css", import.meta.url), "utf8");
 
 test("首页示例包含三档信息", () => {
   assert.deepEqual(new Set(digest.items.map((item) => item.importance)), new Set(["重大", "值得关注", "速览"]));
@@ -39,4 +40,12 @@ test("编选说明位于页末并默认折叠", () => {
   assert.match(qualityPanel, /<details class="quality-note"/);
   assert.match(qualityPanel, /<summary>编选说明<\/summary>/);
   assert.doesNotMatch(siteHeader, /href="#quality"/);
+});
+
+test("主标题固定两行且新闻保持单列", () => {
+  assert.match(digestView, /<h1><span>真正重要的变化，<\/span><em>十分钟读完。<\/em><\/h1>/);
+  assert.match(globalCss, /\.masthead h1 > span[^}]*white-space: nowrap/);
+  assert.match(globalCss, /\.lead-grid \{ display: block; \}/);
+  assert.doesNotMatch(globalCss, /grid-template-columns: repeat\(12/);
+  assert.doesNotMatch(globalCss, /grid-template-columns: 1\.25fr 1fr/);
 });
