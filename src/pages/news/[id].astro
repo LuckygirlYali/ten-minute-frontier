@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
-import { briefingPath, getBriefing } from "../../lib/briefings";
+import { detailPath, getDetail } from "../../lib/details";
 import { digestPath, digests, formatChineseDate, formatTime } from "../../lib/digests";
 import { withBase } from "../../lib/site";
 
@@ -15,17 +15,18 @@ export const getStaticPaths = (() =>
   )) satisfies GetStaticPaths;
 
 const { item, digest } = Astro.props;
-const briefing = getBriefing(item);
+const detail = getDetail(item);
 const sections = [
-  ["关键事实", briefing.facts, "fact"],
-  ["必要背景", briefing.context, "fact"],
-  ["为什么重要", briefing.whyItMatters, "meaning"],
-  ["影响谁", briefing.affected, "meaning"],
-  ["还有什么不确定", briefing.uncertainty, "uncertainty"],
+  ["完整事实", detail.facts, "fact"],
+  ["必要背景", detail.background, "fact"],
+  ["为什么重要", detail.significance, "meaning"],
+  ["各方反应", detail.reactions, "fact"],
+  ["信息边界与不确定性", detail.uncertainties, "uncertainty"],
+  ["接下来具体看什么", detail.watch, "watch"],
 ] as const;
 ---
 
-<BaseLayout title={item.title} description={briefing.conclusion ?? item.summary}>
+<BaseLayout title={item.title} description={detail.introduction ?? item.summary}>
   <div id="top"></div>
   <SiteHeader />
   <main class="shell briefing-page">
@@ -42,29 +43,27 @@ const sections = [
           <span>{formatTime(item.publishedAt)} 发布</span>
         </div>
         <h1>{item.title}</h1>
-        {briefing.conclusion && (
-          <p class="briefing-conclusion"><strong>一句话结论</strong>{briefing.conclusion}</p>
-        )}
+        {detail.introduction && <p class="briefing-conclusion">{detail.introduction}</p>}
       </header>
 
       <div class="briefing-copy">
-        {sections.map(([heading, copy, kind]) => copy && (
+        {sections.map(([heading, paragraphs, kind]) => paragraphs?.length && (
           <section class:list={["briefing-section", `briefing-section--${kind}`]}>
             <h2>{heading}</h2>
-            <p>{copy}</p>
+            {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
           </section>
         ))}
 
-        {item.perspective && (
+        {detail.analysis?.length && (
           <section class="briefing-section briefing-section--analysis">
-            <h2>视野</h2>
-            <p>{item.perspective}</p>
+            <h2>更深层分析 <small>以下为 AI 生成的编辑判断</small></h2>
+            {detail.analysis.map((paragraph) => <p>{paragraph}</p>)}
           </section>
         )}
 
-        {!item.briefing && (
+        {!item.detail && (
           <aside class="briefing-boundary">
-            信息边界：本页只整理原日报已经核验的事实与明确标注的编辑判断；来源没有确认的细节不作补全。
+            这是一篇旧版归档，详情材料尚未与首页摘要分离；本页不补写来源没有确认的内容。
           </aside>
         )}
 
@@ -88,9 +87,9 @@ const sections = [
       </div>
     </article>
 
-    <nav class="briefing-end" aria-label="短报道尾部导航">
+    <nav class="briefing-end" aria-label="详情页尾部导航">
       <a href={withBase(digestPath(digest.date))}>返回当日日报</a>
-      <a href={withBase(briefingPath(item.id)) + "#top"}>回到顶部 ↑</a>
+      <a href={withBase(detailPath(item.id)) + "#top"}>回到顶部 ↑</a>
     </nav>
   </main>
 </BaseLayout>

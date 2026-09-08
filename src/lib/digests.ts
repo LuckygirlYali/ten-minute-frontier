@@ -33,7 +33,7 @@ export function formatTime(iso: string) {
 
 export function readingMinutes(items: NewsItem[]) {
   const characters = items.reduce(
-    (sum, item) => sum + item.title.length + item.summary.length + (item.perspective?.length ?? 0),
+    (sum, item) => sum + item.title.length + item.summary.length + item.perspective.length,
     0,
   );
   return Math.max(1, Math.round(characters / 420));

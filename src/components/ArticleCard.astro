@@ -1,7 +1,7 @@
 ---
 import type { NewsItem } from "../lib/types";
 import { formatTime } from "../lib/digests";
-import { briefingPath } from "../lib/briefings";
+import { detailPath } from "../lib/details";
 import { withBase } from "../lib/site";
 import VoteControls from "./VoteControls.astro";
 
@@ -28,12 +28,13 @@ const verification = item.sources.length > 1 ? `${item.sources.length} 个来源
       <span>{verification}</span>
     </div>
     <h3>
-      <a href={withBase(briefingPath(item.id))}>{item.title}</a>
+      <a href={withBase(detailPath(item.id))}>{item.title}</a>
     </h3>
     <p class="story-summary">{item.summary}</p>
-    {item.perspective && (
-      <p class="perspective"><span aria-hidden="true">◉</span><strong>视野</strong> {item.perspective}</p>
-    )}
+    <p class="perspective">
+      <span aria-hidden="true">◉</span><strong>视野</strong>
+      <small>AI 编辑分析</small>{item.perspective}
+    </p>
     <div class="story-meta">
       <span>{formatTime(item.publishedAt)} 发布</span>
       <span class="source-list">

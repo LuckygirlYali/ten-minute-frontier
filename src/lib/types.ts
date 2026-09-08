@@ -23,21 +23,23 @@ export interface ScoreBreakdown {
   total: number;
 }
 
-export interface NewsBriefing {
-  conclusion: string;
-  facts: string;
-  whyItMatters: string;
-  context?: string;
-  affected?: string;
-  uncertainty?: string;
+export interface NewsDetail {
+  introduction: string;
+  facts: string[];
+  background?: string[];
+  significance: string[];
+  analysis?: string[];
+  reactions?: string[];
+  uncertainties?: string[];
+  watch: string[];
 }
 
 export interface NewsItem {
   id: string;
   title: string;
   summary: string;
-  perspective?: string;
-  briefing?: NewsBriefing;
+  perspective: string;
+  detail?: NewsDetail;
   importance: Importance;
   category: Category;
   kind: ContentKind;
