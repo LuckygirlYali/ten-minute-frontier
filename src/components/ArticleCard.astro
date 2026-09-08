@@ -1,6 +1,8 @@
 ---
 import type { NewsItem } from "../lib/types";
 import { formatTime } from "../lib/digests";
+import { briefingPath } from "../lib/briefings";
+import { withBase } from "../lib/site";
 import VoteControls from "./VoteControls.astro";
 
 interface Props {
@@ -26,7 +28,7 @@ const verification = item.sources.length > 1 ? `${item.sources.length} 个来源
       <span>{verification}</span>
     </div>
     <h3>
-      <a href={source.url} target="_blank" rel="noreferrer">{item.title}</a>
+      <a href={withBase(briefingPath(item.id))}>{item.title}</a>
     </h3>
     <p class="story-summary">{item.summary}</p>
     <p class="perspective"><span aria-hidden="true">◉</span><strong>视野</strong> {item.perspective}</p>

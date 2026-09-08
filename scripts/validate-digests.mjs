@@ -9,6 +9,8 @@ const requiredImportance = new Set(["重大", "值得关注", "速览"]);
 const requiredKinds = new Set(["事实", "观点"]);
 const seenIds = new Set();
 const failures = [];
+const briefingRequiredFrom = "2026-09-09";
+const briefingFields = ["conclusion", "facts", "context", "impact", "affected", "uncertainty"];
 
 function fail(file, path, message) {
   failures.push(`${file} · ${path}: ${message}`);
@@ -35,6 +37,26 @@ for (const file of files) {
     if (!requiredImportance.has(item.importance)) fail(file, `${at}.importance`, "重要性不合法");
     if (!requiredKinds.has(item.kind)) fail(file, `${at}.kind`, "内容类型不合法");
     if (!item.title || !item.summary || !item.perspective) fail(file, at, "标题、事实摘要和视野均为必填");
+    if (digest.date >= briefingRequiredFrom && !item.briefing) {
+      fail(file, `${at}.briefing`, "新版日报必须包含站内短报道");
+    }
+    if (item.briefing) {
+      for (const field of briefingFields) {
+        if (typeof item.briefing[field] !== "string" || item.briefing[field].trim() === "") {
+          fail(file, `${at}.briefing.${field}`, "短报道各层次均为必填");
+        }
+      }
+      const briefingLength = briefingFields.reduce(
+        (length, field) => length + (item.briefing[field]?.trim().length ?? 0),
+        0,
+      );
+      if (briefingLength < 150 || briefingLength > 300) {
+        fail(file, `${at}.briefing`, `正文共 ${briefingLength} 字，必须控制在 150–300 字`);
+      }
+      if ((item.briefing.conclusion?.trim().length ?? 0) > 60) {
+        fail(file, `${at}.briefing.conclusion`, "一句话结论不能超过 60 字");
+      }
+    }
     if (!Array.isArray(item.sources) || item.sources.length === 0) fail(file, `${at}.sources`, "至少需要一个来源");
     for (const [sourceIndex, source] of (item.sources ?? []).entries()) {
       if (!validUrl(source.url)) fail(file, `${at}.sources[${sourceIndex}].url`, "必须是具体的 HTTP(S) 内容页");

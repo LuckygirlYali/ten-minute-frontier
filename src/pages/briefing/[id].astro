@@ -1,0 +1,89 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import { briefingPath, getBriefing } from "../../lib/briefings";
+import { digestPath, digests, formatChineseDate, formatTime } from "../../lib/digests";
+import { withBase } from "../../lib/site";
+
+export const getStaticPaths = (() =>
+  digests.flatMap((digest) =>
+    digest.items.map((item) => ({
+      params: { id: item.id },
+      props: { item, digest },
+    })),
+  )) satisfies GetStaticPaths;
+
+const { item, digest } = Astro.props;
+const briefing = getBriefing(item);
+const sections = [
+  ["关键事实", briefing.facts, "fact"],
+  ["必要背景", briefing.context, "fact"],
+  ["为什么重要", briefing.impact, "analysis"],
+  ["影响谁", briefing.affected, "analysis"],
+  ["还有什么不确定", briefing.uncertainty, "uncertainty"],
+] as const;
+---
+
+<BaseLayout title={item.title} description={briefing.conclusion ?? item.summary}>
+  <div id="top"></div>
+  <SiteHeader />
+  <main class="shell briefing-page">
+    <nav class="briefing-back" aria-label="返回日报">
+      <a href={withBase(digestPath(digest.date))}>← 返回 {formatChineseDate(digest.date)}日报</a>
+    </nav>
+
+    <article class="briefing-article">
+      <header class="briefing-hero">
+        <div class="story-kicker">
+          <span class:list={["signal", `signal--${item.importance}`]}>{item.importance}</span>
+          <span>{item.category}</span>
+          <span>{item.kind}</span>
+          <span>{formatTime(item.publishedAt)} 发布</span>
+        </div>
+        <h1>{item.title}</h1>
+        {briefing.conclusion && (
+          <p class="briefing-conclusion"><strong>一句话结论</strong>{briefing.conclusion}</p>
+        )}
+      </header>
+
+      <div class="briefing-copy">
+        {sections.map(([heading, copy, kind]) => copy && (
+          <section class:list={["briefing-section", `briefing-section--${kind}`]}>
+            <h2>{heading}</h2>
+            <p>{copy}</p>
+          </section>
+        ))}
+
+        {!item.briefing && (
+          <aside class="briefing-boundary">
+            信息边界：本页只整理原日报已经核验的事实与明确标注的编辑判断；来源没有确认的细节不作补全。
+          </aside>
+        )}
+
+        {item.correction && (
+          <aside class="correction"><strong>更正</strong> {item.correction.note}</aside>
+        )}
+
+        <section class="briefing-sources" aria-labelledby="briefing-sources-title">
+          <h2 id="briefing-sources-title">原始来源</h2>
+          <ul>
+            {item.sources.map((source) => (
+              <li>
+                <a href={source.url} target="_blank" rel="noreferrer">
+                  {source.name}<span>↗</span>
+                </a>
+                <small>{source.kind}{source.paywalled ? " · 付费" : ""}</small>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+    </article>
+
+    <nav class="briefing-end" aria-label="短报道尾部导航">
+      <a href={withBase(digestPath(digest.date))}>返回当日日报</a>
+      <a href={withBase(briefingPath(item.id)) + "#top"}>回到顶部 ↑</a>
+    </nav>
+  </main>
+</BaseLayout>
