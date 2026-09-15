@@ -7,5 +7,6 @@ output/playwright/
 .env
 .env.*
 !.env.example
+.tmp/
 skills/ten-minute-frontier-news/scripts/rss_cache/
 skills/ten-minute-frontier-news/scripts/seen_guids.json

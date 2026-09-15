@@ -1,0 +1,110 @@
+name: Publish daily frontier digest
+
+on:
+  schedule:
+    # GitHub cron uses UTC: 00:00/01:00 = Beijing 08:00/09:00.
+    - cron: "0 0 * * *"
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-frontier-publisher
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      TZ: Asia/Shanghai
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_DIGEST_MODEL: ${{ vars.OPENAI_DIGEST_MODEL }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: npm ci
+
+      - name: Resolve Beijing date
+        id: date
+        run: |
+          today="$(date +%F)"
+          echo "today=$today" >> "$GITHUB_OUTPUT"
+          echo "digest=src/data/digests/$today.json" >> "$GITHUB_OUTPUT"
+          echo "draft=.tmp/digests/$today.json" >> "$GITHUB_OUTPUT"
+
+      - name: Decide whether generation is needed
+        id: state
+        env:
+          DIGEST: ${{ steps.date.outputs.digest }}
+        run: |
+          if test -f "$DIGEST"; then
+            echo "generate=false" >> "$GITHUB_OUTPUT"
+            echo "The Beijing-date digest already exists; only verification will run."
+          else
+            test -n "$OPENAI_API_KEY"
+            echo "generate=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Generate a source-grounded draft
+        if: steps.state.outputs.generate == 'true'
+        env:
+          TODAY: ${{ steps.date.outputs.today }}
+          DRAFT: ${{ steps.date.outputs.draft }}
+        run: node scripts/generate-digest.mjs --date "$TODAY" --output "$DRAFT"
+
+      - name: Validate draft and verify every selected link
+        if: steps.state.outputs.generate == 'true'
+        env:
+          DRAFT: ${{ steps.date.outputs.draft }}
+        run: |
+          node scripts/validate-digests.mjs "$DRAFT"
+          python3 skills/ten-minute-frontier-news/scripts/verify_digest_links.py "$DRAFT"
+
+      - name: Promote draft atomically
+        if: steps.state.outputs.generate == 'true'
+        env:
+          DRAFT: ${{ steps.date.outputs.draft }}
+          DIGEST: ${{ steps.date.outputs.digest }}
+        run: mv "$DRAFT" "$DIGEST"
+
+      - name: Run all release gates
+        run: |
+          node scripts/validate-digests.mjs
+          npm test
+          npm run build
+
+      - name: Publish only the new digest
+        if: steps.state.outputs.generate == 'true'
+        env:
+          DIGEST: ${{ steps.date.outputs.digest }}
+          TODAY: ${{ steps.date.outputs.today }}
+        run: |
+          git restore -- skills/ten-minute-frontier-news/scripts/rss_feeds.json
+          git fetch origin main
+          if git cat-file -e "origin/main:$DIGEST" 2>/dev/null; then
+            echo "Another run already published $DIGEST."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$DIGEST"
+          staged="$(git diff --cached --name-only)"
+          test "$staged" = "$DIGEST"
+          git commit -m "content(digest): publish $TODAY briefing"
+          git rebase origin/main
+          git push origin HEAD:main
