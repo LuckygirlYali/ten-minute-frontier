@@ -1,0 +1,348 @@
+{
+  "date": "2026-09-15",
+  "generatedAt": "2026-09-15T12:29:01+08:00",
+  "windowStart": "2026-09-09T19:53:50+08:00",
+  "windowEnd": "2026-09-15T12:29:01+08:00",
+  "thesis": "AI 竞争的重心正从单次模型能力外溢到整套制度与基础设施：智能体开始获得可持续执行环境，头部公司同时被迫回答安全审计、数据边界与产业分配问题。",
+  "status": "published",
+  "items": [
+    {
+      "id": "2026-09-15-apple-iphone-duo",
+      "title": "Apple 发布首款折叠 iPhone Duo，起售价 1999 美元",
+      "summary": "Apple 在 9 月 9 日发布首款折叠手机 iPhone Duo：内屏 7.6 英寸、外屏 5.4 英寸，搭载 A20 Pro 和针对双屏重新适配的 iOS 27，支持 Apple Pencil；美国起售价 1999 美元，10 月 16 日预购、10 月 23 日发售。AP 指出折叠机目前仍不到全球智能手机市场的 5%。",
+      "perspective": "Apple 的入场会把折叠屏从 Android 厂商的差异化品类变成供应链与开发者都要响应的 iPhone 新形态；但 1999 美元和晚于常规 iPhone 的上市时间，表明它首先是高端需求与耐用性的市场验证，而非立即改造主流销量结构。",
+      "detail": {
+        "introduction": "iPhone Duo 是 Apple 第一次改变 iPhone 的基本物理形态。公司把折叠硬件、双屏 iOS 布局和端侧 AI 放在同一产品中，但目前公开材料主要是发布参数，真实耐用性与需求要等交付后才能判断。",
+        "facts": [
+          "Apple 公布的内屏为 7.6 英寸，外屏为 5.4 英寸；两块屏幕使用相同纵横比，iOS 27 可在展开时显示两个主屏页面并运行多任务。设备使用 A20 Pro、双电池和蒸汽室散热，侧边 Touch ID 取代 Face ID。",
+          "Duo 支持 Apple Pencil，并给第三方应用提供折叠状态与双屏布局 API。Apple 列出 Netflix、Zoom 和 Slack 等已适配应用；这些兼容性与性能描述来自公司发布材料。",
+          "AP 现场报道确认起售价为 1999 美元，并引述 CCS Insight 分析师称折叠机仍占整体市场不到 5%。Duo 的预购与发售比 iPhone 18 Pro 系列晚约一个月。"
+        ],
+        "background": [
+          "Samsung、Google 和多家中国厂商已经迭代多代折叠手机。Apple 此时进入，可以利用成熟面板与铰链供应链，也要面对折痕、内屏损耗、机身厚度和维修成本等已知问题。"
+        ],
+        "significance": [
+          "对供应链而言，Apple 的量产要求可能扩大可折叠 OLED、超薄玻璃、铰链与小型化器件的高端订单；对开发者而言，需要重新设计跨屏状态、多窗口与输入方式。",
+          "对 Apple 而言，Duo 提供了一个高于 Pro Max 的价格带，但首代产品的保修、良率和换机需求会决定这一价格带能否延续。"
+        ],
+        "uncertainties": [
+          "Apple 未公布首年销量目标、面板与铰链供应商分工，也没有给出经独立机构验证的折叠循环、维修价格或长期内屏故障率。"
+        ],
+        "watch": [
+          "10 月 23 日交付后，具体看拆解确认的供应链、第三方耐用性测试、AppleCare 与屏幕维修成本，以及首季度交付量、退货率和主流应用双屏适配率。"
+        ]
+      },
+      "importance": "重大",
+      "category": "科技",
+      "kind": "事实",
+      "publishedAt": "2026-09-09T17:00:00+00:00",
+      "collectedAt": "2026-09-15T11:48:00+08:00",
+      "tags": ["Apple", "iPhone Duo", "折叠屏", "A20 Pro", "iOS 27"],
+      "sources": [
+        {
+          "name": "Apple",
+          "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+          "kind": "官方"
+        },
+        {
+          "name": "Associated Press",
+          "url": "https://apnews.com/article/apple-foldable-iphone-ternus-fd35312e6d894d5f3b055b3d62f22cd2",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 90,
+        "relevance": 90,
+        "novelty": 94,
+        "reliability": 96,
+        "convergence": 94,
+        "feedback": 50,
+        "total": 90.0
+      }
+    },
+    {
+      "id": "2026-09-15-openai-agents-api",
+      "title": "OpenAI 推出 Agents API，把 Codex 长时任务框架开放给开发者",
+      "summary": "OpenAI 于 9 月 10 日公测 Agents API，开发者可用一个 API 创建长时运行的云端智能体，使用 Codex 同源 harness 管理上下文、工具、状态恢复与子智能体协作。代码执行环境可选 OpenAI 托管沙箱、自有基础设施或合作伙伴；公测期不收取额外 API 层费用，但模型、工具与容器使用仍分别计费。",
+      "perspective": "开发者不再只是调用模型，而是把任务调度、上下文压缩、沙箱和多智能体编排一并交给模型供应商。这会缩短产品化时间，也把可观测性、运行时锁定与故障责任变成选型的核心。",
+      "detail": {
+        "introduction": "Agents API 的产品单位不是一次回答，而是可持续数小时或数天的有状态任务。OpenAI 对外开放了支撑 Codex 的部分调度与执行层，但客户仍需要决定任务权限、数据边界和环境归属。",
+        "facts": [
+          "公测版可指定模型、MCP 或自定义工具、执行环境与输入任务。托管 harness 负责工具使用、长对话上下文管理、进度保存与子智能体协调，并按版本提供后续框架更新。",
+          "OpenAI 托管沙箱可运行代码、读写文件和生成成果；开发者也可以使用自己的基础设施，或选择 Cloudflare、DigitalOcean、E2B、Modal、Oracle、Vercel 等合作环境。",
+          "OpenAI 宣布 Agents API 本身在公测期无附加费；调用模型、工具和 OpenAI 托管容器仍按各自价格计费。官方页面引用的客户效果数据属于供应商与客户自报，不是独立基准。"
+        ],
+        "background": [
+          "此前开发者通常需要自建 agent loop、持久化状态、重试、工具路由和沙箱。Responses API 主要围绕模型交互，Agents API 则把更多长时运行控制面纳入托管服务。"
+        ],
+        "significance": [
+          "对小团队，它可减少自建调度器和沙箱的工程成本；对大企业，可以自托管执行环境，但仍需将 harness 行为、模型更新与权限审计纳入变更管理。",
+          "对云服务市场，竞争边界正从 token 价格扩展到任务成功率、持续时间、环境启动速度、可观测性和安全隔离。"
+        ],
+        "analysis": [
+          "托管 harness 会形成新的平台锁定：业务不只依赖模型输入输出，还依赖会话状态、技能包、工具协议和执行语义。自托管环境可降低数据暴露，但不自动解决控制面依赖。"
+        ],
+        "uncertainties": [
+          "公测页面尚未给出通用的稳定性 SLA、长任务失败率、状态迁移工具或 GA 时间表。对涉及生产写操作的智能体，用户还需要独立验证审批、回滚和审计轨迹。"
+        ],
+        "watch": [
+          "具体观察 GA 时间、容器价格和 SLA，以及失败恢复率、跨模型与跨沙箱迁移性、调试日志完整度。企业采用则要看是否出现可核对的长任务成功率与单任务总成本数据。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "AI",
+      "kind": "事实",
+      "publishedAt": "2026-09-10T20:54:00+00:00",
+      "collectedAt": "2026-09-15T11:53:00+08:00",
+      "tags": ["OpenAI", "Agents API", "Codex", "沙箱", "MCP"],
+      "sources": [
+        {
+          "name": "OpenAI",
+          "url": "https://openai.com/index/introducing-the-agents-api/",
+          "kind": "官方"
+        },
+        {
+          "name": "OpenAI Developer Community",
+          "url": "https://community.openai.com/t/introducing-the-agents-api-and-hosted-sandboxes/1396481",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 88,
+        "relevance": 96,
+        "novelty": 90,
+        "reliability": 92,
+        "convergence": 80,
+        "feedback": 50,
+        "total": 88.3
+      }
+    },
+    {
+      "id": "2026-09-15-anthropic-pace-frontier",
+      "title": "Anthropic CEO 倡议放慢前沿模型进步速度",
+      "summary": "Anthropic CEO Dario Amodei 于 9 月 12 日发文主张“pace the frontier”：不停止训练，但要让能力提升的节奏给对齐、可解释性和外部验证留出时间。他提出三层方案：实验室内嵌第三方评估员、民主国家的产业与政府协调、可验证的全球协调；Anthropic 承诺立即执行第一层。其对 6–12 个月内智能体网络风险的时间判断是个人预测，不是已证实事实。",
+      "perspective": "这次真正可验证的部分不是末日时间表，而是第三方评估员能否获得接近员工级的持续访问权并独立披露问题。如果落地，前沿安全会从公司自我报告转向带有现场证据的审计。",
+      "detail": {
+        "introduction": "Amodei 把最近的递归式研发加速和智能体安全事故作为改变立场的两个理由。这是前沿实验室负责人提出的政策与公司治理主张，应区分其可执行承诺、风险推演和商业激励。",
+        "facts": [
+          "Amodei 明确主张放慢模型能力改进速度，但不主张停止模型训练或技术进步。他的三步方案从单家企业可执行的外部评估，逐步扩展到行业与国家间协调。",
+          "Anthropic 承诺给嵌入式第三方评估团队提供类员工访问，使其检查安全流程、训练管线和事故，并在不受 Anthropic 编辑控制的情况下发布发现。具体合同、评估机构和报告节奏尚未公布。",
+          "AP 将此事放在多家实验室与研究人员的安全担忧中报道。Amodei 所说的“6–12 个月内智能体群可能建立持久僵尸网络”是他对能力趋势的风险估计，没有可独立确认的倒计时。"
+        ],
+        "background": [
+          "前沿模型公司长期以负责任扩展政策、系统卡和外部红队说明安全工作。这些机制多由公司选择范围与披露时点；“嵌入式评估员”的增量在于持续接触训练过程，而非只看已完成模型。"
+        ],
+        "significance": [
+          "对监管者，这提供了一个介于企业自律与政府直接审批之间的治理模型；对客户和保险方，独立评估报告可能成为采购、上线和承保的新证据。",
+          "对行业竞争，任何真正的降速都会遇到单方先停的劣势。因此第二、三步的反垄断安排、计算阈值和跨国验证才是方案最难的部分。"
+        ],
+        "analysis": [
+          "Anthropic 既是风险警告者，也是监管对象和商业参与者。其预测不应被当作中立事实，但其愿否接受无编辑权的持续外部审计，可以被明确跟踪和问责。"
+        ],
+        "uncertainties": [
+          "方案没有给出统一的“放慢”度量、违约处理、训练计算核验方式和地缘政治对手的可验证交换条件。外部评估员的经费、保密义务与发布权也会影响独立性。"
+        ],
+        "watch": [
+          "观察 Anthropic 在何时签约哪家外部评估机构、评估员能访问哪些训练与事故材料、是否能无预先审阅发布报告，以及其他前沿实验室是否签署同等可核验的承诺。"
+        ]
+      },
+      "importance": "重大",
+      "category": "AI",
+      "kind": "观点",
+      "publishedAt": "2026-09-12T14:01:00+00:00",
+      "collectedAt": "2026-09-15T12:02:00+08:00",
+      "tags": ["Anthropic", "Dario Amodei", "AI 安全", "外部评估", "前沿治理"],
+      "sources": [
+        {
+          "name": "Dario Amodei",
+          "url": "https://darioamodei.com/post/we-must-pace-the-frontier",
+          "kind": "观点"
+        },
+        {
+          "name": "Associated Press",
+          "url": "https://apnews.com/article/anthropic-ai-dario-amodei-d59552edcb27892d8ee4d98a48397706",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 92,
+        "relevance": 96,
+        "novelty": 93,
+        "reliability": 94,
+        "convergence": 96,
+        "feedback": 50,
+        "total": 91.8
+      }
+    },
+    {
+      "id": "2026-09-15-microsoft-school-ai-privacy-standard",
+      "title": "Microsoft 与教师工会约定全美校园 AI 隐私标准",
+      "summary": "Microsoft 与美国教师联盟、纽约市教师联合会签订可执行的“National AI Safety & Privacy Standard”，承诺学生和教师数据不用于训练 AI、不出售或用于广告，禁止设计成制造情感依赖的校园 AI 伴侣，并要求第三方审计与人类监督。Microsoft 称标准将从 11 月 1 日起适用于其在美国的所有学区合同。",
+      "perspective": "这份协议把“儿童数据不训练模型”从企业政策变成可审计的合同义务，并直接限制高黏性 AI 伴侣设计。它能否成为行业标准，取决于 Google、OpenAI、Anthropic 和大量教育软件供应商是否接受同等条款。",
+      "detail": {
+        "introduction": "协议在美国缺乏统一校园 AI 法规的背景下，由教师组织通过采购与合同关系约束供应商。它比原则宣言更具体，但目前主要约束 Microsoft，不自动覆盖学校使用的其他 AI 工具。",
+        "facts": [
+          "标准禁止将学生或教师数据用于训练 AI，只保留与保护学生直接相关的狭窄安全例外；收集的数据不得出售、用于广告或转作一般产品开发。学校保留对数据使用、保留和删除的控制。",
+          "协议禁止面向学生的情感依赖型 AI 伴侣，也禁止为了超过学习任务所需时间而故意延长互动。其他条款包括浅白的家庭披露、人类监督、安全控制和第三方合规审计。",
+          "AP 报道称，该协议具有法律约束力，Microsoft 会从 11 月 1 日起延伸到所有与其签约的美国学区。OpenAI 和 Anthropic 称正与教师联盟讨论类似安全与隐私协议；Google 尚未公开承诺加入。"
+        ],
+        "background": [
+          "纽约市和洛杉矶两个美国最大学区正暂停或审计学生 AI 使用，政策争论集中在数据去向、情感依赖、屏幕时间和教师决策权。Microsoft、OpenAI 和 Anthropic 去年已共同出资支持教师 AI 培训。"
+        ],
+        "significance": [
+          "对学区采购者，标准提供了可直接写入合同和审计的条款；对家庭与教师，数据删除、广告隔离和人工监督比笼统的“负责任 AI”更容易验证。",
+          "对供应商，禁止黏性设计与训练数据复用会直接限制一部分产品增长手段。若多家公司签署，这类条款可能反向影响州法和联邦立法。"
+        ],
+        "uncertainties": [
+          "目前未看到公开的完整审计方法、违约罚则、安全例外判定标准和学区申诉流程。小型教育软件与学校自行引入的工具仍可能处于标准之外。"
+        ],
+        "watch": [
+          "11 月 1 日后检查 Microsoft 学区合同是否公开统一条款、首批第三方审计报告是否披露训练数据和伴侣功能违规率，以及 OpenAI、Anthropic 和 Google 是否签署等效且可执行的协议。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "宏观国际",
+      "kind": "事实",
+      "publishedAt": "2026-09-09T00:00:00+00:00",
+      "collectedAt": "2026-09-15T12:12:00+08:00",
+      "tags": ["Microsoft", "教育 AI", "儿童隐私", "AFT", "AI 治理"],
+      "sources": [
+        {
+          "name": "Microsoft Source",
+          "url": "https://news.microsoft.com/source/2026/09/09/aft-uft-and-microsoft-announce-national-ai-safety-privacy-standard-for-schools-to-protect-students-families-and-educators/",
+          "kind": "官方"
+        },
+        {
+          "name": "Associated Press",
+          "url": "https://apnews.com/article/microsoft-ai-student-privacy-schools-89b040631d635e0d8673f1e9aa9a6e28",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 82,
+        "relevance": 85,
+        "novelty": 88,
+        "reliability": 96,
+        "convergence": 92,
+        "feedback": 50,
+        "total": 85.6
+      }
+    },
+    {
+      "id": "2026-09-15-openai-financial-services",
+      "title": "OpenAI 推出内置高级数据的金融行业版 ChatGPT",
+      "summary": "OpenAI 于 9 月 10 日推出 ChatGPT for Financial Services，面向符合条件的金融机构，把 GPT-6 Astra、企业管理功能与 Daloopa、PitchBook、LSEG News、Crunchbase 等高级数据直接组合，用于估值、财报分析、买方筛选和材料制作。产品由 Morgan Stanley 与 Evercore 参与设计，定价、客户数和实际准确率尚未公布。",
+      "perspective": "这不只是给通用聊天工具换个行业界面，而是模型供应商直接打包数据授权、检索、引用、机构模板和合规日志。金融 AI 的竞争因此会从模型能力转向数据权利、可追溯性和工作成果交付。",
+      "detail": {
+        "introduction": "OpenAI 把通用企业产品向投资银行与研究流程垂直化。产品提供的不只是问答，还包括可立即使用的付费数据和按机构模板输出的文档、表格与演示文稿。",
+        "facts": [
+          "首发功能包含 Daloopa、PitchBook、LSEG News 和 Crunchbase 等数据，覆盖财务报表、电话会议记录、上市与私营公司信息。OpenAI 表示这些数据由其索引和托管，可输出细颗粒引用，同时也支持机构已有数据订阅与内部资料。",
+          "管理员可发布 Excel、Word 和 PowerPoint 模板，按角色管理技能与应用的读写权限，并使用多工作区建立信息隔离。支持 SAML SSO、SCIM、留存策略与合规日志导出。",
+          "OpenAI 称企业数据默认不用于训练模型，并在存储与传输中加密。这些是供应商宣布的产品控制；公司没有随公告发布独立准确性评估、错误引用率或定价。"
+        ],
+        "background": [
+          "金融机构的 AI 部署受制于付费数据授权、重要非公开信息隔离、引用可追溯性和固定模板交付。通用模型即使能生成分析，也未必能合法访问或准确连接专业数据。"
+        ],
+        "significance": [
+          "对银行与研究部门，直接打包数据和模板可缩短采购与集成时间；但数据来源协议、引用正确性和人工复核仍决定是否能用于对客成果。",
+          "对金融数据商和专业软件，OpenAI 正从底层模型供应商上移到聚合与工作流入口，可能改变数据商与终端客户的品牌关系和议价方式。"
+        ],
+        "analysis": [
+          "垂直产品的壁垒未必是模型独占，更可能是数据合同、模板标准、审计接口和与机构流程共同调整的成本。后来者可以替换模型，但较难快速复制同一数据与合规组合。"
+        ],
+        "uncertainties": [
+          "还不清楚产品如何处理不同数据商的转授权边界、不同法域的数据驻留、引用失效与更正，也没有公布金融任务上相对于专业人员的独立质量评估。"
+        ],
+        "watch": [
+          "关注定价、首批付费机构数和数据伙伴扩张，同时看是否公布引用准确率、重要数字错误率、人工返工时间与合规事故；这些指标比发布时的案例引言更能验证产品价值。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "商业",
+      "kind": "事实",
+      "publishedAt": "2026-09-10T00:00:00+00:00",
+      "collectedAt": "2026-09-15T11:57:00+08:00",
+      "tags": ["OpenAI", "金融科技", "企业 AI", "金融数据", "GPT-6 Astra"],
+      "sources": [
+        {
+          "name": "OpenAI",
+          "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 80,
+        "relevance": 92,
+        "novelty": 82,
+        "reliability": 90,
+        "convergence": 78,
+        "feedback": 50,
+        "total": 83.5
+      }
+    },
+    {
+      "id": "2026-09-15-wto-ai-trade-growth",
+      "title": "WTO：AI 相关产品贡献去年 42% 的全球货物贸易增量",
+      "summary": "WTO 总干事 Ngozi Okonjo-Iweala 在 9 月 14 日 World Trade & Tech Day 上表示，去年全球货物贸易量增长 4.6%，其中估计 42% 的增量来自 AI 相关产品。她强调芯片设计、制造、封测、服务器组装和数据中心部署依赖跨境分工，同时指出现有 WTO 规则体系多在生成式 AI 出现前制定。",
+      "perspective": "AI 繁荣已不只是软件需求，而是全球货物贸易增长的高集中来源。这意味着芯片、服务器和关键矿产品的关税或出口限制，会同时影响算力成本与整体贸易周期。",
+      "detail": {
+        "introduction": "WTO 把 AI 供应链与多边贸易规则放到同一场政策讨论中。这个 42% 是 WTO 总干事引述的估算，它衡量对新增贸易的贡献，不是 AI 产品占全部世界贸易的份额。",
+        "facts": [
+          "WTO 称去年全球货物贸易量增长 4.6%，并估计 AI 相关产品贡献了该增长的 42%。官方页面没有在同一段中给出完整产品清单和计算表，因此这一数字应按 WTO 估算理解。",
+          "总干事将供应链分为芯片设计、制造、封装测试、服务器组装和数据中心部署，说明计算能力依赖多国分工。她还列出信息技术协定、服务贸易总协定、技术性贸易壁垒协定和 TRIPS 作为现有制度基础。",
+          "WTO 同时承认这些规则大多早于大模型时代，政策议题包括跨境数据、技术标准、知识产权以及低收入国家如何参与 AI 价值链。"
+        ],
+        "background": [
+          "AI 相关货物不只包括加速器，还涉及服务器、通信设备、存储、散热与数据中心组件。不同国家在设计、制造、封装和部署环节的分工，使 AI 投资对贸易政策异常敏感。"
+        ],
+        "significance": [
+          "对出口型经济体，AI 硬件订单能抬高制造与部件出口；对进口依赖国家，关税、出口管制和技术标准分裂会推高算力建设成本。",
+          "对宏观分析，当一个产品群贡献接近一半的新增货物贸易时，其资本开支周期、库存和政策冲突将更明显影响整体贸易数据。"
+        ],
+        "uncertainties": [
+          "当前活动页对 42% 估算的口径和时间比较披露有限，而且贸易额与贸易量、名义增长与实际增长不可混用。未获得底层明细前，不应用它推导单一国家或公司的市场份额。"
+        ],
+        "watch": [
+          "关注 WTO 后续是否公布 AI 产品清单与分国、分品类数据，并跟踪 2026 年芯片、服务器和网络设备出口增速，以及新关税或出口管制是否使 AI 贸易贡献明显回落。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "宏观国际",
+      "kind": "事实",
+      "publishedAt": "2026-09-14T00:00:00+02:00",
+      "collectedAt": "2026-09-15T12:18:00+08:00",
+      "tags": ["WTO", "AI 贸易", "半导体", "全球供应链", "贸易规则"],
+      "sources": [
+        {
+          "name": "世界贸易组织",
+          "url": "https://www.wto.org/english/news_e/news26_e/dtech_14sep26_488_e.htm",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 84,
+        "relevance": 86,
+        "novelty": 75,
+        "reliability": 98,
+        "convergence": 74,
+        "feedback": 50,
+        "total": 83.7
+      }
+    }
+  ],
+  "quality": {
+    "sourcesChecked": 34,
+    "sourcesHealthy": 22,
+    "rawSignals": 58,
+    "afterDeduplication": 18,
+    "linksVerified": 10,
+    "notes": [
+      "本期覆盖 2026-09-09 19:53 至 2026-09-15 12:29（北京时间），严格承接上一期正式日报 windowEnd；由于中间多日未发布，本期采集窗口长于常规 24 小时。",
+      "RSS 通道 12 个订阅源因受管理环境 DNS 解析故障全部不可达；综合信源健康率约 65%，低于 70% 门槛，已明确披露，并通过隔离网页通道打开官方页与可靠媒体具体内容页核验。",
+      "已查看 OpenAI、Apple、Anthropic、Microsoft、WTO 等一手页面，并用 Associated Press 交叉验证 Apple、Anthropic 与 Microsoft 事件；Hacker News、GitHub Trending 与 AI 聚合页只用于发现线索，未独立证明事实。",
+      "已按规范化 URL、主体、事件与标题语义完成当日与跨日去重；Meta Muse、Qualcomm/Amazon、OpenAI Navier–Stokes 等 9 月 9 日已刊发内容没有重复收录。",
+      "OpenAI 客户数据、Apple 性能与耐用性表述均保留公司宣称归属；Amodei 的 6–12 个月风险判断标记为个人预测，未改写为已确认事实。",
+      "Supabase 推荐信号未配置，无法读取本轮反馈；反馈项保持中性分，不影响事实质量门槛。"
+    ]
+  }
+}
