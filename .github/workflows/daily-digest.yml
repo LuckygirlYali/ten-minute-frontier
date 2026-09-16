@@ -60,6 +60,14 @@ jobs:
             echo "generate=true" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Verify OpenAI credential on manual runs
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          status="$(curl --silent --show-error --output "$RUNNER_TEMP/openai-models.json" --write-out '%{http_code}' \
+            --header "Authorization: Bearer $OPENAI_API_KEY" \
+            https://api.openai.com/v1/models)"
+          test "$status" = "200"
+
       - name: Generate a source-grounded draft
         if: steps.state.outputs.generate == 'true'
         env:
