@@ -6,6 +6,16 @@ on:
     - cron: "0 0 * * *"
     - cron: "0 1 * * *"
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Generate and validate a draft without publishing it"
+        required: false
+        type: boolean
+        default: false
+      target_date:
+        description: "Optional Beijing date for a dry run (YYYY-MM-DD)"
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -42,8 +52,11 @@ jobs:
 
       - name: Resolve Beijing date
         id: date
+        env:
+          REQUESTED_DATE: ${{ inputs.target_date }}
         run: |
-          today="$(date +%F)"
+          today="${REQUESTED_DATE:-$(date +%F)}"
+          echo "$today" | grep -Eq '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
           echo "today=$today" >> "$GITHUB_OUTPUT"
           echo "digest=src/data/digests/$today.json" >> "$GITHUB_OUTPUT"
           echo "draft=.tmp/digests/$today.json" >> "$GITHUB_OUTPUT"
@@ -52,8 +65,9 @@ jobs:
         id: state
         env:
           DIGEST: ${{ steps.date.outputs.digest }}
+          DRY_RUN: ${{ inputs.dry_run }}
         run: |
-          if test -f "$DIGEST"; then
+          if test "$DRY_RUN" != "true" && test -f "$DIGEST"; then
             echo "generate=false" >> "$GITHUB_OUTPUT"
             echo "The Beijing-date digest already exists; only verification will run."
           else
@@ -81,7 +95,7 @@ jobs:
           python3 skills/ten-minute-frontier-news/scripts/verify_digest_links.py "$DRAFT"
 
       - name: Promote draft atomically
-        if: steps.state.outputs.generate == 'true'
+        if: steps.state.outputs.generate == 'true' && inputs.dry_run != true
         env:
           DRAFT: ${{ steps.date.outputs.draft }}
           DIGEST: ${{ steps.date.outputs.digest }}
@@ -94,7 +108,7 @@ jobs:
           npm run build
 
       - name: Publish only the new digest
-        if: steps.state.outputs.generate == 'true'
+        if: steps.state.outputs.generate == 'true' && inputs.dry_run != true
         env:
           DIGEST: ${{ steps.date.outputs.digest }}
           TODAY: ${{ steps.date.outputs.today }}

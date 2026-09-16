@@ -39,11 +39,11 @@ npm run build
 ## 自动化与恢复
 
 - `.github/workflows/daily-digest.yml` 在 GitHub Actions 云端运行，不依赖个人电脑开机。
-- 08:00：采集 RSS，调用 OpenAI 网页检索并生成结构化草稿；验证内容、逐个检查链接并完整构建后，才提交当天日报。
+- 08:00：采集公开 RSS 候选，调用兼容模型进行筛选和中文整理；模型只能引用本次采集到的具体链接。验证内容、逐个检查链接并完整构建后，才提交当天日报。
 - 09:00：检查当天文件；缺失时自动补跑一次。
 - 任一质量门失败都不提交，因此不会覆盖上一期网站。
 
-仓库通过 Actions secret `OPENTECH_API_KEY` 访问 `https://api.opentech.top/v1`。密钥只进入 GitHub Actions 的受保护环境，不写入仓库。可选变量 `OPENAI_DIGEST_MODEL` 可以指定模型；未配置时默认使用 `gpt-5.6`。生成器同时支持通用的 `AI_API_KEY`、`AI_API_BASE_URL`，以及官方 OpenAI 的 `OPENAI_API_KEY` 回退。
+仓库通过 Actions secret `OPENTECH_API_KEY` 访问 `https://api.opentech.top/v1`。密钥只进入 GitHub Actions 的受保护环境，不写入仓库。变量 `OPENAI_DIGEST_MODEL` 当前设为该服务实际提供的 `gpt-5.6-sol`。生成器同时支持通用的 `AI_API_KEY`、`AI_API_BASE_URL`，以及官方 OpenAI 的 `OPENAI_API_KEY` 回退。第三方服务会收到公开 RSS 候选和编辑提示，但不会收到网站访客数据、GitHub 凭据或其他本地文件。
 
 ## 故障处理
 

@@ -10,10 +10,10 @@ test("来源 URL 归一化只移除追踪参数和锚点", () => {
   assert.equal(normalizeSourceUrl("https://Example.com/news/item/?utm_source=x&id=2#part"), "https://example.com/news/item?id=2");
 });
 
-test("候选来源必须来自本次网页搜索", () => {
+test("候选来源必须来自本次 RSS 采集", () => {
   const items = [{ id: "x", sources: [{ url: "https://example.com/news?a=1&utm_source=x" }] }];
   assert.doesNotThrow(() => assertSourcesWereSearched(items, new Set(["https://example.com/news?a=1"])));
-  assert.throws(() => assertSourcesWereSearched(items, new Set(["https://other.example/news"])), /不在本次网页检索来源池/);
+  assert.throws(() => assertSourcesWereSearched(items, new Set(["https://other.example/news"])), /不在本次 RSS 候选来源池/);
 });
 
 test("组装日报时计算总分并移除空的可选详情分节", () => {
