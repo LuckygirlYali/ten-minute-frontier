@@ -1,0 +1,351 @@
+{
+  "date": "2026-09-16",
+  "generatedAt": "2026-09-16T14:56:00+08:00",
+  "windowStart": "2026-09-15T12:29:01+08:00",
+  "windowEnd": "2026-09-16T14:56:00+08:00",
+  "thesis": "AI 正同时进入两种制度化阶段：产品侧把实时语音、订阅和行业工作流做成可收费入口，治理侧则开始把安全协调、算力基础设施成本与市场规则写进可执行的组织和政策安排。",
+  "status": "published",
+  "items": [
+    {
+      "id": "2026-09-16-google-gemini-live-38",
+      "title": "Google 发布 Gemini 3.8 Live，实时语音模型加入并行推理",
+      "summary": "Google 于 9 月 15 日正式发布 Gemini 3.8 Live 与 Gemini 3.8 Live Extended Thinking 两款音频到音频模型：前者面向低延迟大规模语音智能体，默认支持异步函数调用；后者可在实时对话中进行后台多步推理。两者支持文本、图像、视频和音频输入，最长 128K 上下文，并已通过 Gemini API、AI Studio 等渠道提供。",
+      "perspective": "实时语音的竞争正从“回答像不像人”转向“能否边听、边推理、边调工具完成任务”。这会把客服、搜索和办公软件的语音层变成智能体入口，而采购判断应优先看中断恢复、端到端延迟和真实任务完成率，而不是厂商自报的单一榜单名次。",
+      "detail": {
+        "introduction": "Google 把 Gemini 实时音频产品线拆成面向规模与面向复杂任务的两个档位。发布材料说明了接口、上下文与分发范围，但性能数字主要来自 Google 引用或实施的评测，仍需独立复现。",
+        "facts": [
+          "Gemini 3.8 Live 的稳定模型 ID 为 gemini-3.8-live，Google 将其定位为多数低延迟语音智能体的默认选项。它支持交错推理、内置音频流、搜索 grounding 和异步函数调用，但不支持代码执行、文件搜索或结构化输出。",
+          "Gemini 3.8 Live Extended Thinking 面向需要更强后台推理的实时交互。DeepMind 模型卡列出两款模型均可接收音频、图像、视频和文本，并输出音频与文本；输入上下文上限为 128K，输出上限为 64K。",
+          "Google 称 Extended Thinking 在其引用的语音质量与任务基准中领先，并将两款模型分发到 Gemini API、AI Studio、Google Cloud 等渠道。模型卡同时提醒可能出现幻觉、变慢或超时，这些限制不能由榜单成绩排除。"
+        ],
+        "background": [
+          "过去的实时语音系统常把语音识别、文本模型与语音合成串联，延迟和打断处理限制了复杂任务。原生音频模型与非阻塞工具调用的结合，目标是在用户继续说话时仍能查询或执行外部动作。"
+        ],
+        "significance": [
+          "对开发者，双档模型允许在低成本自然对话与高推理任务之间分流；对客服和办公软件供应商，语音界面开始具备调用业务系统、持续更新进度和完成多步骤流程的能力。",
+          "对竞争格局，模型能力不再是唯一门槛，通话成本、首包延迟、打断后的状态保持、工具失败恢复和渠道分发会共同决定产品能否规模化。"
+        ],
+        "uncertainties": [
+          "Google 没有在模型卡中给出跨口音、嘈杂环境、长会话工具失败率等完整独立数据；官方基准也不能替代不同业务流程中的人工抽检。"
+        ],
+        "watch": [
+          "观察第三方对端到端延迟、插话恢复、函数调用成功率和每小时音频成本的复现结果，以及 Extended Thinking 在客服与办公任务中相对普通 Live 的真实增益。"
+        ]
+      },
+      "importance": "重大",
+      "category": "AI",
+      "kind": "事实",
+      "publishedAt": "2026-09-15T00:00:00-07:00",
+      "collectedAt": "2026-09-16T14:56:00+08:00",
+      "tags": ["Google", "Gemini 3.8 Live", "实时语音", "智能体", "多模态"],
+      "sources": [
+        {
+          "name": "Google AI for Developers",
+          "url": "https://ai.google.dev/gemini-api/docs/changelog",
+          "kind": "官方"
+        },
+        {
+          "name": "Google DeepMind",
+          "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 88,
+        "relevance": 94,
+        "novelty": 90,
+        "reliability": 93,
+        "convergence": 86,
+        "feedback": 50,
+        "total": 88.6
+      }
+    },
+    {
+      "id": "2026-09-16-ai-labs-safety-coordination",
+      "title": "OpenAI 证实与 Anthropic、Google 持续协调 AI 安全",
+      "summary": "OpenAI 全球政策负责人 Chris Lehane 于 9 月 15 日证实，公司已与 Anthropic、Google DeepMind 就 AI 安全协调数周，并表示不认为三方讨论需要反垄断豁免。媒体另报道称三家公司在讨论行业标准机构；这一组织尚未由三方共同正式公布。OpenAI 同时支持要求前沿实验室接受独立验证机构检查的美国 FRONTIER Act 条款。",
+      "perspective": "前沿实验室从公开呼吁走向跨公司协调，是治理机制开始成形的信号；但真正的增量不在联合声明，而在评估机构是否独立、能访问哪些训练与事故材料、能否公开结论，以及协调是否会被用来排斥较小竞争者。",
+      "detail": {
+        "introduction": "在 Anthropic CEO 呼吁放慢前沿能力进步之后，OpenAI 首次公开确认三大实验室已有持续安全讨论。已确认的是协调本身；行业标准机构的结构、权限和成员资格仍处于媒体报道阶段。",
+        "facts": [
+          "Lehane 在华盛顿向记者表示，OpenAI、Anthropic 和 Google DeepMind 已就 AI 安全讨论数周。他认为这类安全协调不需要事先取得反垄断豁免，但这一判断并非监管机关的正式裁定。",
+          "TechCrunch 引述其他媒体报道称，三家公司讨论建立行业标准机构。三方尚未共同发布章程、资金来源、决策规则或执法权，因此不能把该机构写成已经成立。",
+          "OpenAI 表示支持 FRONTIER Act 中要求顶级前沿实验室允许独立验证组织进入公司的条款。AP 同时指出，跨公司、跨政府乃至跨国协调会受到商业竞争、国家竞争和执行标准争议的约束。"
+        ],
+        "background": [
+          "Anthropic 此前提出把第三方评估员嵌入实验室，并逐步推进产业与政府协调。OpenAI、Google 与其他实验室随后对安全合作表达支持，但共同评估的边界与反垄断风险一直没有清晰制度答案。"
+        ],
+        "significance": [
+          "若独立验证进入立法或共同标准，模型安全将从公司自选测试和自定披露时点，转向可比较的持续审计；这会影响模型发布、保险、企业采购和事故责任。",
+          "若标准机构由少数头部公司控制，它也可能把高昂合规成本变成市场准入门槛，因此治理设计需要同时处理安全与竞争政策。"
+        ],
+        "uncertainties": [
+          "目前没有共同章程，也未确认 Anthropic 与 Google 对 Lehane 所述范围的正式立场；独立评估员的保密义务、报告发布权和事故上报规则仍未知。"
+        ],
+        "watch": [
+          "检查三家公司是否共同公布标准机构或审计框架、监管部门是否回应反垄断问题，以及 FRONTIER Act 是否写入评估机构的访问范围、公开义务和利益冲突规则。"
+        ]
+      },
+      "importance": "重大",
+      "category": "AI",
+      "kind": "事实",
+      "publishedAt": "2026-09-15T08:47:00-07:00",
+      "collectedAt": "2026-09-16T14:56:00+08:00",
+      "tags": ["OpenAI", "Anthropic", "Google DeepMind", "AI 安全", "独立评估"],
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/09/15/openai-anthropic-google-have-been-in-talks-on-ai-safety-for-weeks/",
+          "kind": "媒体"
+        },
+        {
+          "name": "Associated Press",
+          "url": "https://apnews.com/article/ai-slowdown-challenges-anthropic-openai-trump-b61f28b6212338e88c0baec31f661701",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 92,
+        "relevance": 96,
+        "novelty": 88,
+        "reliability": 87,
+        "convergence": 90,
+        "feedback": 50,
+        "total": 89.3
+      }
+    },
+    {
+      "id": "2026-09-16-meta-one-subscriptions",
+      "title": "Meta 推出跨应用订阅 Meta One，把高用量 AI 纳入收费层",
+      "summary": "Meta 于 9 月 15 日推出 Meta One，覆盖 Instagram、Facebook、WhatsApp 和 Meta AI，基础应用与日常 Meta AI 继续免费，订阅层提供更高的图像和视频生成额度、创作者工具及 Meta Business Agent 容量。美国单应用月费最低 2.99 美元，个人组合 7.99 美元起，创作者与企业组合 14.99 美元起；Meta 称分阶段测试累计已有 1500 万订阅和试用。",
+      "perspective": "Meta 正把生成式 AI 从广告优化能力变成面向用户和商家的直接付费权益，并利用跨应用账户与分发降低获客成本。关键商业验证不是试用总数，而是付费转化、续订率，以及 AI 用量带来的收入能否覆盖推理成本。",
+      "detail": {
+        "introduction": "Meta One 将原先分散在单个应用的 Plus 方案与 AI、认证、分析和商业工具重新打包，形成个人、创作者和企业多档订阅。公司仍保留免费核心体验，以避免直接收窄大规模广告流量。",
+        "facts": [
+          "个人 Core 与 Premium 方案增加 Meta AI 图像、视频生成以及 Instagram Restyle 等高计算量功能的使用额度；单应用方案则提供 WhatsApp 主题、更多置顶聊天、Instagram 表达功能等权益。",
+          "创作者和企业方案从每月 14.99 美元起，包含身份验证、冒充保护、分析、团队访问和更多 Meta Business Agent 回复容量；高阶方案价格可到每月 499 美元起。具体价格与功能会因地区和账户而异。",
+          "Meta 宣称分阶段上线的功能超过 50 项，订阅与试用合计 1500 万，但没有分别披露付费用户、试用用户、平均收入或留存率。Reuters 指出，这为 Meta 提供了广告之外的收入来源。"
+        ],
+        "background": [
+          "Meta 过去主要依赖广告收入，并分别推出认证和单应用付费方案。生成式图像、视频和商业智能体增加了可变推理成本，也给按额度分层收费提供了直接理由。"
+        ],
+        "significance": [
+          "对消费者，跨应用组合把社交功能与 AI 额度绑定；对小企业，Business Agent、认证和分析被放进同一账单，Meta 有机会扩大每个商家的软件收入。",
+          "对其他平台，拥有大规模免费分发的公司可以用较低获客成本销售 AI 增值层，这会迫使独立创作工具和客服软件证明更高的专业价值。"
+        ],
+        "uncertainties": [
+          "1500 万口径混合订阅与试用，不能直接视为付费用户；Meta 也未披露不同档位的推理成本、取消率或对广告参与度的影响。"
+        ],
+        "watch": [
+          "关注下一次财报是否披露 Meta One 付费用户、试用转付费率、ARPU 与留存率，并比较订阅收入增长和 AI 基础设施成本变化。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "商业",
+      "kind": "事实",
+      "publishedAt": "2026-09-15T00:00:00-07:00",
+      "collectedAt": "2026-09-16T14:56:00+08:00",
+      "tags": ["Meta", "Meta One", "订阅", "Meta AI", "创作者经济"],
+      "sources": [
+        {
+          "name": "Meta",
+          "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+          "kind": "官方"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.investing.com/news/stock-market-news/meta-launches-subscriptions-with-enhanced-ai-features-4902168",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 82,
+        "relevance": 90,
+        "novelty": 86,
+        "reliability": 94,
+        "convergence": 88,
+        "feedback": 50,
+        "total": 85.8
+      }
+    },
+    {
+      "id": "2026-09-16-new-york-data-center-framework",
+      "title": "纽约州建议数据中心每兆瓦投入 100 万美元回馈社区",
+      "summary": "纽约州于 9 月 15 日发布全州数据中心东道社区投资框架，建议地方政府按项目电力需求每兆瓦至少争取 100 万美元社区投资，例如 50 兆瓦项目对应 5000 万美元。该框架是自愿谈判基准，不替代许可和环境审查；纽约州的数据中心暂停令仍将持续到通用环境影响报告完成。",
+      "perspective": "纽约把数据中心的电力、用水和基础设施外部成本换算成每兆瓦可谈判的社区价格，为地方政府提供了统一锚点。若被其他州复制，AI 算力选址的比较将从电价与税收优惠扩展到社区基金、电网投资和持续披露义务。",
+      "detail": {
+        "introduction": "这份框架不是新的强制税，也不是立即解除建设暂停，而是给地方政府与大型数据中心谈判提供模板。它把项目规模、公共成本和长期社区收益直接关联。",
+        "facts": [
+          "框架建议以每兆瓦公用事业需求 100 万美元作为社区投资基准，资金可进入地方管理的社区基金，用于住房、道路、水务、教育、托育、宽带和劳动力培训。",
+          "指导文件还建议写入用水、噪声、照明、建筑设计、当地雇佣和建筑工人工资等“好邻居”承诺，并要求运营后按年报告就业、能源、水资源与环境影响。",
+          "该基准属于自愿框架，地方可按项目调整，也不取代州环境质量审查与其他许可。州政府称，2026 年 7 月开始的暂停令将维持到数据中心通用环境影响报告完成，过程最长可达一年。"
+        ],
+        "background": [
+          "数据中心带来资本投资和税收，但长期岗位相对用电规模较少，并可能把电网、水资源和基础设施扩建成本转给居民。纽约此前已暂停新项目的部分许可，并研究让数据中心自付新增能源与电网成本。"
+        ],
+        "significance": [
+          "对开发商，50 兆瓦项目的建议投资额达到 5000 万美元，足以进入选址财务模型；对地方政府，统一基准能降低单个社区在保密谈判中的信息劣势。",
+          "对 AI 产业，若社区回馈、电网加速基金和税收优惠取消叠加，纽约的有效建设成本会提高，并可能把项目引向规则更宽松或电力更充足的州。"
+        ],
+        "uncertainties": [
+          "自愿基准是否会在具体合同中兑现、支付结构如何安排、哪些既有或已进入许可程序的项目适用，都要等待地方谈判和后续州级规则。"
+        ],
+        "watch": [
+          "跟踪首批社区协议的实际每兆瓦金额、年度披露是否公开，以及环境影响报告、暂停令解除时间、电网基金和取消销售税优惠的立法进展。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "宏观国际",
+      "kind": "事实",
+      "publishedAt": "2026-09-15T00:00:00-04:00",
+      "collectedAt": "2026-09-16T14:56:00+08:00",
+      "tags": ["纽约州", "数据中心", "电力", "社区投资", "AI 基础设施"],
+      "sources": [
+        {
+          "name": "New York State Governor",
+          "url": "https://www.governor.ny.gov/news/governor-hochul-announces-strongest-community-investment-framework-nation-protect-communities",
+          "kind": "官方"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.investing.com/news/stock-market-news/new-york-proposes-1-million-per-megawatt-community-investment-for-data-centers-4902760",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 86,
+        "relevance": 82,
+        "novelty": 88,
+        "reliability": 96,
+        "convergence": 82,
+        "feedback": 50,
+        "total": 85.0
+      }
+    },
+    {
+      "id": "2026-09-16-altera-ipo-filing",
+      "title": "Altera 秘密提交美国 IPO 申请，Intel 仍持股 49%",
+      "summary": "FPGA 厂商 Altera 于 9 月 15 日宣布，其母公司已向美国证交会秘密提交 Form S-1 注册草案，发行股数和价格区间尚未确定。Reuters 报道称，Silver Lake 去年以 44.6 亿美元收购 51% 股份、当时估值 87.5 亿美元，Intel 保留 49%；公司此前预计今年收入增长处于 20% 中段。",
+      "perspective": "Altera 上市既是 AI 概念股融资窗口的测试，也是 Intel 拆分资产后的估值检验。FPGA 在推理、网络和工业系统中有差异化位置，但最终估值仍要看公开招股书里的收入质量、客户集中度与 Silver Lake、Intel 的出售安排。",
+      "detail": {
+        "introduction": "秘密提交只表示 Altera 启动了 SEC 审查流程，不等于确定上市时间、募资额或估值。公开财务数据要等注册文件后续披露。",
+        "facts": [
+          "Altera 官方确认母公司已秘密提交 Form S-1 草案，拟议发行仍取决于 SEC 审查、市场和其他条件；公司没有披露发行股数、价格区间或时间表。",
+          "Reuters 报道称，Altera 产品用于数据中心、通信、工业、AI、航空航天与国防。Intel 2015 年以约 167 亿美元收购 Altera，Silver Lake 去年以 44.6 亿美元取得 51% 控股权，Intel 保留 49%。",
+          "Reuters 此前获悉公司可能最早今年募资超过 20 亿美元，但该金额不是本次官方申报确认的发行规模；公司 CEO 在 7 月预计今年增长处于 20% 中段。"
+        ],
+        "background": [
+          "FPGA 可在出货后重新编程，适合低延迟、快速变化和专用加速场景，与 GPU、ASIC 和通用 CPU 形成互补。Altera 独立运营后需要证明能否在 AI 基础设施资本支出周期中恢复增长。"
+        ],
+        "significance": [
+          "若成功上市，Intel 可获得其保留股权的公开估值，Silver Lake 也得到退出通道；同时，市场将首次较清晰地看到独立 Altera 的收入、利润和客户结构。",
+          "对半导体 IPO 市场，Altera 的订单与估值倍数会成为投资者是否愿意为 GPU 之外的可编程计算资产支付 AI 溢价的参照。"
+        ],
+        "uncertainties": [
+          "秘密申报内容未公开，拟募资额、估值、股份出售比例、Intel 是否减持以及关键财务数据均未确认，市场条件也可能推迟或取消交易。"
+        ],
+        "watch": [
+          "等待公开 S-1，重点核对收入增长、毛利率、前十大客户、数据中心与 AI 相关收入占比、Intel 与 Silver Lake 的售股安排及募资用途。"
+        ]
+      },
+      "importance": "速览",
+      "category": "商业",
+      "kind": "事实",
+      "publishedAt": "2026-09-15T00:00:00-07:00",
+      "collectedAt": "2026-09-16T14:56:00+08:00",
+      "tags": ["Altera", "Intel", "Silver Lake", "IPO", "FPGA"],
+      "sources": [
+        {
+          "name": "Altera",
+          "url": "https://www.altera.com/newsroom/confidential-draft-registration-statement",
+          "kind": "官方"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.marketscreener.com/news/silver-lake-intel-backed-altera-confidentially-files-for-us-ipo-ce785bdddc88f522",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 72,
+        "relevance": 82,
+        "novelty": 76,
+        "reliability": 96,
+        "convergence": 86,
+        "feedback": 50,
+        "total": 80.0
+      }
+    },
+    {
+      "id": "2026-09-16-us-crypto-clarity-vote",
+      "title": "美国参议院程序性否决加密市场结构法案",
+      "summary": "美国参议院于 9 月 15 日以 49 票赞成、50 票反对否决 H.R. 3633《数字资产市场清晰法案》的推进动议，未达到五分之三门槛。法案原拟划分 SEC 与 CFTC 对数字商品的监管职责；反对者要求加强公职人员利益冲突、反洗钱和监管机构执行资源条款，部分民主党议员表示仍愿继续谈判。",
+      "perspective": "这次投票不是美国否定加密监管，而是市场结构规则与政治伦理、国家安全和机构能力被捆绑后无法过关。监管不确定性将继续抬高交易平台和代币发行方的合规成本，同时把部分规则制定压力转回行政机构。",
+      "detail": {
+        "introduction": "被否决的是启动审议所需的 cloture 动议，而不是法案在最终表决中被永久否决。现有文本暂时无法推进，但支持监管框架的两党议员仍可能重写后再尝试。",
+        "facts": [
+          "参议院官方记录显示，第 234 次表决以 49 票赞成、50 票反对、1 人未投票结束，未达到 60 票门槛。H.R. 3633 涉及 SEC、CFTC 的数字商品监管分工，并包含对央行数字货币的限制。",
+          "AP 报道称，没有民主党议员支持此次推进。反对意见集中在总统及家族的加密资产利益冲突、反洗钱和国家安全措施，以及监管机构是否有人员与资源执行新制度。",
+          "部分反对票议员同时表示支持建立加密监管框架并愿意谈判。白宫则表示可能转向行政机构推进部分议程，并警告规则空缺会削弱美国市场影响力。"
+        ],
+        "background": [
+          "美国长期通过证券法、商品法和执法行动处理数字资产，行业希望国会明确代币与交易平台由谁监管。市场结构立法需要同时协调投资者保护、银行体系、反洗钱、州权与公职伦理。"
+        ],
+        "significance": [
+          "对交易平台和代币发行方，SEC 与 CFTC 边界继续不清，产品设计与上市审批仍面临诉讼和政策变化风险；对传统金融机构，进入数字资产市场的合规路径也延后。",
+          "对立法进程，伦理条款已成为能否获得跨党派票数的实质门槛，而非可在法案通过后另行处理的政治附注。"
+        ],
+        "uncertainties": [
+          "参议院领导层尚未给出修订文本和下一次表决时间；行政机构能够在现有授权下实施哪些法案内容，也可能遭遇司法挑战。"
+        ],
+        "watch": [
+          "关注新文本是否加入明确的公职人员持有与交易限制、反洗钱权限和 CFTC 经费，以及是否出现至少 11 张跨党派新增支持票使程序动议达到 60 票。"
+        ]
+      },
+      "importance": "速览",
+      "category": "宏观国际",
+      "kind": "事实",
+      "publishedAt": "2026-09-15T14:19:00-04:00",
+      "collectedAt": "2026-09-16T14:56:00+08:00",
+      "tags": ["美国参议院", "加密货币", "SEC", "CFTC", "监管"],
+      "sources": [
+        {
+          "name": "U.S. Senate",
+          "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00234.htm",
+          "kind": "官方"
+        },
+        {
+          "name": "Associated Press",
+          "url": "https://apnews.com/article/senate-crypto-bill-midterms-trump-ethics-e3caf262dc138147941787299e5f0a66",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 78,
+        "relevance": 72,
+        "novelty": 70,
+        "reliability": 98,
+        "convergence": 94,
+        "feedback": 50,
+        "total": 79.9
+      }
+    }
+  ],
+  "quality": {
+    "sourcesChecked": 42,
+    "sourcesHealthy": 30,
+    "rawSignals": 74,
+    "afterDeduplication": 21,
+    "linksVerified": 12,
+    "notes": [
+      "本期覆盖 2026-09-15 12:29 至 2026-09-16 14:56（北京时间），严格承接上一期正式日报 windowEnd。",
+      "RSS 通道 12 个订阅源因受管理环境 DNS 解析故障全部不可达；已明确记录信源异常，并通过隔离网页检索打开官方页与可靠媒体具体内容页补足四类信号。",
+      "已查看 OpenAI、Anthropic、Google、Microsoft 等高优先级实验室和科技公司入口，并检查 AI Weekly、GitHub Trending 与 Hacker News；聚合页只用于发现线索，未独立证明事实。",
+      "入选事件均回到具体来源页；Google、Meta、Altera、纽约数据中心框架和美国参议院投票使用官方原文，并尽可能加入 Reuters、AP 或专业媒体交叉验证。",
+      "专用链接脚本已执行，12 个入选链接均因同一受管理环境 DNS 故障无法建立连接；隔离网页通道随后逐条打开 12 个具体内容页，未发现 HTTP 断链或内容错配。",
+      "已按规范化 URL、主体、事件与标题语义完成当日与跨日去重；9 月 15 日已刊发的 Anthropic 放缓倡议只保留其后新出现的三方协调增量，没有重复复述旧事件。",
+      "三家公司建立行业标准机构仍属媒体报道，未写成已经成立；Google 基准和 Meta 订阅数字均明确保留公司自报属性。",
+      "Supabase 推荐信号未配置，无法读取本轮反馈；反馈项保持中性分，不影响事实质量门槛。"
+    ]
+  }
+}
