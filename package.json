@@ -10,7 +10,8 @@
     "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
     "test": "node --test tests/*.test.mjs",
     "validate:content": "node scripts/validate-digests.mjs",
-    "generate:digest": "node scripts/generate-digest.mjs"
+    "generate:digest": "node scripts/generate-digest.mjs",
+    "check:provider": "node scripts/check-ai-provider.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",

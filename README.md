@@ -43,7 +43,7 @@ npm run build
 - 09:00：检查当天文件；缺失时自动补跑一次。
 - 任一质量门失败都不提交，因此不会覆盖上一期网站。
 
-仓库必须配置 Actions secret `OPENAI_API_KEY`。可选变量 `OPENAI_DIGEST_MODEL` 可以指定模型；未配置时默认使用 `gpt-5.6`。本地密钥只放在被 Git 忽略的 `.env.local`，生成脚本会自动读取它。
+仓库通过 Actions secret `OPENTECH_API_KEY` 访问 `https://api.opentech.top/v1`。密钥只进入 GitHub Actions 的受保护环境，不写入仓库。可选变量 `OPENAI_DIGEST_MODEL` 可以指定模型；未配置时默认使用 `gpt-5.6`。生成器同时支持通用的 `AI_API_KEY`、`AI_API_BASE_URL`，以及官方 OpenAI 的 `OPENAI_API_KEY` 回退。
 
 ## 故障处理
 

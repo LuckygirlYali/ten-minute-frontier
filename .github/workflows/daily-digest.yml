@@ -20,7 +20,8 @@ jobs:
     timeout-minutes: 45
     env:
       TZ: Asia/Shanghai
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      AI_API_KEY: ${{ secrets.OPENTECH_API_KEY }}
+      AI_API_BASE_URL: https://api.opentech.top/v1
       OPENAI_DIGEST_MODEL: ${{ vars.OPENAI_DIGEST_MODEL }}
 
     steps:
@@ -56,17 +57,13 @@ jobs:
             echo "generate=false" >> "$GITHUB_OUTPUT"
             echo "The Beijing-date digest already exists; only verification will run."
           else
-            test -n "$OPENAI_API_KEY"
+            test -n "$AI_API_KEY"
             echo "generate=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Verify OpenAI credential on manual runs
+      - name: Verify provider capabilities on manual runs
         if: github.event_name == 'workflow_dispatch'
-        run: |
-          status="$(curl --silent --show-error --output "$RUNNER_TEMP/openai-models.json" --write-out '%{http_code}' \
-            --header "Authorization: Bearer $OPENAI_API_KEY" \
-            https://api.openai.com/v1/models)"
-          test "$status" = "200"
+        run: node scripts/check-ai-provider.mjs
 
       - name: Generate a source-grounded draft
         if: steps.state.outputs.generate == 'true'
