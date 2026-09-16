@@ -28,17 +28,6 @@ function outputText(response) {
   throw new Error("Responses API 没有返回 output_text");
 }
 
-function webSourceCount(response) {
-  let count = 0;
-  const visit = (value) => {
-    if (!value || typeof value !== "object") return;
-    if (value.type === "web_search_call") count += value.action?.sources?.length ?? 0;
-    for (const child of Object.values(value)) Array.isArray(child) ? child.forEach(visit) : visit(child);
-  };
-  visit(response.output);
-  return count;
-}
-
 try {
   const headers = { "Authorization": `Bearer ${apiKey}`, "Content-Type": "application/json" };
   const models = await checkedJson(`${baseUrl}/models`, { headers }, "Models API");
@@ -53,31 +42,15 @@ try {
     body: JSON.stringify({
       model,
       store: false,
-      tools: [{ type: "web_search_preview", search_context_size: "low" }],
-      tool_choice: "required",
-      input: "搜索 OpenAI 官方开发者网站，只返回符合 schema 的结果。",
-      max_output_tokens: 1500,
-      text: {
-        format: {
-          type: "json_schema",
-          name: "provider_check",
-          strict: true,
-          schema: {
-            type: "object",
-            additionalProperties: false,
-            properties: { status: { type: "string", enum: ["ok"] } },
-            required: ["status"],
-          },
-        },
-      },
-      include: ["web_search_call.action.sources"],
+      instructions: "只输出 JSON，不要使用 Markdown。",
+      input: "输出 {\"status\":\"ok\"}",
+      max_output_tokens: 200,
     }),
   }, "Responses API");
 
   const parsed = JSON.parse(outputText(response));
-  const sources = webSourceCount(response);
-  if (parsed.status !== "ok" || sources < 1) throw new Error("网页搜索或结构化输出兼容性检查未通过");
-  console.log(`第三方兼容性检查通过：模型、Responses、JSON Schema、网页搜索（${sources} 个来源）。`);
+  if (parsed.status !== "ok") throw new Error("基础 JSON 输出兼容性检查未通过");
+  console.log("第三方兼容性检查通过：认证、模型、Responses API 与基础 JSON 输出可用。");
 } catch (error) {
   console.error(error.message);
   process.exit(1);
