@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { assertSourcesWereSearched, buildDigest, calculateScoreTotal, normalizeSourceUrl } from "../scripts/generate-digest.mjs";
+import { assertSourcesWereSearched, boundedWindowStart, buildDigest, calculateScoreTotal, normalizeSourceUrl, selectRssCandidates } from "../scripts/generate-digest.mjs";
 
 test("评分按编辑政策权重计算", () => {
   assert.equal(calculateScoreTotal({ impact: 90, relevance: 80, novelty: 70, reliability: 60, convergence: 50, feedback: 40 }), 73);
@@ -14,6 +14,26 @@ test("候选来源必须来自本次 RSS 采集", () => {
   const items = [{ id: "x", sources: [{ url: "https://example.com/news?a=1&utm_source=x" }] }];
   assert.doesNotThrow(() => assertSourcesWereSearched(items, new Set(["https://example.com/news?a=1"])));
   assert.throws(() => assertSourcesWereSearched(items, new Set(["https://other.example/news"])), /不在本次 RSS 候选来源池/);
+});
+
+test("采集窗口最多回看 36 小时，避免失败后无限累积", () => {
+  assert.equal(boundedWindowStart("2026-09-16T08:00:00+08:00", "2026-09-20T08:00:00+08:00"), "2026-09-18T12:00:00.000Z");
+  assert.equal(boundedWindowStart("2026-09-19T09:00:00+08:00", "2026-09-20T08:00:00+08:00"), "2026-09-19T01:00:00.000Z");
+});
+
+test("RSS 候选限制总量并优先保持信源多样性", () => {
+  const articles = Array.from({ length: 10 }, (_, index) => ({
+    title: `A${index}`, url: `https://a.example/news/${index}`, summary: "x",
+    date: `2026-09-20T0${9 - index}:00:00Z`, feed_title: "A", feed_category: "tech",
+  })).concat(Array.from({ length: 4 }, (_, index) => ({
+    title: `B${index}`, url: `https://b.example/news/${index}`, summary: "x",
+    date: `2026-09-20T0${8 - index}:30:00Z`, feed_title: "B", feed_category: "ai",
+  })));
+  const selected = selectRssCandidates(articles, {
+    windowStart: "2026-09-19T00:00:00Z", generatedAt: "2026-09-21T00:00:00Z", limit: 8, maxPerFeed: 4,
+  });
+  assert.equal(selected.length, 8);
+  assert.equal(selected.filter((item) => item.feed_title === "B").length, 4);
 });
 
 test("组装日报时计算总分并移除空的可选详情分节", () => {

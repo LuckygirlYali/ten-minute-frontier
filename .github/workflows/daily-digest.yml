@@ -2,9 +2,10 @@ name: Publish daily frontier digest
 
 on:
   schedule:
-    # GitHub cron uses UTC: 00:00/01:00 = Beijing 08:00/09:00.
-    - cron: "0 0 * * *"
-    - cron: "0 1 * * *"
+    # Avoid the top of the hour, when GitHub scheduled workflows are most congested.
+    # UTC 00:17/01:37 = Beijing 08:17/09:37.
+    - cron: "17 0 * * *"
+    - cron: "37 1 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -16,6 +17,11 @@ on:
         description: "Optional Beijing date for a dry run (YYYY-MM-DD)"
         required: false
         type: string
+      degraded_mode:
+        description: "Use the smaller recovery request"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -33,6 +39,7 @@ jobs:
       AI_API_KEY: ${{ secrets.OPENTECH_API_KEY }}
       AI_API_BASE_URL: https://api.opentech.top/v1
       OPENAI_DIGEST_MODEL: ${{ vars.OPENAI_DIGEST_MODEL }}
+      DIGEST_DEGRADED: ${{ (github.event_name == 'schedule' && github.event.schedule == '37 1 * * *') || inputs.degraded_mode }}
 
     steps:
       - uses: actions/checkout@v4
