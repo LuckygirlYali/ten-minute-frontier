@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { assertSourcesWereSearched, boundedWindowStart, buildDigest, calculateScoreTotal, normalizeSourceUrl, selectRssCandidates } from "../scripts/generate-digest.mjs";
+import { assertEditorialDiversity, assertSourcesWereSearched, boundedWindowStart, buildDigest, calculateScoreTotal, normalizeSourceUrl, selectRssCandidates } from "../scripts/generate-digest.mjs";
 
 test("评分按编辑政策权重计算", () => {
   assert.equal(calculateScoreTotal({ impact: 90, relevance: 80, novelty: 70, reliability: 60, convergence: 50, feedback: 40 }), 73);
@@ -49,4 +49,19 @@ test("组装日报时计算总分并移除空的可选详情分节", () => {
   assert.equal(digest.items[0].collectedAt, "2026-09-16T08:00:00+08:00");
   assert.equal("analysis" in digest.items[0].detail, false);
   assert.equal("paywalled" in digest.items[0].sources[0], false);
+});
+
+test("单源不足时不回填超限文章，不让多个订阅绕过同域名上限", () => {
+  const articles = Array.from({length: 10}, (_, i) => ({ title: `News ${i}`, url: `https://www.ithome.com/news/${i}`, date: "2026-09-21T01:00:00Z", feed_title: `Feed ${i}`, feed_category: "cn-tech" }));
+  assert.equal(selectRssCandidates(articles, {windowStart:"2026-09-20T00:00:00Z", generatedAt:"2026-09-22T00:00:00Z"}).length, 2);
+});
+
+test("成稿不能全来自一家媒体，也不能把同一文章拆成多条", () => {
+  const items = [1,2,3].map(i => ({title:`标题${i}`, sources:[{url:`https://ithome.com/news/${i}`}]}));
+  assert.throws(() => assertEditorialDiversity(items), /来源不足/);
+  items[1].sources[0].url = "https://bbc.com/news/2";
+  items[2].sources[0].url = "https://huggingface.co/blog/3";
+  assert.doesNotThrow(() => assertEditorialDiversity(items));
+  items[2].sources[0].url = items[0].sources[0].url;
+  assert.throws(() => assertEditorialDiversity(items), /拆成多条/);
 });

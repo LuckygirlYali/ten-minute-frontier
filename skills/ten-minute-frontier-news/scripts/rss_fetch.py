@@ -14,6 +14,7 @@ import re
 import sys
 import time
 import uuid
+from concurrent.futures import ThreadPoolExecutor
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
 from html.parser import HTMLParser
@@ -181,7 +182,9 @@ def parse_date(date_str):
     for fmt in patterns:
         try:
             dt = datetime.strptime(date_str, fmt)
-            return dt.replace(tzinfo=None).isoformat() + 'Z'
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            return dt.astimezone(timezone.utc).isoformat()
         except ValueError:
             continue
     return None
@@ -247,7 +250,7 @@ def parse_rss(xml_text, feed_url):
                     'title': title or '(无标题)',
                     'url': link or feed_url,
                     'summary': desc[:500] if desc else '',
-                    'date': pub_date or datetime.now(timezone.utc).isoformat(),
+                    'date': pub_date,
                     'author': author,
                     'guid': guid or link,
                     'categories': categories,
@@ -287,8 +290,7 @@ def parse_rss(xml_text, feed_url):
                     'title': title or '(无标题)',
                     'url': link or '',
                     'summary': desc[:500] if desc else '',
-                    'date': (published or updated
-                             or datetime.now(timezone.utc).isoformat()),
+                    'date': published or updated,
                     'author': author,
                     'guid': entry_id or link,
                     'categories': [],
@@ -322,7 +324,7 @@ def parse_rss(xml_text, feed_url):
                     'title': title or '(无标题)',
                     'url': link or feed_url,
                     'summary': desc[:500] if desc else '',
-                    'date': pub_date or datetime.now(timezone.utc).isoformat(),
+                    'date': pub_date,
                     'author': author,
                     'guid': link or '',
                     'categories': categories,
@@ -342,7 +344,7 @@ def fetch_feed(feed):
         if error:
             return [], error
         # Sort by date descending, limit
-        articles.sort(key=lambda a: a.get('date', ''), reverse=True)
+        articles.sort(key=lambda a: a.get('date') or '', reverse=True)
         articles = articles[:MAX_ARTICLES_PER_FEED]
         return articles, None
     except HTTPError as e:
@@ -439,10 +441,13 @@ def fetch_all(skip_read=False):
     all_articles = []
     feed_stats = []
 
-    for i, feed in enumerate(enabled):
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        fetched = list(pool.map(fetch_feed, enabled))
+
+    for i, (feed, result) in enumerate(zip(enabled, fetched)):
         title = feed['title']
         print(f'  [{i + 1}/{len(enabled)}] {title}...', file=sys.stderr)
-        articles, error = fetch_feed(feed)
+        articles, error = result
         if error:
             print(f'    ✗ {error}', file=sys.stderr)
             feed['last_error'] = error
@@ -457,11 +462,7 @@ def fetch_all(skip_read=False):
                 a['feed_category'] = feed.get('category', 'Uncategorized')
                 all_articles.append(a)
 
-        # Polite delay between requests
-        if i < len(enabled) - 1:
-            time.sleep(1.5)
-
-    save_feeds(feeds)
+    # Health observations belong in the cache, not the versioned source registry.
 
     # Deduplicate by guid
     seen = set()
@@ -477,7 +478,7 @@ def fetch_all(skip_read=False):
             continue
         unique_articles.append(a)
 
-    unique_articles.sort(key=lambda a: a.get('date', ''), reverse=True)
+    unique_articles.sort(key=lambda a: a.get('date') or '', reverse=True)
 
     now = datetime.now(timezone.utc)
     today_str = now.strftime('%Y-%m-%d')

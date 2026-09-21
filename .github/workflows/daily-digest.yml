@@ -93,6 +93,19 @@ jobs:
           DRAFT: ${{ steps.date.outputs.draft }}
         run: node scripts/generate-digest.mjs --date "$TODAY" --output "$DRAFT"
 
+      - name: Report source coverage
+        if: always() && steps.state.outputs.generate == 'true'
+        run: node scripts/audit-sources.mjs
+
+      - name: Save dry-run draft for editorial review
+        if: inputs.dry_run == true
+        uses: actions/upload-artifact@v4
+        with:
+          name: editorial-dry-run
+          path: .tmp/digests/*.json
+          retention-days: 3
+          if-no-files-found: error
+
       - name: Validate draft and verify every selected link
         if: steps.state.outputs.generate == 'true'
         env:

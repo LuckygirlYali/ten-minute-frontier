@@ -47,7 +47,47 @@ export function boundedWindowStart(lastWindowEnd, generatedAt, hours = WINDOW_HO
   return new Date(start).toISOString();
 }
 
-export function selectRssCandidates(articles, { windowStart, generatedAt, limit = 24, maxPerFeed = 4 }) {
+export function publisherKey(value) {
+  const host = new URL(value).hostname.toLowerCase().replace(/^www\./, "");
+  const families = ["bbc.co.uk", "bbc.com", "google.com", "withgoogle.com", "microsoft.com", "ithome.com"];
+  const family = families.find((name) => host === name || host.endsWith(`.${name}`));
+  if (family === "bbc.co.uk" || family === "bbc.com") return "bbc";
+  if (family === "withgoogle.com" || family === "google.com") return "google";
+  return family || host;
+}
+
+export function sourceGroup(category = "") {
+  if (/policy|macro|business/.test(category)) return "商业与政策";
+  if (/research/.test(category)) return "研究";
+  if (/official/.test(category)) return "官方";
+  if (/^cn-/.test(category)) return "中文媒体";
+  if (category === "discovery") return "发现线索";
+  return "国际科技";
+}
+
+export function assertEditorialDiversity(items) {
+  const counts = new Map();
+  const urls = new Set();
+  const titles = new Set();
+  for (const item of items) {
+    const title = item.title.toLowerCase().replace(/[\p{P}\p{Z}\s]/gu, "");
+    if (titles.has(title)) throw new Error("同一期存在重复标题");
+    titles.add(title);
+    const publishers = new Set();
+    for (const source of item.sources) {
+      const url = normalizeSourceUrl(source.url);
+      if (urls.has(url)) throw new Error("同一来源文章被拆成多条新闻");
+      urls.add(url);
+      publishers.add(publisherKey(url));
+    }
+    for (const publisher of publishers) counts.set(publisher, (counts.get(publisher) || 0) + 1);
+  }
+  if (items.length >= 3 && counts.size < 3) throw new Error("成稿来源不足：三条以上新闻至少需要三个独立发布方");
+  const cap = Math.min(2, Math.ceil(items.length / 2));
+  if ([...counts.values()].some((count) => count > cap)) throw new Error("成稿来源集中：同一发布方超过两条或半数上限");
+}
+
+export function selectRssCandidates(articles, { windowStart, generatedAt, limit = 24, maxPerFeed = 2 }) {
   const start = Date.parse(windowStart);
   const end = Date.parse(generatedAt);
   const seenUrls = new Set();
@@ -64,21 +104,33 @@ export function selectRssCandidates(articles, { windowStart, generatedAt, limit 
     })
     .sort((left, right) => Date.parse(right.date) - Date.parse(left.date));
   const selected = [];
-  const deferred = [];
-  const perFeed = new Map();
+  const groups = new Map();
   for (const article of eligible) {
     const normalized = normalizeSourceUrl(article.url);
     if (seenUrls.has(normalized)) continue;
     seenUrls.add(normalized);
-    const feed = article.feed_title || "unknown";
-    if ((perFeed.get(feed) ?? 0) >= maxPerFeed) deferred.push(article);
-    else {
-      selected.push(article);
-      perFeed.set(feed, (perFeed.get(feed) ?? 0) + 1);
-    }
-    if (selected.length >= limit) break;
+    const group = sourceGroup(article.feed_category);
+    if (!groups.has(group)) groups.set(group, []);
+    groups.get(group).push(article);
   }
-  if (selected.length < limit) selected.push(...deferred.slice(0, limit - selected.length));
+  const perPublisher = new Map();
+  // Round-robin categories AND publishers: high-volume feeds cannot consume the pool.
+  for (let round = 0; round < maxPerFeed; round++) {
+    let progress = true;
+    while (progress && selected.length < limit) {
+      progress = false;
+      for (const group of ["官方", "商业与政策", "研究", "国际科技", "中文媒体", "发现线索"]) {
+        const queue = groups.get(group) || [];
+        const index = queue.findIndex((a) => (perPublisher.get(publisherKey(a.url)) || 0) <= round);
+        if (index < 0 || selected.length >= limit) continue;
+        const [article] = queue.splice(index, 1);
+        const publisher = publisherKey(article.url);
+        perPublisher.set(publisher, (perPublisher.get(publisher) || 0) + 1);
+        selected.push(article);
+        progress = true;
+      }
+    }
+  }
   return selected.slice(0, limit).map(({ title, url, summary, date: publishedAt, feed_title, feed_category }) => ({
     title, url, summary, publishedAt, feed_title, feed_category,
   }));
@@ -246,7 +298,14 @@ async function main() {
   const maxItems = degraded ? 4 : 6;
   const maxOutputTokens = degraded ? 7000 : 10000;
   const rss = collectRss();
-  const rssCandidates = selectRssCandidates(rss.articles, { windowStart, generatedAt, limit: candidateLimit });
+  const historyUrls = new Set(history.flatMap((d) => d.items.flatMap((i) => i.sources.map((s) => normalizeSourceUrl(s.url)))));
+  const rssCandidates = selectRssCandidates((rss.articles || []).filter((a) => {
+    try { return !historyUrls.has(normalizeSourceUrl(a.url)); } catch { return false; }
+  }), { windowStart, generatedAt, limit: candidateLimit });
+  console.log("候选来源分布：" + JSON.stringify(rssCandidates.reduce((counts, a) => {
+    counts[a.feed_title] = (counts[a.feed_title] || 0) + 1;
+    return counts;
+  }, {})));
   const minimumCandidates = degraded ? 6 : 8;
   if ((rss.feeds_ok ?? 0) < 5 || rssCandidates.length < minimumCandidates) {
     throw new Error(`RSS 候选不足，拒绝生成：${rss.feeds_ok ?? 0} 个可用订阅源、${rssCandidates.length} 条窗口内候选`);
@@ -262,7 +321,7 @@ async function main() {
     body: JSON.stringify({
       model: process.env.OPENAI_DIGEST_MODEL || "gpt-5.6-luna",
       store: false,
-      instructions,
+      instructions: instructions + "\n成稿多样性硬规则：同一发布方（按 URL 域名判断）最多参与两条新闻且不超过全期半数向上取整；三条及以上新闻至少覆盖三个独立发布方。先按主体、动作、时间合并同一事件再评分，不将同一篇文章拆成多条。重大事件优先官方和独立媒体对照；不要用多家转载冒充独立证据。优先产业变化、研究进展和政策，不用消费电子小更新凑数。若可信事件不足，可少于三条并在 qualityNotes 解释，不得为配额编造事实。",
       input,
       max_output_tokens: maxOutputTokens,
     }),
@@ -271,6 +330,7 @@ async function main() {
   const response = await apiResponse.json();
   const candidate = parseJsonOutput(outputText(response));
   assertSourcesWereSearched(candidate.items, collectedSources);
+  assertEditorialDiversity(candidate.items);
   const digest = buildDigest(candidate, { date, generatedAt, windowStart, rss, searchedSources: collectedSources });
   await mkdir(dirname(output), { recursive: true });
   await writeFile(output, `${JSON.stringify(digest, null, 2)}\n`, { flag: "wx" });
