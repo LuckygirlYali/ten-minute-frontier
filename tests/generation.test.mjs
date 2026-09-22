@@ -21,19 +21,27 @@ test("采集窗口最多回看 36 小时，避免失败后无限累积", () => {
   assert.equal(boundedWindowStart("2026-09-19T09:00:00+08:00", "2026-09-20T08:00:00+08:00"), "2026-09-19T01:00:00.000Z");
 });
 
-test("RSS 候选限制总量并优先保持信源多样性", () => {
-  const articles = Array.from({ length: 10 }, (_, index) => ({
-    title: `A${index}`, url: `https://a.example/news/${index}`, summary: "x",
-    date: `2026-09-20T0${9 - index}:00:00Z`, feed_title: "A", feed_category: "tech",
-  })).concat(Array.from({ length: 4 }, (_, index) => ({
-    title: `B${index}`, url: `https://b.example/news/${index}`, summary: "x",
-    date: `2026-09-20T0${8 - index}:30:00Z`, feed_title: "B", feed_category: "ai",
-  })));
+test("RSS 候选限制总量并硬性分散发布方和线索组", () => {
+  const articles = [
+    ...Array.from({ length: 10 }, (_, index) => ({
+      title: `A${index}`, url: `https://a.example/news/${index}`, summary: "x",
+      date: `2026-09-20T${String(20 - index).padStart(2, "0")}:00:00Z`, feed_title: `A${index}`, feed_category: "tech",
+    })),
+    ...Array.from({ length: 6 }, (_, index) => ({
+      title: `HN${index}`, url: `https://news.ycombinator.com/item?id=${index + 1}`, summary: "x",
+      date: `2026-09-20T${String(19 - index).padStart(2, "0")}:30:00Z`, feed_title: "Hacker News", feed_category: "discovery",
+    })),
+    ...Array.from({ length: 4 }, (_, index) => ({
+      title: `B${index}`, url: `https://b${index}.example/research/${index}`, summary: "x",
+      date: `2026-09-20T${String(18 - index).padStart(2, "0")}:15:00Z`, feed_title: `B${index}`, feed_category: "research",
+    })),
+  ];
   const selected = selectRssCandidates(articles, {
-    windowStart: "2026-09-19T00:00:00Z", generatedAt: "2026-09-21T00:00:00Z", limit: 8, maxPerFeed: 4,
+    windowStart: "2026-09-19T00:00:00Z", generatedAt: "2026-09-21T00:00:00Z", limit: 10,
   });
   assert.equal(selected.length, 8);
-  assert.equal(selected.filter((item) => item.feed_title === "B").length, 4);
+  assert.equal(selected.filter((item) => new URL(item.url).hostname === "a.example").length, 2);
+  assert.equal(selected.filter((item) => item.feed_category === "discovery").length, 2);
 });
 
 test("组装日报时计算总分并移除空的可选详情分节", () => {

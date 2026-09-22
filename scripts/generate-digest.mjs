@@ -87,7 +87,13 @@ export function assertEditorialDiversity(items) {
   if ([...counts.values()].some((count) => count > cap)) throw new Error("成稿来源集中：同一发布方超过两条或半数上限");
 }
 
-export function selectRssCandidates(articles, { windowStart, generatedAt, limit = 24, maxPerFeed = 2 }) {
+export function selectRssCandidates(articles, {
+  windowStart,
+  generatedAt,
+  limit = 14,
+  maxPerFeed = 2,
+  maxPerGroup = { "官方": 4, "商业与政策": 4, "研究": 4, "国际科技": 4, "中文媒体": 4, "发现线索": 2 },
+}) {
   const start = Date.parse(windowStart);
   const end = Date.parse(generatedAt);
   const seenUrls = new Set();
@@ -114,21 +120,23 @@ export function selectRssCandidates(articles, { windowStart, generatedAt, limit 
     groups.get(group).push(article);
   }
   const perPublisher = new Map();
-  // Round-robin categories AND publishers: high-volume feeds cannot consume the pool.
-  for (let round = 0; round < maxPerFeed; round++) {
-    let progress = true;
-    while (progress && selected.length < limit) {
-      progress = false;
-      for (const group of ["官方", "商业与政策", "研究", "国际科技", "中文媒体", "发现线索"]) {
-        const queue = groups.get(group) || [];
-        const index = queue.findIndex((a) => (perPublisher.get(publisherKey(a.url)) || 0) <= round);
-        if (index < 0 || selected.length >= limit) continue;
-        const [article] = queue.splice(index, 1);
-        const publisher = publisherKey(article.url);
-        perPublisher.set(publisher, (perPublisher.get(publisher) || 0) + 1);
-        selected.push(article);
-        progress = true;
-      }
+  const perGroup = new Map();
+  const groupOrder = ["官方", "商业与政策", "研究", "国际科技", "中文媒体", "发现线索"];
+  // One item per group per pass. Publisher and group caps are hard limits, never refill targets.
+  let progress = true;
+  while (progress && selected.length < limit) {
+    progress = false;
+    for (const group of groupOrder) {
+      if (selected.length >= limit || (perGroup.get(group) || 0) >= (maxPerGroup[group] ?? limit)) continue;
+      const queue = groups.get(group) || [];
+      const index = queue.findIndex((article) => (perPublisher.get(publisherKey(article.url)) || 0) < maxPerFeed);
+      if (index < 0) continue;
+      const [article] = queue.splice(index, 1);
+      const publisher = publisherKey(article.url);
+      perPublisher.set(publisher, (perPublisher.get(publisher) || 0) + 1);
+      perGroup.set(group, (perGroup.get(group) || 0) + 1);
+      selected.push(article);
+      progress = true;
     }
   }
   return selected.slice(0, limit).map(({ title, url, summary, date: publishedAt, feed_title, feed_category }) => ({
@@ -294,9 +302,9 @@ async function main() {
   const generatedAt = beijingIso();
   const windowStart = boundedWindowStart(history.at(-1)?.windowEnd, generatedAt);
   const degraded = process.env.DIGEST_DEGRADED === "true";
-  const candidateLimit = degraded ? 12 : 24;
-  const maxItems = degraded ? 4 : 6;
-  const maxOutputTokens = degraded ? 7000 : 10000;
+  const candidateLimit = degraded ? 10 : 14;
+  const maxItems = degraded ? 3 : 4;
+  const maxOutputTokens = degraded ? 5500 : 6500;
   const rss = collectRss();
   const historyUrls = new Set(history.flatMap((d) => d.items.flatMap((i) => i.sources.map((s) => normalizeSourceUrl(s.url)))));
   const rssCandidates = selectRssCandidates((rss.articles || []).filter((a) => {
