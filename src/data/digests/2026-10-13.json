@@ -1,0 +1,245 @@
+{
+  "date": "2026-10-13",
+  "generatedAt": "2026-10-13T14:48:08+08:00",
+  "windowStart": "2026-10-11T18:48:08.000Z",
+  "windowEnd": "2026-10-13T14:48:08+08:00",
+  "thesis": "AI基础设施的竞争正从单一模型能力延伸到网络、传输协议、区域推理容量与评测方法。",
+  "status": "published",
+  "items": [
+    {
+      "id": "2026-10-13-meta-open-ai-networking",
+      "title": "Meta公布面向AI集群的开放网络基础设施方案",
+      "summary": "Meta在2026年开放计算项目全球峰会上公布多项面向AI集群的网络方案，包括液冷网络机架IcePack、102.4T交换机平台IceCube、多平面后端扩展网络FPF和开源AI传输协议MetaRoCE，并宣布在OCP内发起开放交换机平台架构计划。",
+      "perspective": "AI集群的瓶颈不只在GPU，也在交换、散热和通信协议；若这些接口被更多厂商采用，云服务商和设备供应商的互操作成本将成为可观察变量。",
+      "detail": {
+        "introduction": "Meta把本次发布集中在AI数据中心的网络连接、散热和开放架构，而不是单一芯片或模型产品。",
+        "facts": [
+          "Meta表示，其将在OCP峰会上分享IcePack液冷网络机架、102.4T交换机平台IceCube、FPF后端扩展网络和MetaRoCE协议。",
+          "Meta还表示，将在OCP内启动开放交换机平台架构计划，并邀请工程师参与。"
+        ],
+        "background": [
+          "大规模AI训练和推理需要GPU之间持续交换数据，网络吞吐、延迟、散热与协议兼容性会共同影响集群效率。"
+        ],
+        "significance": [
+          "这类基础设施开放可能影响交换机、网络协议、液冷系统及AI服务器供应商的设计和适配工作。"
+        ],
+        "analysis": [
+          "编辑判断：如果开放架构形成可复用接口，客户可能减少对单一网络供应商的绑定；但实际影响取决于硬件出货、软件实现和其他云厂商是否采用。"
+        ],
+        "uncertainties": [
+          "候选摘要没有提供IceCube、FPF或MetaRoCE的性能数据、部署规模和第三方验证。"
+        ],
+        "watch": [
+          "观察OCP是否发布正式规范，以及其他服务器、交换机或云厂商是否宣布兼容实现。"
+        ]
+      },
+      "importance": "重大",
+      "category": "科技",
+      "kind": "事实",
+      "publishedAt": "2026-10-12T21:19:18+00:00",
+      "tags": [
+        "AI基础设施",
+        "数据中心网络",
+        "开放硬件",
+        "液冷"
+      ],
+      "sources": [
+        {
+          "name": "Meta Engineering",
+          "url": "https://engineering.fb.com/2026/10/12/open-source/ocp-summit-2026-powering-ai-with-open-innovations-in-scale-up-scale-out-and-scale-across-networks/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 88,
+        "relevance": 95,
+        "novelty": 82,
+        "reliability": 78,
+        "convergence": 35,
+        "feedback": 50,
+        "total": 80
+      },
+      "collectedAt": "2026-10-13T14:48:08+08:00"
+    },
+    {
+      "id": "2026-10-13-meta-moq-instagram-live",
+      "title": "Meta开始在Instagram直播入口部署Media over QUIC",
+      "summary": "Meta表示，Instagram Live已开始使用Media over QUIC（MoQ）这一开放标准传输协议处理iOS和Android端的直播入口，并分享了在大规模场景中的部署方式。Meta称，MoQ有助于简化直播协议栈并改善实时视频体验，该工作也在DEMOQED 2026展示。",
+      "perspective": "直播基础设施正从定制协议转向基于QUIC的标准化传输；真正的产业信号不是协议名称，而是延迟、卡顿率、带宽成本和跨客户端部署结果。",
+      "detail": {
+        "introduction": "这是一项面向实时视频入口的传输层改造，重点在协议栈和规模化部署。",
+        "facts": [
+          "Meta表示，Instagram Live已在iOS和Android直播入口使用MoQ。",
+          "Meta称，该方案旨在简化实时视频直播的协议栈，并提升用户体验。"
+        ],
+        "background": [
+          "QUIC为实时互联网传输提供了可扩展的基础，MoQ则试图把媒体分发与实时传输结合到开放协议中。"
+        ],
+        "significance": [
+          "若部署稳定，内容平台和直播基础设施供应商可能获得更统一的实时媒体传输路径，减少维护多套专有协议的成本。"
+        ],
+        "analysis": [
+          "编辑判断：大规模平台采用开放协议会提高其工程可行性和生态关注度，但协议采用本身不等于端到端体验已经改善。"
+        ],
+        "uncertainties": [
+          "候选材料没有披露部署覆盖比例、延迟变化、卡顿率、带宽成本或与旧协议的对比结果。"
+        ],
+        "watch": [
+          "观察Meta后续公布的直播延迟、播放失败率和流量覆盖数据，以及MoQ在其他大型平台的生产部署。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "科技",
+      "kind": "事实",
+      "publishedAt": "2026-10-12T16:01:32+00:00",
+      "tags": [
+        "实时视频",
+        "QUIC",
+        "开放协议",
+        "Instagram Live"
+      ],
+      "sources": [
+        {
+          "name": "Meta Engineering",
+          "url": "https://engineering.fb.com/2026/10/12/video-engineering/shipping-media-over-quic-at-meta-scale-for-instagram-live-ingest/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 74,
+        "relevance": 82,
+        "novelty": 80,
+        "reliability": 78,
+        "convergence": 30,
+        "feedback": 50,
+        "total": 71.8
+      },
+      "collectedAt": "2026-10-13T14:48:08+08:00"
+    },
+    {
+      "id": "2026-10-13-microsoft-studentsim-ai-tutoring",
+      "title": "微软研究用模拟学生评测和改进AI家教",
+      "summary": "微软研究院介绍StudentSim，这是一个用于在真实学习者测试前评估和改进AI家教的研究系统。该系统根据公开的去标识化学习者记录训练个性化AI学生模拟器，以降低人工学习实验的时间和成本；微软明确表示它不是产品，尚未部署到课堂，也不替代教师。",
+      "perspective": "AI教育工具的反馈环节可能从小规模真人试验转向“模拟器先筛选、真人再验证”；关键变量是模拟结果与真实学生学习效果之间的偏差。",
+      "detail": {
+        "introduction": "StudentSim解决的是AI家教评测成本高、反馈周期长的问题，而不是直接提供课堂教学。",
+        "facts": [
+          "微软研究院表示，StudentSim使用公开的去标识化学习者记录训练个性化AI学生模拟器。",
+          "微软明确说明该系统不是产品，未部署在课堂，也不用于替代教师。"
+        ],
+        "background": [
+          "AI家教需要学生反馈来改进，但真实学习实验涉及招募、时间和伦理成本，难以大规模重复。"
+        ],
+        "significance": [
+          "模拟学生可用于在真人测试前筛掉表现较差的教学策略，从而影响教育AI的研发流程和评测资源分配。"
+        ],
+        "analysis": [
+          "编辑判断：模拟器的价值取决于它能否预测不同学生群体的真实反应；若训练数据覆盖不足，系统可能放大既有学习记录中的偏差。"
+        ],
+        "uncertainties": [
+          "候选摘要未提供模拟器与真人实验的一致性指标、覆盖的学习场景或相对现有评测方法的提升。"
+        ],
+        "watch": [
+          "观察论文或后续报告是否公布模拟结果与真人学习结果的相关性、误差和不同学生群体的表现。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "AI",
+      "kind": "事实",
+      "publishedAt": "2026-10-12T16:00:00+00:00",
+      "tags": [
+        "AI教育",
+        "AI评测",
+        "学习科学",
+        "微软研究"
+      ],
+      "sources": [
+        {
+          "name": "Microsoft Research",
+          "url": "https://www.microsoft.com/en-us/research/blog/simulating-student-learning-for-better-ai-tutoring/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 70,
+        "relevance": 84,
+        "novelty": 78,
+        "reliability": 76,
+        "convergence": 25,
+        "feedback": 50,
+        "total": 70
+      },
+      "collectedAt": "2026-10-13T14:48:08+08:00"
+    },
+    {
+      "id": "2026-10-13-aws-openai-bedrock-asia",
+      "title": "AWS在亚洲五个区域提供OpenAI模型的跨区域推理访问",
+      "summary": "AWS介绍了通过Amazon Bedrock跨区域推理访问OpenAI GPT-6 Sol和GPT-6 Luna的方式，覆盖泰国、马来西亚、新加坡、印度尼西亚和中国台湾五个AWS区域；GPT-6 Astra则可从亚太地区新加坡区域使用。AWS称该机制用于缓解单一区域容量不足导致的限流。",
+      "perspective": "模型服务的竞争正在转向区域容量与数据路径管理；对亚洲企业而言，实际可用性取决于跨区域调用延迟、数据合规边界和限流率，而不只是模型名称。",
+      "detail": {
+        "introduction": "AWS此次说明的是Bedrock的跨区域推理配置和可用范围，核心问题是需求超过单一区域容量时如何继续调用模型。",
+        "facts": [
+          "AWS表示，Bedrock可从上述五个亚洲AWS区域跨区域调用GPT-6 Sol和GPT-6 Luna。",
+          "AWS表示，GPT-6 Astra可从亚太新加坡区域使用，并提供配置权限和监控调用的方法。"
+        ],
+        "background": [
+          "单一区域推理在需求超过本地容量时可能发生限流，跨区域推理可把请求分配到其他区域。"
+        ],
+        "significance": [
+          "这会影响亚洲企业的模型接入稳定性、部署架构、延迟设计和数据治理安排，也加深云平台对模型分发的控制。"
+        ],
+        "analysis": [
+          "编辑判断：跨区域能力能提高容量弹性，但可能引入跨境数据传输、合规审批和延迟成本；客户会以可用率与区域控制能力评估方案。"
+        ],
+        "uncertainties": [
+          "候选材料没有说明各模型的定价、实际延迟、跨区域数据流向或不同国家的监管限制。"
+        ],
+        "watch": [
+          "观察AWS公布的区域可用性、限流率和数据处理条款，并关注亚洲客户是否转向跨区域而非单区域部署。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "AI",
+      "kind": "事实",
+      "publishedAt": "2026-10-12T17:52:22+00:00",
+      "tags": [
+        "Amazon Bedrock",
+        "模型服务",
+        "跨区域推理",
+        "亚洲云计算"
+      ],
+      "sources": [
+        {
+          "name": "AWS Machine Learning",
+          "url": "https://aws.amazon.com/blogs/machine-learning/accessing-openai-gpt-models-on-amazon-bedrock-with-global-cross-region-inference-in-thailand-malaysia-singapore-indonesia-and-taiwan/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 78,
+        "relevance": 90,
+        "novelty": 76,
+        "reliability": 78,
+        "convergence": 25,
+        "feedback": 50,
+        "total": 74.1
+      },
+      "collectedAt": "2026-10-13T14:48:08+08:00"
+    }
+  ],
+  "quality": {
+    "sourcesChecked": 22,
+    "sourcesHealthy": 19,
+    "rawSignals": 179,
+    "afterDeduplication": 4,
+    "linksVerified": 4,
+    "notes": [
+      "RSS 候选池包含 14 个具体内容页；入选链接均来自本次采集，不允许模型虚构网址。",
+      "RSS 19/22 个订阅源可用，共采集 179 条候选。",
+      "已依据历史日报 ID、标题和摘要做跨期去重；正式发布前由独立脚本逐个请求入选链接。",
+      "本期候选中，Meta与AWS均为主体发布，相关性能、规模和能力表述未获独立来源交叉验证。",
+      "未纳入英国增长预测、AI股市风险及消费电子消息，因候选摘要缺少足够细节或与产业主线关联较弱。",
+      "未发现与历史列表直接重复的事件；Meta两条内容分别涉及数据中心网络和实时视频传输。"
+    ]
+  }
+}
