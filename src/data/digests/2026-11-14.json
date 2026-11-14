@@ -1,0 +1,199 @@
+{
+  "date": "2026-11-14",
+  "generatedAt": "2026-11-14T14:25:21+08:00",
+  "windowStart": "2026-11-13T06:48:04.000Z",
+  "windowEnd": "2026-11-14T14:25:21+08:00",
+  "thesis": "本期更值得关注的变化集中在智能体基础设施与关键技术验证：编码智能体开始出现面向任务成本的路由设计，Cloudflare开放可自托管的代理浏览器，同时Starship完成一次进入轨道的测试飞行。",
+  "status": "published",
+  "items": [
+    {
+      "id": "2026-11-14-starship-flight-15",
+      "title": "SpaceX Starship第15次测试飞行进入轨道",
+      "summary": "Ars Technica报道，SpaceX的Starship第15次测试飞行于周五从得州南部按计划升空，并进入轨道。这是该型号三年多来的第15次测试飞行；报道将后续尝试回收和捕获列为下一步安排，但候选摘要没有确认捕获是否已经完成。",
+      "perspective": "视野：对发射产业而言，关键变量不是单次升空，而是助推器与飞船能否在后续测试中重复回收；这将直接影响重型发射的单位成本、发射频率和国防及商业客户的供应选择。",
+      "detail": {
+        "introduction": "Starship完成一次进入轨道的测试飞行，测试重点从单纯升空继续转向可重复运行与回收。",
+        "facts": [
+          "Ars Technica称，第15次测试飞行从得州南部按计划发射并进入轨道。",
+          "报道将周六可能进行的捕获尝试作为后续节点，但候选材料未确认该尝试结果。"
+        ],
+        "background": [
+          "Starship是大型可重复使用运载系统，当前仍处于连续飞行测试阶段。"
+        ],
+        "significance": [
+          "若后续能稳定完成回收，发射服务商可通过提高复用率和周转速度降低单次任务成本；现阶段这一影响尚未被本次材料证实。"
+        ],
+        "analysis": [
+          "编辑判断：应把轨道飞行与回收成功分开评估，后者更能检验系统是否接近商业化运行。"
+        ],
+        "reactions": [
+          "候选材料未提供监管部门、客户或竞争对手的独立反应。"
+        ],
+        "uncertainties": [
+          "候选摘要没有给出入轨后的任务持续时间、载荷状态或回收结果。"
+        ],
+        "watch": [
+          "核对后续捕获是否成功；记录助推器和飞船分别完成受控返回的次数、周转时间及下一次发射间隔。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "科技",
+      "kind": "事实",
+      "publishedAt": "2026-11-14T00:49:13+00:00",
+      "tags": [
+        "航天",
+        "可重复使用火箭",
+        "发射基础设施"
+      ],
+      "sources": [
+        {
+          "name": "Ars Technica",
+          "url": "https://arstechnica.com/space/2026/11/starship-flight-15-powers-to-orbit-setting-up-a-possible-catch-on-saturday/",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 82,
+        "relevance": 78,
+        "novelty": 82,
+        "reliability": 78,
+        "convergence": 45,
+        "feedback": 50,
+        "total": 74.9
+      },
+      "collectedAt": "2026-11-14T14:25:21+08:00"
+    },
+    {
+      "id": "2026-11-14-nemo-switchyard-agent-routing",
+      "title": "AWS介绍用NeMo Switchyard按任务路由编码智能体请求",
+      "summary": "AWS机器学习博客介绍，在Amazon Bedrock上使用NVIDIA NeMo Switchyard为Claude Code、OpenAI Codex CLI等编码智能体请求选择合适模型。文章强调，智能体成本取决于完成一个任务所需的调用次数、历史上下文重放、重试和失败，而不只是单次令牌价格。",
+      "perspective": "视野：模型路由的计价单位正从单次调用转向完整任务；受影响的不只是模型提供商，也包括需要控制代码代理成本、延迟和完成率的企业开发团队。",
+      "detail": {
+        "introduction": "AWS把编码智能体的成本与性能问题定义为任务级路由问题，而非单纯的令牌单价比较。",
+        "facts": [
+          "AWS文章以Claude Code和OpenAI Codex CLI为例，说明编码智能体会读取文件、修改代码并运行测试。",
+          "文章称，一个任务可能触发少量或数十次模型调用，整体成本还受到上下文重放、重试和未完成任务影响。",
+          "文章介绍在Amazon Bedrock上结合NVIDIA NeMo Switchyard进行请求路由。"
+        ],
+        "background": [
+          "智能体通常通过多轮模型调用完成一个开发任务，因此调用次数和上下文长度会随任务变化。"
+        ],
+        "significance": [
+          "企业采购模型时需要同时观察任务完成率、平均调用轮数、延迟和每任务成本，单看每百万令牌价格可能低估实际支出。"
+        ],
+        "analysis": [
+          "编辑判断：这类路由层会把模型竞争从基准分数进一步推向任务级成本与可靠性优化。"
+        ],
+        "reactions": [
+          "候选材料未提供独立客户部署数据或第三方性能比较。"
+        ],
+        "uncertainties": [
+          "候选摘要没有给出具体路由策略、支持模型清单、成本节省幅度或延迟变化。"
+        ],
+        "watch": [
+          "关注后续是否披露每任务成本、成功率、平均调用轮数和重试率，并比较不同模型在同一编码任务上的总成本。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "AI",
+      "kind": "事实",
+      "publishedAt": "2026-11-13T22:30:12+00:00",
+      "tags": [
+        "智能体",
+        "代码生成",
+        "模型路由",
+        "Amazon Bedrock"
+      ],
+      "sources": [
+        {
+          "name": "AWS Machine Learning",
+          "url": "https://aws.amazon.com/blogs/machine-learning/route-coding-agent-requests-to-the-right-model-on-amazon-bedrock-with-nvidia-nemo-switchyard/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 75,
+        "relevance": 90,
+        "novelty": 76,
+        "reliability": 82,
+        "convergence": 40,
+        "feedback": 50,
+        "total": 75.5
+      },
+      "collectedAt": "2026-11-14T14:25:21+08:00"
+    },
+    {
+      "id": "2026-11-14-cloudflare-kitesurf-open-source",
+      "title": "Cloudflare将Kitesurf代理浏览器以Apache 2.0协议开源",
+      "summary": "Cloudflare宣布，面向AI智能体、运行在Workers之上的无状态浏览器Kitesurf已按Apache 2.0协议开源。Cloudflare此前已为该项目加入WebMCP支持、新API和兼容性改进；开源后，开发者可以阅读代码，并在自己的Cloudflare账户上运行浏览器引擎。",
+      "perspective": "视野：代理浏览器开源会把竞争焦点从“能否访问网页”推进到执行隔离、状态管理和部署成本；可观察变量包括自托管活跃度、兼容网站范围与安全漏洞响应。",
+      "detail": {
+        "introduction": "Kitesurf把浏览器能力放到Workers环境中，并从Cloudflare托管产品转为允许开发者运行和检查的开源项目。",
+        "facts": [
+          "Cloudflare称Kitesurf现已在GitHub开源，许可证为Apache 2.0。",
+          "项目被描述为运行在Workers之上的无状态浏览器，面向AI智能体。",
+          "Cloudflare此前为项目加入WebMCP支持、新API和兼容性改进。"
+        ],
+        "background": [
+          "代理浏览器为智能体提供网页访问与操作能力；无状态设计通常意味着状态管理更多交由调用方或外部系统承担。"
+        ],
+        "significance": [
+          "开发者可检查代码并在自己的Cloudflare账户运行引擎，可能降低对单一托管入口的依赖，同时把部署和安全维护责任更多交给使用者。"
+        ],
+        "analysis": [
+          "编辑判断：开源价值取决于真实兼容性、隔离能力和社区维护，而不只是许可证变化。"
+        ],
+        "reactions": [
+          "候选材料未提供开发者数量、生产客户或独立安全评估。"
+        ],
+        "uncertainties": [
+          "摘要没有说明完整支持的浏览器能力、资源成本、限制条件和开源仓库的实际活跃度。"
+        ],
+        "watch": [
+          "观察GitHub贡献者与发布频率、兼容性测试范围、公开漏洞修复时间，以及企业是否出现自托管部署案例。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "AI",
+      "kind": "事实",
+      "publishedAt": "2026-11-13T20:20:21+00:00",
+      "tags": [
+        "AI智能体",
+        "浏览器自动化",
+        "开源",
+        "Cloudflare Workers"
+      ],
+      "sources": [
+        {
+          "name": "Cloudflare Blog",
+          "url": "https://blog.cloudflare.com/kitesurf-open-source/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 70,
+        "relevance": 86,
+        "novelty": 80,
+        "reliability": 84,
+        "convergence": 42,
+        "feedback": 50,
+        "total": 74
+      },
+      "collectedAt": "2026-11-14T14:25:21+08:00"
+    }
+  ],
+  "quality": {
+    "sourcesChecked": 22,
+    "sourcesHealthy": 20,
+    "rawSignals": 189,
+    "afterDeduplication": 3,
+    "linksVerified": 3,
+    "notes": [
+      "RSS 候选池包含 14 个具体内容页；入选链接均来自本次采集，不允许模型虚构网址。",
+      "RSS 20/22 个订阅源可用，共采集 189 条候选。",
+      "已依据历史日报 ID、标题和摘要做跨期去重；正式发布前由独立脚本逐个请求入选链接。",
+      "候选池未提供完整正文，部分细节只能按标题与摘要确认，未将宣传性表述扩写为事实。",
+      "本期去除了与历史列表重复的AWS Trainium、GitHub可用性和其他既有主题，保留三个相对独立且有产业关联的更新。"
+    ]
+  }
+}
