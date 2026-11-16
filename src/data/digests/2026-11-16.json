@@ -1,0 +1,209 @@
+{
+  "date": "2026-11-16",
+  "generatedAt": "2026-11-16T16:31:09+08:00",
+  "windowStart": "2026-11-15T06:34:09.000Z",
+  "windowEnd": "2026-11-16T16:31:09+08:00",
+  "thesis": "本期产业信号集中在主权云基础设施、智能体记忆可靠性与商业航天发射风险：数据治理和系统工程正成为规模化部署的关键约束。",
+  "status": "published",
+  "items": [
+    {
+      "id": "2026-11-16-google-cloud-sovereign-boundaries",
+      "title": "Google Cloud强化主权云能力，面向受监管行业提供本地治理与数据边界方案",
+      "summary": "Google Cloud介绍了面向欧洲受监管行业的Dedicated技术和新的Data Boundary体验，强调在本地治理环境中保留云服务的架构与API一致性，并围绕数据所在地、加密密钥和系统访问控制提供更清晰的治理。文章提及金融、医疗、关键基础设施及公共部门等场景，以及法国SecNumCloud、德国BSI C3A等要求。",
+      "perspective": "主权云竞争不只是把数据放在本地，还取决于密钥控制、人员访问和API兼容性；可观察变量是客户能否在合规约束下继续使用原有云工具链。",
+      "detail": {
+        "introduction": "Google Cloud连续发布两篇文章，展示其如何把数字主权从合规要求扩展为云产品和部署架构的一部分。",
+        "facts": [
+          "Google Cloud表示，Dedicated技术可在本地治理环境中提供其云架构、安全能力和API一致性。",
+          "公司介绍的新Data Boundary体验围绕数据所在地、加密密钥和系统访问控制展开，并列举欧洲、美国及亚太和中东的监管场景。",
+          "文章提到的欧洲要求包括法国SecNumCloud、德国BSI C3A，以及DORA、EHDS和GDPR等框架。"
+        ],
+        "background": [
+          "金融、医疗、关键基础设施和公共部门需要现代化基础设施，同时受到数据本地化和访问治理约束。"
+        ],
+        "significance": [
+          "对受监管行业客户而言，云迁移的判断标准从单纯性能和价格，扩展到数据、密钥及运维访问能否被本地规则约束。",
+          "对云服务商而言，保持API一致性有助于降低客户迁移到主权环境时的软件改造成本。"
+        ],
+        "analysis": [
+          "编辑判断：若此类方案能减少应用重构并通过当地审计，云厂商可能以合规架构而非单一算力价格争夺公共部门和受监管企业。"
+        ],
+        "reactions": [
+          "目前候选材料仅包含Google Cloud自身介绍，未提供客户、监管机构或竞争对手的独立评价。"
+        ],
+        "uncertainties": [
+          "候选摘要未说明具体可用地区、服务范围、认证状态、定价或客户部署结果。"
+        ],
+        "watch": [
+          "核对相关地区的正式认证和监管认可范围；观察客户是否能在不大规模改写应用的情况下完成迁移，以及密钥和访问控制是否可由客户或当地实体独立管理。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "科技",
+      "kind": "事实",
+      "publishedAt": "2026-11-16T08:05:00+00:00",
+      "tags": [
+        "主权云",
+        "云计算",
+        "数据治理",
+        "合规"
+      ],
+      "sources": [
+        {
+          "name": "Google Cloud Blog",
+          "url": "https://cloud.google.com/blog/products/identity-security/how-isvs-are-unlocking-european-workloads-on-google-cloud-dedicated/",
+          "kind": "官方"
+        },
+        {
+          "name": "Google Cloud Blog",
+          "url": "https://cloud.google.com/blog/products/identity-security/inside-the-new-data-boundary-experience/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 76,
+        "relevance": 86,
+        "novelty": 67,
+        "reliability": 72,
+        "convergence": 45,
+        "feedback": 50,
+        "total": 72.4
+      },
+      "collectedAt": "2026-11-16T16:31:09+08:00"
+    },
+    {
+      "id": "2026-11-16-llm-agent-memory-filtering",
+      "title": "研究发现：智能体记忆误删关键事实时，硬过滤可能反而降低准确率",
+      "summary": "arXiv论文研究LLM智能体的记忆过滤机制，指出系统若把被判定为过时的信息直接删除，解析器误判可能同时删除后续查询所需的关键事实。摘要称，在三种模型和受控实验中，完美解析时硬删除带来约0.186至0.230的收益，但在最低测试可靠性下转为约0.176至0.181的损失。",
+      "perspective": "智能体记忆的瓶颈从“存多少”转向“删得是否安全”；影响对象是需要长期上下文的Agent系统，核心指标应同时记录解析器可靠性、误删率与任务准确率。",
+      "detail": {
+        "introduction": "这篇论文考察智能体记忆系统中的硬过滤，即先判断事实是否过时，再直接删除相关内容。",
+        "facts": [
+          "论文摘要称，研究覆盖三种模型，并通过受控敏感性干预测试记忆解析可靠性。",
+          "在完美解析条件下，硬删除带来0.186至0.230的收益；在最低测试可靠性下，结果转为0.176至0.181的损失。",
+          "作者还进行成对定向干预，并指出误删对结果的影响显著大于相应的另一类错误，摘要未给出完整实验细节。"
+        ],
+        "background": [
+          "长期运行的LLM智能体需要压缩或删除记忆以控制上下文成本，但过滤器本身可能无法可靠判断某条事实是否仍对未来查询重要。"
+        ],
+        "significance": [
+          "对Agent开发者而言，单独优化记忆规模或检索速度可能掩盖因误删造成的任务失败。",
+          "对评测而言，记忆系统需要区分删除无用信息带来的收益与误删查询关键事实造成的损失。"
+        ],
+        "analysis": [
+          "编辑判断：更稳妥的架构可能是保留可恢复历史、设置删除置信度阈值，或把硬删除改为分层降权；这些方案的成本和效果需由实验验证。"
+        ],
+        "reactions": [
+          "候选材料未提供其他研究团队、模型厂商或工程团队的反馈。"
+        ],
+        "uncertainties": [
+          "这是arXiv新论文摘要，候选材料未提供同行评审状态、数据集、完整模型配置或实验可复现结果。"
+        ],
+        "watch": [
+          "观察论文全文中的数据集、误删率和不同模型结果；在实际Agent任务中分别测量记忆容量、检索延迟、误删率和最终任务成功率。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "AI",
+      "kind": "事实",
+      "publishedAt": "2026-11-16T05:00:00+00:00",
+      "tags": [
+        "LLM",
+        "智能体",
+        "记忆系统",
+        "可靠性"
+      ],
+      "sources": [
+        {
+          "name": "arXiv cs.AI",
+          "url": "https://arxiv.org/abs/2611.17338",
+          "kind": "论文"
+        }
+      ],
+      "score": {
+        "impact": 73,
+        "relevance": 91,
+        "novelty": 82,
+        "reliability": 60,
+        "convergence": 35,
+        "feedback": 50,
+        "total": 70.8
+      },
+      "collectedAt": "2026-11-16T16:31:09+08:00"
+    },
+    {
+      "id": "2026-11-16-vulcan-launch-failure",
+      "title": "Vulcan火箭发射失败，亚马逊宽带卫星部署和美国军用发射计划承压",
+      "summary": "联合发射联盟的Vulcan火箭在周日升空数分钟后失败，火箭和亚马逊Leo宽带网络的40颗卫星坠回地面。此次任务原本是亚马逊用于建设宽带网络的38次Vulcan发射中的首次；Vulcan还已签约承担美国未来数年约一半的国家安全太空任务，因此事故影响超出单次商业发射。",
+      "perspective": "发射可靠性会同时影响卫星网络扩张、军用任务排期和ULA相对SpaceX的竞争位置；可验证变量包括事故调查结论、Vulcan复飞时间与亚马逊后续发射节奏。",
+      "detail": {
+        "introduction": "Ars Technica报道，ULA的Vulcan在一次搭载亚马逊卫星的任务中升空后失效，事故可能影响多个依赖该火箭的发射计划。",
+        "facts": [
+          "报道指Vulcan升空数分钟后失败，火箭及40颗亚马逊Leo宽带卫星坠回地面。",
+          "这是亚马逊已预订的38次Vulcan发射中首次执行的一次任务。",
+          "报道还称，Vulcan已签约承担美国未来数年约一半的国家安全太空任务。"
+        ],
+        "background": [
+          "亚马逊需要通过多次发射部署宽带卫星网络；美国国家安全任务则要求稳定、可认证的发射能力。"
+        ],
+        "significance": [
+          "事故会直接造成卫星部署延误，并可能迫使亚马逊调整发射排序或寻找替代运力。",
+          "若复飞需要较长调查和整改周期，ULA在美国军用和商业发射市场的交付能力都可能受到影响。"
+        ],
+        "analysis": [
+          "编辑判断：这不是单纯的商业卫星损失，关键风险在于同一发射系统同时服务商业网络扩张和国家安全任务，故障会形成跨项目的排期传导。"
+        ],
+        "reactions": [
+          "候选材料未提供ULA、亚马逊、美国政府或SpaceX对事故原因和后续安排的正式回应。"
+        ],
+        "uncertainties": [
+          "候选摘要未说明故障发生环节、卫星损失情况、调查机构、保险安排或复飞批准时间。"
+        ],
+        "watch": [
+          "观察事故调查报告、Vulcan整改和复飞日期；同时核对亚马逊下一次卫星发射是否改用其他火箭，以及美国国家安全任务是否调整排期。"
+        ]
+      },
+      "importance": "重大",
+      "category": "科技",
+      "kind": "事实",
+      "publishedAt": "2026-11-15T23:11:54+00:00",
+      "tags": [
+        "商业航天",
+        "火箭",
+        "卫星互联网",
+        "供应链"
+      ],
+      "sources": [
+        {
+          "name": "Ars Technica",
+          "url": "https://arstechnica.com/space/2026/11/vulcan-rocket-fails-during-launch-dealing-major-blow-to-spacex-competitors/",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 88,
+        "relevance": 84,
+        "novelty": 80,
+        "reliability": 68,
+        "convergence": 30,
+        "feedback": 50,
+        "total": 74.5
+      },
+      "collectedAt": "2026-11-16T16:31:09+08:00"
+    }
+  ],
+  "quality": {
+    "sourcesChecked": 22,
+    "sourcesHealthy": 19,
+    "rawSignals": 189,
+    "afterDeduplication": 3,
+    "linksVerified": 4,
+    "notes": [
+      "RSS 候选池包含 10 个具体内容页；入选链接均来自本次采集，不允许模型虚构网址。",
+      "RSS 19/22 个订阅源可用，共采集 189 条候选。",
+      "已依据历史日报 ID、标题和摘要做跨期去重；正式发布前由独立脚本逐个请求入选链接。",
+      "候选材料中可核验且与历史列表不重复的产业更新有限，选取三条分别来自Google Cloud、arXiv和Ars Technica。",
+      "Google Cloud两篇文章属于同一发布方的相关主题，合并为一条，避免重复计数。"
+    ]
+  }
+}
