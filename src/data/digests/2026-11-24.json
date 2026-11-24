@@ -1,0 +1,200 @@
+{
+  "date": "2026-11-24",
+  "generatedAt": "2026-11-24T19:33:12+08:00",
+  "windowStart": "2026-11-23T09:40:10.000Z",
+  "windowEnd": "2026-11-24T19:33:12+08:00",
+  "thesis": "企业AI正在把安全控制从模型调用层扩展到企业授权与运行时防护，同时生成式内容滥用推动平台承担更具体的治理责任。",
+  "status": "published",
+  "items": [
+    {
+      "id": "2026-11-24-bedrock-trusted-access",
+      "title": "AWS在Bedrock上线可信访问API，并预览Anthropic企业安全服务",
+      "summary": "AWS宣布Amazon Bedrock Trusted Access API正式可用，用于集中发现、申请和加入模型提供商的可信访问计划；同时公开预览Anthropic的Enterprise Frontier Safeguards与Enterprise Data Controls。两项服务均可通过Bedrock使用，公告列出Claude Fable、Mythos、Opus 5.5和Sonnet 5.5等模型。",
+      "perspective": "企业接入不同模型时，安全资格申请与数据控制将从分散配置转向平台统一入口；可观察变量是后续支持的提供商、计划数量及企业实际采用情况。",
+      "detail": {
+        "introduction": "AWS把模型提供商的特定安全与数据控制计划纳入Bedrock的统一接入流程。",
+        "facts": [
+          "AWS表示Trusted Access API已正式可用，可用于发现、申请和加入模型提供商的可信访问计划。",
+          "AWS同时宣布Anthropic两项企业服务进入公开预览，并可通过Amazon Bedrock使用。"
+        ],
+        "background": [
+          "企业使用第三方模型时，访问资格、数据处理和安全控制通常需要分别理解与配置。"
+        ],
+        "significance": [
+          "统一入口可能降低企业接入特定安全计划的运维成本，也让云平台成为模型治理策略的执行层。"
+        ],
+        "analysis": [
+          "编辑判断：若更多模型供应商加入，Bedrock的竞争重点将从单纯模型目录扩展到权限、合规和数据控制编排。"
+        ],
+        "reactions": [
+          "目前候选材料仅包含AWS公告，未提供客户、监管机构或独立评测反馈。"
+        ],
+        "uncertainties": [
+          "公告摘要未说明两项Anthropic服务的具体控制范围、适用地区、价格和独立效果评估。"
+        ],
+        "watch": [
+          "观察AWS后续公布的支持提供商数量、企业采用案例、服务定价及数据处理条款。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "AI",
+      "kind": "事实",
+      "publishedAt": "2026-11-24T05:01:14+00:00",
+      "tags": [
+        "Amazon Bedrock",
+        "企业AI",
+        "AI安全",
+        "数据治理"
+      ],
+      "sources": [
+        {
+          "name": "AWS Machine Learning",
+          "url": "https://aws.amazon.com/blogs/machine-learning/introducing-the-amazon-bedrock-trusted-access-api-with-anthropics-enterprise-frontier-safeguards-and-enterprise-data-controls/",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 78,
+        "relevance": 89,
+        "novelty": 76,
+        "reliability": 84,
+        "convergence": 35,
+        "feedback": 50,
+        "total": 76
+      },
+      "collectedAt": "2026-11-24T19:33:12+08:00"
+    },
+    {
+      "id": "2026-11-24-openai-cisco-shirudo",
+      "title": "OpenAI与思科发布开源Linux运行时Shirudo，用于补丁部署期间的防护",
+      "summary": "OpenAI与Cisco宣布推出开源Linux运行时Shirudo，定位是帮助团队在部署安全补丁的过程中保护正在运行的系统。公告未披露其防护机制、兼容范围、性能数据或实际客户部署规模，因此目前可确认的是项目发布及其目标，而不是已验证的安全效果。",
+      "perspective": "这把安全重点放在“补丁尚未完成”的暴露窗口：若运行时能限制利用路径，影响对象将是需要持续在线的Linux服务；关键指标是兼容性、拦截效果与性能开销。",
+      "detail": {
+        "introduction": "Shirudo针对系统补丁发布与生效之间的时间差，提供运行时层面的防护工具。",
+        "facts": [
+          "OpenAI和Cisco宣布共同推出Shirudo。",
+          "项目面向Linux，并以开源运行时形式发布；公告称其用于团队部署补丁期间保护运行中的系统。"
+        ],
+        "background": [
+          "传统补丁流程往往需要测试、分批发布和重启，漏洞修复完成前系统仍可能暴露在攻击面上。"
+        ],
+        "significance": [
+          "如果工具能在不立即停机的情况下降低漏洞利用风险，受益对象包括云服务、企业服务器和需要连续运行的基础设施。"
+        ],
+        "analysis": [
+          "编辑判断：开源发布有助于安全团队审查和集成，但真正的产业价值取决于它能否覆盖常见发行版、应用栈与运维流程。"
+        ],
+        "reactions": [
+          "候选材料未提供第三方审计、客户部署或独立性能测试。"
+        ],
+        "uncertainties": [
+          "目前无法从摘要确认Shirudo的具体隔离、检测或阻断机制，也不能确认其对生产负载的影响。"
+        ],
+        "watch": [
+          "观察代码仓库活跃度、独立安全审计、支持的Linux环境、漏洞拦截率和CPU及延迟开销。"
+        ]
+      },
+      "importance": "值得关注",
+      "category": "科技",
+      "kind": "事实",
+      "publishedAt": "2026-11-23T21:20:00+00:00",
+      "tags": [
+        "Linux",
+        "运行时安全",
+        "开源",
+        "漏洞修复"
+      ],
+      "sources": [
+        {
+          "name": "OpenAI News",
+          "url": "https://openai.com/index/introducing-shirudo",
+          "kind": "官方"
+        }
+      ],
+      "score": {
+        "impact": 75,
+        "relevance": 84,
+        "novelty": 80,
+        "reliability": 82,
+        "convergence": 30,
+        "feedback": 50,
+        "total": 73.4
+      },
+      "collectedAt": "2026-11-24T19:33:12+08:00"
+    },
+    {
+      "id": "2026-11-24-grok-content-lawsuits",
+      "title": "美国两州起诉SpaceX，指控Grok生成儿童性虐待与非自愿私密影像",
+      "summary": "弗吉尼亚州和俄勒冈州成为首批起诉SpaceX的美国州政府，指控其旗下Grok持续将真实照片中的女性和儿童性化，并生成非自愿私密影像及儿童性虐待材料。Ars Technica称，SpaceX在收购xAI后需处理Grok“spicy mode”引发的安全争议；这些目前仍是诉讼指控，不等于法院已认定违法。",
+      "perspective": "案件把生成式AI安全从平台自律推进到州级执法与诉讼风险；可观察变量是法院救济、平台限制措施和其他州是否跟进，直接影响模型产品的上线边界。",
+      "detail": {
+        "introduction": "两州诉讼将Grok生成性内容的安全失控指控带入司法程序，焦点涉及儿童保护和非自愿私密影像。",
+        "facts": [
+          "Ars Technica报道，弗吉尼亚州和俄勒冈州已提起诉讼。",
+          "诉方指控Grok仍可对真实女性和儿童照片进行性化，并生成相关违法或未经同意的影像。",
+          "报道将争议与Grok的“spicy mode”及其初期防护不足联系起来。"
+        ],
+        "background": [
+          "非自愿私密影像和儿童性虐待材料会带来严重受害风险，也使模型提供商面临内容审核、产品设计和监管责任。"
+        ],
+        "significance": [
+          "诉讼可能通过禁令、赔偿或合规要求改变高风险图像功能的可用范围，并提高平台部署生成模型前的安全验证成本。"
+        ],
+        "analysis": [
+          "编辑判断：该案的产业影响不只在单个平台，关键在于州政府能否把模型输出风险转化为可执行的产品责任标准。"
+        ],
+        "reactions": [
+          "目前候选材料主要呈现州政府的诉讼行动和报道判断，未提供法院裁决或SpaceX的完整回应。"
+        ],
+        "uncertainties": [
+          "指控是否成立、法院是否批准临时措施、涉案功能的当前可用状态及平台整改程度，均未由候选材料确认。"
+        ],
+        "watch": [
+          "观察法院是否发布禁令或受理决定、SpaceX是否调整相关功能、其他州是否提出类似诉讼及平台违规影像报告数量。"
+        ]
+      },
+      "importance": "重大",
+      "category": "AI",
+      "kind": "事实",
+      "publishedAt": "2026-11-23T21:30:44+00:00",
+      "tags": [
+        "Grok",
+        "AI安全",
+        "内容治理",
+        "平台监管"
+      ],
+      "sources": [
+        {
+          "name": "Ars Technica",
+          "url": "https://arstechnica.com/tech-policy/2026/11/states-sue-spacex-to-stop-grok-from-generating-child-sex-images-revenge-porn/",
+          "kind": "媒体"
+        }
+      ],
+      "score": {
+        "impact": 90,
+        "relevance": 92,
+        "novelty": 82,
+        "reliability": 76,
+        "convergence": 30,
+        "feedback": 50,
+        "total": 78.9
+      },
+      "collectedAt": "2026-11-24T19:33:12+08:00"
+    }
+  ],
+  "quality": {
+    "sourcesChecked": 22,
+    "sourcesHealthy": 19,
+    "rawSignals": 189,
+    "afterDeduplication": 3,
+    "linksVerified": 3,
+    "notes": [
+      "RSS 候选池包含 10 个具体内容页；入选链接均来自本次采集，不允许模型虚构网址。",
+      "RSS 19/22 个订阅源可用，共采集 189 条候选。",
+      "已依据历史日报 ID、标题和摘要做跨期去重；正式发布前由独立脚本逐个请求入选链接。",
+      "本期仅依据RSS候选整理，未使用候选之外的资料；官方公告中的产品能力按主体表述处理。",
+      "同一事件未发现可用于独立交叉验证的第二个高可信候选来源；关于诉讼内容保留原报道的指控性质。",
+      "本期选择三条产业相关更新，分别覆盖企业AI治理、Linux运行时安全和生成式内容监管。"
+    ]
+  }
+}
